@@ -1,0 +1,64 @@
+cities:
+  - 济南
+  - 青岛
+  - 烟台
+
+keywords:
+  - 无人机
+  - 低慢小
+  - 飞行物
+  - 空飘物
+  - 机场净空
+  - 临时管控
+  - 适飞空域
+  - 高考
+  - 马拉松
+  - 景区
+
+time_range:
+  start: "2025-01-01"
+  end: "2026-12-31"
+  include_unknown_dates: true
+
+current_date: "2026-06-07"
+
+crawl:
+  polite_delay_seconds: 2.0
+  max_pages_per_source: 20
+  max_depth: 1
+  timeout_seconds: 12
+  respect_robots_txt: true
+  user_agent: "source-audit/0.1 (+public-source-risk-audit)"
+
+wechat:
+  # 打开后，程序可从已抓取的公开页面继续发现 mp.weixin.qq.com/s/... 文章链接。
+  follow_mp_links: false
+
+image_ocr:
+  # 打开前先安装 requirements-ocr.txt；只处理公开页面内图片，不处理视频。
+  enabled: false
+  max_images_per_page: 5
+  max_image_bytes: 4000000
+  min_text_chars: 6
+
+storage:
+  database_path: data/source_audit.sqlite
+
+output:
+  output_dir: outputs
+
+sources:
+  # 建议替换为具体公告栏目 URL；入口页过宽时，命中率会受站点导航结构影响。
+  - name: 山东省人民政府
+    url: https://www.shandong.gov.cn/
+    priority: P0
+
+  - name: 济南市人民政府
+    url: https://www.jinan.gov.cn/
+    priority: P0
+    city: 济南
+
+  - name: 青岛市人民政府
+    url: https://www.qingdao.gov.cn/
+    priority: P0
+    city: 青岛

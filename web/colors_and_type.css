@@ -1,0 +1,448 @@
+/* ============================================================
+   AGENTIC UI — Colors & Type
+   ============================================================
+   Imported by every preview, UI kit and slide.
+
+   FONTS
+   - Serif (display, headlines):  Source Serif 4   (Google Fonts)
+   - Sans  (body, UI):            IBM Plex Sans    (Google Fonts)
+   - Mono  (labels, system text): IBM Plex Mono    (Google Fonts)  ★ identity-defining
+   - Pixel (retro accent only):   VT323            (Google Fonts)
+
+   Fonts load via the @import below. To self-host, replace with
+   local @font-face rules pointing at /fonts/.
+============================================================ */
+
+/* Mono + serif + pixel still pull from Google Fonts (no files provided).
+   Sans is self-hosted Alibaba PuHuiTi 3 (uploaded by the user). */
+@import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,300..900&family=Noto+Serif+SC:wght@400;500;600;700&family=IBM+Plex+Mono:wght@300;400;500;600;700&family=VT323&display=swap');
+
+/* Alibaba PuHuiTi 3 — full weight axis (35–115).
+   Self-hosted from /fonts/. Paths are RELATIVE TO THIS CSS FILE
+   (which lives at the project root), so they resolve to <root>/fonts/...
+   from any page depth — preview/, ui_kits/<kit>/, etc. */
+@font-face { font-family: 'Alibaba PuHuiTi 3'; font-weight: 250; font-style: normal; font-display: swap;
+  src: url('fonts/AlibabaPuHuiTi-3-35-Thin.woff2') format('woff2'); }
+@font-face { font-family: 'Alibaba PuHuiTi 3'; font-weight: 300; font-style: normal; font-display: swap;
+  src: url('fonts/AlibabaPuHuiTi-3-45-Light.woff2') format('woff2'); }
+@font-face { font-family: 'Alibaba PuHuiTi 3'; font-weight: 400; font-style: normal; font-display: swap;
+  src: url('fonts/AlibabaPuHuiTi-3-55-Regular.woff2') format('woff2'); }
+@font-face { font-family: 'Alibaba PuHuiTi 3'; font-weight: 500; font-style: normal; font-display: swap;
+  src: url('fonts/AlibabaPuHuiTi-3-65-Medium.woff2') format('woff2'); }
+@font-face { font-family: 'Alibaba PuHuiTi 3'; font-weight: 600; font-style: normal; font-display: swap;
+  src: url('fonts/AlibabaPuHuiTi-3-75-SemiBold.woff2') format('woff2'); }
+@font-face { font-family: 'Alibaba PuHuiTi 3'; font-weight: 700; font-style: normal; font-display: swap;
+  src: url('fonts/AlibabaPuHuiTi-3-85-Bold.woff2') format('woff2'); }
+@font-face { font-family: 'Alibaba PuHuiTi 3'; font-weight: 800; font-style: normal; font-display: swap;
+  src: url('fonts/AlibabaPuHuiTi-3-95-ExtraBold.woff2') format('woff2'); }
+@font-face { font-family: 'Alibaba PuHuiTi 3'; font-weight: 900; font-style: normal; font-display: swap;
+  src: url('fonts/AlibabaPuHuiTi-3-115-Black.woff2') format('woff2'); }
+
+:root {
+  /* ----------------------------------------------------------
+     FONT FAMILIES
+  ---------------------------------------------------------- */
+  --font-serif: 'Source Serif 4', 'Source Serif Pro', 'Noto Serif SC', 'Songti SC', 'SimSun', ui-serif, Georgia, serif;
+  --font-sans:  'Alibaba PuHuiTi 3', 'IBM Plex Sans', system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  --font-mono:  'IBM Plex Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
+  --font-pixel: 'VT323', 'IBM Plex Mono', monospace;
+
+  /* ----------------------------------------------------------
+     COLOR — PRIMARY (deep blue)
+     Used for: links, focus rings, brand accents.
+     Buttons are typically BLACK, not primary blue.
+  ---------------------------------------------------------- */
+  --primary-950: #050E3A;
+  --primary-900: #0A1B5A;
+  --primary-800: #0E2D87;
+  --primary-700: #1141B0;
+  --primary-600: #1E5BC6;
+  --primary-500: #3A78D5;
+  --primary-400: #5C8FD9;
+  --primary-300: #8FB1E3;
+  --primary-200: #B7CCE8;
+  --primary-100: #DCE9F7;
+  --primary-50:  #EEF4FB;
+
+  /* ----------------------------------------------------------
+     COLOR — NEUTRAL (secondary / grayscale)
+     The system runs on these. Backgrounds, cards, borders, text.
+  ---------------------------------------------------------- */
+  --neutral-1000: #000000;
+  --neutral-950:  #0D0D0D;
+  --neutral-900:  #111111;
+  --neutral-800:  #1F1F1F;
+  --neutral-700:  #2E2E2E;
+  --neutral-600:  #555555;
+  --neutral-500:  #757575;
+  --neutral-400:  #9B9B9B;
+  --neutral-300:  #C2C2C2;
+  --neutral-250:  #D6D6D6;
+  --neutral-200:  #E4E4E4;
+  --neutral-150:  #ECECEC;
+  --neutral-100:  #F2F2F2;
+  --neutral-75:   #F5F5F5;
+  --neutral-50:   #FAFAFA;
+  --neutral-0:    #FFFFFF;
+
+  /* ----------------------------------------------------------
+     COLOR — SUCCESS (vivid green; used heavily for confirmations
+     and "running/active" state on cards & charts)
+  ---------------------------------------------------------- */
+  --success-950: #03190A;
+  --success-900: #0B3A1B;
+  --success-800: #0F5C2C;
+  --success-700: #137A3B;
+  --success-600: #1AA04C;
+  --success-500: #2DC759;
+  --success-400: #5BDD7B;
+  --success-300: #8FE9A3;
+  --success-200: #BFF0CE;
+  --success-100: #DDF6E2;
+  --success-50:  #ECFBEF;
+
+  /* ----------------------------------------------------------
+     COLOR — ERROR (deep wine → red → pale pink)
+  ---------------------------------------------------------- */
+  --error-950: #260203;
+  --error-900: #4A0608;
+  --error-800: #7A0C12;
+  --error-700: #A6131D;
+  --error-600: #C71D26;
+  --error-500: #E03640;
+  --error-400: #F46169;
+  --error-300: #F89097;
+  --error-200: #FBC0C4;
+  --error-100: #FCE6E7;
+  --error-50:  #FEF3F4;
+
+  /* ----------------------------------------------------------
+     COLOR — WARNING / PENDING (soft amber)
+  ---------------------------------------------------------- */
+  --warning-900: #5A3B05;
+  --warning-700: #9E6A0F;
+  --warning-500: #E0A21D;
+  --warning-300: #F2CF6E;
+  --warning-200: #FBE6A8;
+  --warning-100: #FEF3CF;
+  --warning-50:  #FFF9E5;
+
+  /* ----------------------------------------------------------
+     COLOR — STATUS PILLS (soft, pastel chips used in tables/cards)
+     These match the "QUEUED / PENDING / SUCCESS / FAILED / PASSED"
+     row in the style guide. Each pill = bg + fg.
+  ---------------------------------------------------------- */
+  --pill-queued-bg:    #E7E2F9;
+  --pill-queued-fg:    #4B3A8F;
+  --pill-pending-bg:   #FBE6A8;
+  --pill-pending-fg:   #6A4A05;
+  --pill-success-bg:   #C8F1D2;
+  --pill-success-fg:   #0F5C2C;
+  --pill-failed-bg:    #FBC0C4;
+  --pill-failed-fg:    #7A0C12;
+  --pill-passed-bg:    #BFE7E2;
+  --pill-passed-fg:    #0B4A4A;
+  --pill-idle-bg:      #FBE6A8;
+  --pill-idle-fg:      #6A4A05;
+  --pill-running-bg:   #C8F1D2;
+  --pill-running-fg:   #0F5C2C;
+  --pill-error-bg:     #FCE6E7;
+  --pill-error-fg:     #A6131D;
+  --pill-scheduled-bg: #ECECEC;
+  --pill-scheduled-fg: #2E2E2E;
+
+  /* ----------------------------------------------------------
+     SEMANTIC TOKENS — backgrounds / surfaces
+  ---------------------------------------------------------- */
+  --bg-page:        var(--neutral-75);     /* app background */
+  --bg-canvas:      var(--neutral-50);     /* preview canvas */
+  --bg-surface:     var(--neutral-0);      /* cards, modals */
+  --bg-sunken:      var(--neutral-100);    /* nested cards, fields */
+  --bg-inverse:     var(--neutral-950);    /* primary buttons */
+
+  /* ----------------------------------------------------------
+     SEMANTIC TOKENS — foreground / text
+  ---------------------------------------------------------- */
+  --fg-1:           var(--neutral-950);    /* primary text, headlines */
+  --fg-2:           var(--neutral-700);    /* body text */
+  --fg-3:           var(--neutral-500);    /* secondary/meta */
+  --fg-4:           var(--neutral-400);    /* placeholder, disabled */
+  --fg-on-inverse:  var(--neutral-0);
+  --fg-link:        var(--neutral-950);
+
+  /* ----------------------------------------------------------
+     SEMANTIC TOKENS — borders / dividers
+  ---------------------------------------------------------- */
+  --border-1:       var(--neutral-200);    /* default borders */
+  --border-2:       var(--neutral-250);    /* heavier dividers, inputs */
+  --border-strong:  var(--neutral-900);    /* focus, selected */
+
+  /* ----------------------------------------------------------
+     SPACING (4px base grid)
+  ---------------------------------------------------------- */
+  --sp-1:  4px;
+  --sp-2:  8px;
+  --sp-3:  12px;
+  --sp-4:  16px;
+  --sp-5:  20px;
+  --sp-6:  24px;
+  --sp-7:  32px;
+  --sp-8:  40px;
+  --sp-9:  48px;
+  --sp-10: 64px;
+  --sp-11: 80px;
+
+  /* ----------------------------------------------------------
+     RADII
+     Cards and modals are notably soft (16–20px).
+     Pills/tabs use full radius.
+  ---------------------------------------------------------- */
+  --radius-xs:   4px;
+  --radius-sm:   6px;
+  --radius-md:   10px;
+  --radius-lg:   16px;
+  --radius-xl:   20px;
+  --radius-2xl:  28px;
+  --radius-pill: 999px;
+
+  /* ----------------------------------------------------------
+     ELEVATION / SHADOWS
+     Subtle. Most surfaces are flat; modals lift gently.
+  ---------------------------------------------------------- */
+  --shadow-xs: 0 1px 0 rgba(17,17,17,0.04);
+  --shadow-sm: 0 1px 2px rgba(17,17,17,0.05), 0 0 0 1px rgba(17,17,17,0.04);
+  --shadow-md: 0 4px 12px rgba(17,17,17,0.06), 0 0 0 1px rgba(17,17,17,0.04);
+  --shadow-lg: 0 18px 48px rgba(17,17,17,0.10), 0 2px 6px rgba(17,17,17,0.05);
+  --shadow-focus: 0 0 0 3px rgba(17,17,17,0.12);
+
+  /* ----------------------------------------------------------
+     MOTION
+     Snappy, near-instant. No bounces. Linear-ish ease-outs.
+  ---------------------------------------------------------- */
+  --ease-out:   cubic-bezier(0.2, 0.7, 0.2, 1);
+  --ease-inout: cubic-bezier(0.5, 0.1, 0.2, 1);
+  --dur-fast:   120ms;
+  --dur-base:   180ms;
+  --dur-slow:   260ms;
+
+  /* ----------------------------------------------------------
+     TYPE SCALE — RAW SIZES
+  ---------------------------------------------------------- */
+  --fs-display-xl: 72px;
+  --fs-display-lg: 56px;
+  --fs-display-md: 44px;
+  --fs-h1:         36px;
+  --fs-h2:         28px;
+  --fs-h3:         22px;
+  --fs-h4:         18px;
+  --fs-body-lg:    17px;
+  --fs-body:       15px;
+  --fs-body-sm:    13px;
+  --fs-label:      12px;
+  --fs-label-sm:   11px;
+}
+
+/* ============================================================
+   SEMANTIC TYPE — apply these classes (or copy their rules)
+   onto real elements. NEVER skip the type scale.
+============================================================ */
+
+.t-display, h1.display {
+  font-family: var(--font-serif);
+  font-weight: 500;
+  font-size: var(--fs-display-lg);
+  line-height: 1.04;
+  letter-spacing: -0.02em;
+  color: var(--fg-1);
+  text-wrap: balance;
+}
+
+.t-h1, h1 {
+  font-family: var(--font-serif);
+  font-weight: 500;
+  font-size: var(--fs-h1);
+  line-height: 1.12;
+  letter-spacing: -0.012em;
+  color: var(--fg-1);
+  text-wrap: balance;
+}
+
+.t-h2, h2 {
+  font-family: var(--font-serif);
+  font-weight: 500;
+  font-size: var(--fs-h2);
+  line-height: 1.18;
+  letter-spacing: -0.008em;
+  color: var(--fg-1);
+}
+
+.t-h3, h3 {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: var(--fs-h3);
+  line-height: 1.25;
+  color: var(--fg-1);
+}
+
+.t-h4, h4 {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: var(--fs-h4);
+  line-height: 1.3;
+  color: var(--fg-1);
+}
+
+.t-body-lg, p.lg {
+  font-family: var(--font-sans);
+  font-size: var(--fs-body-lg);
+  line-height: 1.5;
+  color: var(--fg-2);
+  text-wrap: pretty;
+}
+
+.t-body, p {
+  font-family: var(--font-sans);
+  font-size: var(--fs-body);
+  line-height: 1.55;
+  color: var(--fg-2);
+  text-wrap: pretty;
+}
+
+.t-body-sm, small {
+  font-family: var(--font-sans);
+  font-size: var(--fs-body-sm);
+  line-height: 1.5;
+  color: var(--fg-3);
+}
+
+/* ------------------------------------------------------------
+   MONO LABEL — the workhorse of the system.
+   UPPERCASE, IBM Plex Mono, used for tab labels, table headers,
+   button text, status chips, breadcrumbs, sidebar items.
+------------------------------------------------------------ */
+.t-label, .label {
+  font-family: var(--font-mono);
+  font-weight: 400;
+  font-size: var(--fs-label);
+  line-height: 1.2;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--fg-2);
+}
+
+.t-label-sm {
+  font-family: var(--font-mono);
+  font-weight: 400;
+  font-size: var(--fs-label-sm);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--fg-3);
+}
+
+/* ------------------------------------------------------------
+   MONO INLINE — non-uppercase mono for system messages,
+   timestamps, IDs, console output, paths.
+------------------------------------------------------------ */
+.t-mono, code, kbd, samp {
+  font-family: var(--font-mono);
+  font-size: var(--fs-body-sm);
+  letter-spacing: 0;
+  color: var(--fg-2);
+}
+
+/* ------------------------------------------------------------
+   PIXEL — sparingly, for retro/console accents only
+   (e.g. boot screens, the "Label" style specimen).
+------------------------------------------------------------ */
+.t-pixel {
+  font-family: var(--font-pixel);
+  font-size: 24px;
+  letter-spacing: 0.02em;
+  color: var(--fg-1);
+  text-transform: uppercase;
+  -webkit-font-smoothing: none;
+  font-smooth: never;
+}
+
+/* ============================================================
+   PAGE DEFAULTS — opt-in on body / preview
+============================================================ */
+body.agentic {
+  background: var(--bg-page);
+  color: var(--fg-2);
+  font-family: var(--font-sans);
+  font-size: var(--fs-body);
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* ------------------------------------------------------------
+   BRAND LOCKUP — shared across all pages
+   ------------------------------------------------------------ */
+.brand-lockup {
+  height: 48px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 8px 0 4px;
+  white-space: nowrap;
+}
+
+.brand-mark {
+  width: 38px;
+  height: 38px;
+  display: grid;
+  place-items: center;
+  border-radius: 12px;
+  color: #fff;
+  background:
+    radial-gradient(circle at 70% 25%, rgba(255,255,255,.28), transparent 34%),
+    linear-gradient(145deg, #3578ff, #1f4fd6);
+  box-shadow: 0 7px 16px rgba(47, 107, 255, 0.28);
+  text-decoration: none;
+  transition: box-shadow 0.2s ease-out;
+}
+
+.brand-mark:hover {
+  box-shadow: 0 7px 20px rgba(47, 107, 255, 0.38);
+}
+
+.brand-mark svg { width: 22px; height: 22px; }
+
+.brand-mark svg circle:first-of-type {
+  stroke-dasharray: 46;
+  stroke-dashoffset: 46;
+  animation: brand-draw 1.2s cubic-bezier(0.25, 0.1, 0.25, 1) 0.3s forwards;
+}
+
+@keyframes brand-draw {
+  to { stroke-dashoffset: 0; }
+}
+
+.brand-copy { display: flex; flex-direction: column; gap: 1px; }
+
+.brand-name {
+  color: var(--ui-ink);
+  font-size: 15px;
+  line-height: 1.2;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.brand-sub {
+  color: var(--ui-muted);
+  font-family: var(--font-mono);
+  font-size: 9px;
+  line-height: 1.2;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+@media (max-width: 820px) {
+  .brand-copy { display: none; }
+}
+
+@media (max-width: 620px) {
+  .brand-mark { width: 34px; height: 34px; border-radius: 10px; }
+}

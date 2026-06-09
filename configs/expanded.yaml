@@ -1,0 +1,297 @@
+cities:
+  - 济南
+  - 青岛
+  - 淄博
+  - 枣庄
+  - 东营
+  - 烟台
+  - 潍坊
+  - 济宁
+  - 泰安
+  - 威海
+  - 日照
+  - 临沂
+  - 德州
+  - 聊城
+  - 滨州
+  - 菏泽
+
+keywords:
+  - 无人机
+  - 无人驾驶航空器
+  - 民用无人机
+  - 低慢小
+  - 低空慢速小型飞行器
+  - 飞行物
+  - 空飘物
+  - 机场净空
+  - 净空保护
+  - 临时管控
+  - 临时管制
+  - 禁飞
+  - 适飞空域
+  - 管制空域
+  - 实名登记
+  - 登记备案
+  - 飞行活动申请
+  - 高考
+  - 中考
+  - 赛事
+  - 马拉松
+  - 景区
+  - 升放气球
+  - 飞机施药
+
+time_range:
+  start: "2022-01-01"
+  end: "2026-12-31"
+  include_unknown_dates: true
+
+current_date: "2026-06-07"
+
+crawl:
+  polite_delay_seconds: 2.0
+  max_pages_per_source: 1
+  max_depth: 0
+  timeout_seconds: 12
+  respect_robots_txt: true
+  user_agent: "source-audit/0.1 (+public-source-risk-audit)"
+
+storage:
+  database_path: data/source_audit.sqlite
+
+output:
+  output_dir: outputs
+
+sources:
+  - name: 山东省民用无人驾驶航空器公共安全管理办法
+    url: https://www.sd.gov.cn/jpaas-jpolicy-web-server/front/info/detail?iid=1161b014bc2441dc95b715e6c267cc6b
+    priority: P0
+    max_pages: 1
+
+  - name: 山东交通运输厅优化后适飞空域通告
+    url: https://jtt.shandong.gov.cn/art/2026/5/14/art_15843_10329329.html
+    priority: P0
+    max_pages: 1
+
+  - name: 山东交通运输厅适飞空域通告
+    url: https://jtt.shandong.gov.cn/art/2026/2/9/art_15843_10328036.html
+    priority: P0
+    max_pages: 1
+
+  - name: 淄博司法局山东无人机安全管理办法解读
+    url: https://sfj.zibo.gov.cn/art/2026/1/21/art_10766_2982460.html
+    priority: P0
+    city: 淄博
+    max_pages: 1
+
+  - name: 济南低慢小航空器安全管理通告
+    url: https://jnga.jinan.gov.cn/col111542/art/2022/art_111542_1214.html
+    priority: P0
+    city: 济南
+    max_pages: 1
+
+  - name: 济南低空经济促进办法
+    url: https://www.jinan.gov.cn/api-gateway/jpaas-jpolicy-web-server/front/info/detail?iid=111435_17799
+    priority: P0
+    city: 济南
+    max_pages: 1
+
+  - name: 济南公安无人机登记备案媒体线索
+    url: https://finance.sina.com.cn/roll/2026-01-28/doc-inhivmkz9046198.shtml
+    priority: P2
+    city: 济南
+    max_pages: 1
+
+  - name: 济南泉城广场无人机临时管制通告
+    url: https://www.jinan.gov.cn/col2612/art/2025/art_2612_5050273.html
+    priority: P0
+    city: 济南
+    max_pages: 1
+
+  - name: 济南千佛山无人机临时管制通告
+    url: https://www.jinan.gov.cn/col/col44545/art/2026/art_07906f2a9d5844d8af8ad26250cc321c.html
+    priority: P0
+    city: 济南
+    max_pages: 1
+
+  - name: 济南趵突泉无人机临时管制通告
+    url: https://www.jinan.gov.cn/col/col44545/art/2026/art_b35305821c594364ae0e4911896751fd.html
+    priority: P0
+    city: 济南
+    max_pages: 1
+
+  - name: 济南气象局规范升放气球通告
+    url: https://www.jinan.gov.cn/col/col4128/art/2026/art_7d534a46bdd94690877cc909546cf760.html
+    priority: P0
+    city: 济南
+    max_pages: 1
+
+  - name: 青岛公安无人机登记备案媒体线索
+    url: https://news.qtv.com.cn/system/2026/01/28/016144208.shtml
+    priority: P2
+    city: 青岛
+    max_pages: 1
+
+  - name: 青岛无人机登记备案媒体转载
+    url: https://m.thepaper.cn/newsDetail_forward_32481535
+    priority: P2
+    city: 青岛
+    max_pages: 1
+
+  - name: 青岛机场净空低慢小告市民书
+    url: https://kandian.sina.cn/article_5328858693_13d9fee4502002adko.html?from=news&subch=onews
+    priority: P2
+    city: 青岛
+    max_pages: 1
+
+  - name: 青岛啤酒节低慢小禁飞历史线索
+    url: https://www.qingdaonews.com/app/content/2024-07/18/content_23589766.htm
+    priority: P2
+    city: 青岛
+    max_pages: 1
+
+  - name: 枣庄无人机登记备案媒体转载
+    url: https://www.sohu.com/a/980968620_121118717
+    priority: P2
+    city: 枣庄
+    max_pages: 1
+
+  - name: 东营无人机登记备案闪电新闻线索
+    url: https://dongying.iqilu.com/dyminsheng/2026/0128/5887603.shtml
+    priority: P2
+    city: 东营
+    max_pages: 1
+
+  - name: 东营无人驾驶航空器临时管控通告
+    url: https://news.dongyingnews.cn/system/2025/11/12/010879691.shtml
+    priority: P2
+    city: 东营
+    max_pages: 1
+
+  - name: 烟台公安无人机登记备案通告
+    url: https://www.yantai.gov.cn/col/col11748/art/2026/art_24030f51c9eb4ed78177f67bdd978cbd.html
+    priority: P0
+    city: 烟台
+    max_pages: 1
+
+  - name: 烟台公安无人机登记备案胶东线索
+    url: https://ytapp.jiaodong.net/system/2026/01/28/201481080.shtml
+    priority: P2
+    city: 烟台
+    max_pages: 1
+
+  - name: 烟台蓬莱机场净空和电磁环境保护办法
+    url: https://www.yantai.gov.cn/art/2023/5/12/art_99960_38493.html
+    priority: P0
+    city: 烟台
+    max_pages: 1
+
+  - name: 烟台人工影响天气安全管理办法
+    url: https://www.yantai.gov.cn/art/2025/12/26/art_99953_75270.html
+    priority: P0
+    city: 烟台
+    max_pages: 1
+
+  - name: 潍坊无人机登记备案媒体线索
+    url: https://news.10jqka.com.cn/20260128/c674371199.shtml
+    priority: P2
+    city: 潍坊
+    max_pages: 1
+
+  - name: 济宁无人驾驶航空器临时管制通告
+    url: https://www.jining.gov.cn/art/2025/9/20/art_35479_2914540.html
+    priority: P0
+    city: 济宁
+    max_pages: 1
+
+  - name: 济宁无人机登记备案新浪线索
+    url: https://sd.sina.cn/jining/2026-01-28/detail-inhivmme5071946.d.html
+    priority: P2
+    city: 济宁
+    max_pages: 1
+
+  - name: 泰安公安无人机登记备案媒体线索
+    url: https://taian.iqilu.com/taianyaowen/2026/0127/5887395.shtml
+    priority: P2
+    city: 泰安
+    max_pages: 1
+
+  - name: 泰安应急局山东无人机安全管理办法转载
+    url: https://yjglj.taian.gov.cn/art/2025/12/19/art_305712_10333272.html
+    priority: P0
+    city: 泰安
+    max_pages: 1
+
+  - name: 威海高考低慢小临时管控通告
+    url: https://www.weihai.gov.cn/art/2026/6/4/art_51863_6399487.html
+    priority: P0
+    city: 威海
+    max_pages: 1
+
+  - name: 威海高考市民倡议书
+    url: https://www.weihai.gov.cn/art/2026/6/5/art_58817_6402808.html
+    priority: P0
+    city: 威海
+    max_pages: 1
+
+  - name: 威海政府无人机适飞空域提示
+    url: https://www.weihai.gov.cn/art/2026/5/26/art_58820_6380105.html
+    priority: P0
+    city: 威海
+    max_pages: 1
+
+  - name: 威海无人机适飞空域媒体线索
+    url: https://www.whnews.cn/news/node/2026-05/26/content_7387326.htm
+    priority: P2
+    city: 威海
+    max_pages: 1
+
+  - name: 荣成滨海马拉松低慢小管控转载
+    url: https://www.bjnews.com.cn/detail/1775706857019600.html
+    priority: P2
+    city: 威海
+    max_pages: 1
+
+  - name: 日照公安无人机登记备案半岛网线索
+    url: https://rizhao.bandao.cn/a/1769503192202330.html
+    priority: P2
+    city: 日照
+    max_pages: 1
+
+  - name: 临沂飞机施药期间禁飞通告
+    url: https://www.linyi.gov.cn/info/1073/434799.htm
+    priority: P0
+    city: 临沂
+    max_pages: 1
+
+  - name: 德州公安无人机登记备案媒体线索
+    url: https://finance.sina.com.cn/jjxw/2026-01-27/doc-inhitntv7574614.shtml
+    priority: P2
+    city: 德州
+    max_pages: 1
+
+  - name: 聊城公安无人机管理媒体线索
+    url: https://www.chinahpsy.com/detail-201755.html
+    priority: P2
+    city: 聊城
+    max_pages: 1
+
+  - name: 滨州公安无人机登记备案媒体线索
+    url: https://kandian.sina.cn/article_3235606600_c0db704802701qdzw.html
+    priority: P2
+    city: 滨州
+    max_pages: 1
+
+  - name: 菏泽公安无人机登记备案齐鲁晚报线索
+    url: https://kandian.sina.cn/article_2265859925_870e475502701ir7k.html
+    priority: P2
+    city: 菏泽
+    max_pages: 1
+
+  - name: 菏泽无人机登记备案天脉财经线索
+    url: https://m.dtm.com.cn/news/202601/182951.html
+    priority: P2
+    city: 菏泽
+    max_pages: 1
+

@@ -1,0 +1,2261 @@
+{
+  "type": "FeatureCollection",
+  "metadata": {
+    "source": "u-care.net.cn",
+    "fetched_at": "2026-06-09T17:23:21.594622",
+    "total": 173,
+    "type": "airport_xzm",
+    "type_label": "机场限制面"
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "name": "怀化_芷江机场",
+        "type": "airport_xzm",
+        "type_label": "机场限制面",
+        "download_count": 0,
+        "gid": null,
+        "kml_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/怀化_芷江机场.kml",
+        "geojson_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/怀化_芷江机场.geojson"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "name": "北海_福成机场",
+        "type": "airport_xzm",
+        "type_label": "机场限制面",
+        "download_count": 0,
+        "gid": null,
+        "kml_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/北海_福成机场.kml",
+        "geojson_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/北海_福成机场.geojson"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "name": "庆阳_西峰机场",
+        "type": "airport_xzm",
+        "type_label": "机场限制面",
+        "download_count": 0,
+        "gid": null,
+        "kml_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/庆阳_西峰机场.kml",
+        "geojson_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/庆阳_西峰机场.geojson"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "name": "神农架_红坪机场",
+        "type": "airport_xzm",
+        "type_label": "机场限制面",
+        "download_count": 0,
+        "gid": null,
+        "kml_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/神农架_红坪机场.kml",
+        "geojson_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/神农架_红坪机场.geojson"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "name": "黎平机场",
+        "type": "airport_xzm",
+        "type_label": "机场限制面",
+        "download_count": 0,
+        "gid": null,
+        "kml_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/黎平机场.kml",
+        "geojson_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/黎平机场.geojson"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "name": "营口_兰旗机场",
+        "type": "airport_xzm",
+        "type_label": "机场限制面",
+        "download_count": 0,
+        "gid": null,
+        "kml_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/营口_兰旗机场.kml",
+        "geojson_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/营口_兰旗机场.geojson"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "name": "临汾_乔李机场",
+        "type": "airport_xzm",
+        "type_label": "机场限制面",
+        "download_count": 0,
+        "gid": null,
+        "kml_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/临汾_乔李机场.kml",
+        "geojson_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/临汾_乔李机场.geojson"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "name": "河池_金城江机场",
+        "type": "airport_xzm",
+        "type_label": "机场限制面",
+        "download_count": 0,
+        "gid": null,
+        "kml_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/河池_金城江机场.kml",
+        "geojson_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/河池_金城江机场.geojson"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "name": "白城_长安机场",
+        "type": "airport_xzm",
+        "type_label": "机场限制面",
+        "download_count": 0,
+        "gid": null,
+        "kml_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/白城_长安机场.kml",
+        "geojson_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/白城_长安机场.geojson"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "name": "柳州_白莲机场",
+        "type": "airport_xzm",
+        "type_label": "机场限制面",
+        "download_count": 0,
+        "gid": null,
+        "kml_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/柳州_白莲机场.kml",
+        "geojson_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/柳州_白莲机场.geojson"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "name": "永州_零陵机场",
+        "type": "airport_xzm",
+        "type_label": "机场限制面",
+        "download_count": 0,
+        "gid": null,
+        "kml_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/永州_零陵机场.kml",
+        "geojson_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/永州_零陵机场.geojson"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "name": "和田机场",
+        "type": "airport_xzm",
+        "type_label": "机场限制面",
+        "download_count": 0,
+        "gid": null,
+        "kml_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/和田机场.kml",
+        "geojson_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/和田机场.geojson"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "name": "通化_三源浦机场",
+        "type": "airport_xzm",
+        "type_label": "机场限制面",
+        "download_count": 0,
+        "gid": null,
+        "kml_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/通化_三源浦机场.kml",
+        "geojson_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/通化_三源浦机场.geojson"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "name": "西双版纳_嘎洒机场",
+        "type": "airport_xzm",
+        "type_label": "机场限制面",
+        "download_count": 0,
+        "gid": null,
+        "kml_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/西双版纳_嘎洒机场.kml",
+        "geojson_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/西双版纳_嘎洒机场.geojson"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "name": "固原_六盘山机场",
+        "type": "airport_xzm",
+        "type_label": "机场限制面",
+        "download_count": 0,
+        "gid": null,
+        "kml_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/固原_六盘山机场.kml",
+        "geojson_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/固原_六盘山机场.geojson"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "name": "博乐_阿拉山口机场",
+        "type": "airport_xzm",
+        "type_label": "机场限制面",
+        "download_count": 0,
+        "gid": null,
+        "kml_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/博乐_阿拉山口机场.kml",
+        "geojson_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/博乐_阿拉山口机场.geojson"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "name": "中卫_沙坡头机场",
+        "type": "airport_xzm",
+        "type_label": "机场限制面",
+        "download_count": 0,
+        "gid": null,
+        "kml_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/中卫_沙坡头机场.kml",
+        "geojson_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/中卫_沙坡头机场.geojson"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "name": "且末_玉都机场",
+        "type": "airport_xzm",
+        "type_label": "机场限制面",
+        "download_count": 0,
+        "gid": null,
+        "kml_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/且末_玉都机场.kml",
+        "geojson_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/且末_玉都机场.geojson"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "name": "宜昌_三峡机场",
+        "type": "airport_xzm",
+        "type_label": "机场限制面",
+        "download_count": 0,
+        "gid": null,
+        "kml_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/宜昌_三峡机场.kml",
+        "geojson_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/宜昌_三峡机场.geojson"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "name": "漠河_古莲机场",
+        "type": "airport_xzm",
+        "type_label": "机场限制面",
+        "download_count": 0,
+        "gid": null,
+        "kml_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/漠河_古莲机场.kml",
+        "geojson_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/漠河_古莲机场.geojson"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "name": "扬州_泰州机场",
+        "type": "airport_xzm",
+        "type_label": "机场限制面",
+        "download_count": 0,
+        "gid": null,
+        "kml_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/扬州_泰州机场.kml",
+        "geojson_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/扬州_泰州机场.geojson"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "name": "石家庄_正定机场",
+        "type": "airport_xzm",
+        "type_label": "机场限制面",
+        "download_count": 0,
+        "gid": null,
+        "kml_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/石家庄_正定机场.kml",
+        "geojson_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/石家庄_正定机场.geojson"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "name": "黔江_武陵山机场",
+        "type": "airport_xzm",
+        "type_label": "机场限制面",
+        "download_count": 0,
+        "gid": null,
+        "kml_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/黔江_武陵山机场.kml",
+        "geojson_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/黔江_武陵山机场.geojson"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "name": "长沙_黄花机场",
+        "type": "airport_xzm",
+        "type_label": "机场限制面",
+        "download_count": 0,
+        "gid": null,
+        "kml_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/长沙_黄花机场.kml",
+        "geojson_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/长沙_黄花机场.geojson"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "name": "伊宁机场",
+        "type": "airport_xzm",
+        "type_label": "机场限制面",
+        "download_count": 0,
+        "gid": null,
+        "kml_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/伊宁机场.kml",
+        "geojson_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/伊宁机场.geojson"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "name": "泉州_晋江机场",
+        "type": "airport_xzm",
+        "type_label": "机场限制面",
+        "download_count": 0,
+        "gid": null,
+        "kml_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/泉州_晋江机场.kml",
+        "geojson_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/泉州_晋江机场.geojson"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "name": "上海_虹桥机场",
+        "type": "airport_xzm",
+        "type_label": "机场限制面",
+        "download_count": 0,
+        "gid": null,
+        "kml_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/上海_虹桥机场.kml",
+        "geojson_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/上海_虹桥机场.geojson"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "name": "库车_龟兹机场",
+        "type": "airport_xzm",
+        "type_label": "机场限制面",
+        "download_count": 0,
+        "gid": null,
+        "kml_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/库车_龟兹机场.kml",
+        "geojson_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/库车_龟兹机场.geojson"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "name": "哈尔滨_太平机场",
+        "type": "airport_xzm",
+        "type_label": "机场限制面",
+        "download_count": 0,
+        "gid": null,
+        "kml_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/哈尔滨_太平机场.kml",
+        "geojson_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/哈尔滨_太平机场.geojson"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "name": "临沧_博尚机场",
+        "type": "airport_xzm",
+        "type_label": "机场限制面",
+        "download_count": 0,
+        "gid": null,
+        "kml_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/临沧_博尚机场.kml",
+        "geojson_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/临沧_博尚机场.geojson"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "name": "果洛_玛沁机场",
+        "type": "airport_xzm",
+        "type_label": "机场限制面",
+        "download_count": 0,
+        "gid": null,
+        "kml_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/果洛_玛沁机场.kml",
+        "geojson_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/果洛_玛沁机场.geojson"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "name": "朝阳机场",
+        "type": "airport_xzm",
+        "type_label": "机场限制面",
+        "download_count": 0,
+        "gid": null,
+        "kml_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/朝阳机场.kml",
+        "geojson_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/朝阳机场.geojson"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "name": "乌兰察布_集宁机场",
+        "type": "airport_xzm",
+        "type_label": "机场限制面",
+        "download_count": 0,
+        "gid": null,
+        "kml_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/乌兰察布_集宁机场.kml",
+        "geojson_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/乌兰察布_集宁机场.geojson"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "name": "广州_白云机场",
+        "type": "airport_xzm",
+        "type_label": "机场限制面",
+        "download_count": 0,
+        "gid": null,
+        "kml_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/广州_白云机场.kml",
+        "geojson_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/广州_白云机场.geojson"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "name": "梅县_长岗岌机场",
+        "type": "airport_xzm",
+        "type_label": "机场限制面",
+        "download_count": 0,
+        "gid": null,
+        "kml_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/梅县_长岗岌机场.kml",
+        "geojson_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/梅县_长岗岌机场.geojson"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "name": "厦门_高崎机场",
+        "type": "airport_xzm",
+        "type_label": "机场限制面",
+        "download_count": 0,
+        "gid": null,
+        "kml_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/厦门_高崎机场.kml",
+        "geojson_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/厦门_高崎机场.geojson"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "name": "张家界_荷花机场",
+        "type": "airport_xzm",
+        "type_label": "机场限制面",
+        "download_count": 0,
+        "gid": null,
+        "kml_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/张家界_荷花机场.kml",
+        "geojson_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/张家界_荷花机场.geojson"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "name": "济南_遥墙机场",
+        "type": "airport_xzm",
+        "type_label": "机场限制面",
+        "download_count": 0,
+        "gid": null,
+        "kml_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/济南_遥墙机场.kml",
+        "geojson_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/济南_遥墙机场.geojson"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "name": "赤峰_玉龙机场",
+        "type": "airport_xzm",
+        "type_label": "机场限制面",
+        "download_count": 0,
+        "gid": null,
+        "kml_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/赤峰_玉龙机场.kml",
+        "geojson_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/赤峰_玉龙机场.geojson"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "name": "杭州_萧山机场",
+        "type": "airport_xzm",
+        "type_label": "机场限制面",
+        "download_count": 0,
+        "gid": null,
+        "kml_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/杭州_萧山机场.kml",
+        "geojson_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/杭州_萧山机场.geojson"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "name": "贵阳_龙洞堡机场",
+        "type": "airport_xzm",
+        "type_label": "机场限制面",
+        "download_count": 0,
+        "gid": null,
+        "kml_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/贵阳_龙洞堡机场.kml",
+        "geojson_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/贵阳_龙洞堡机场.geojson"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "name": "潍坊机场",
+        "type": "airport_xzm",
+        "type_label": "机场限制面",
+        "download_count": 0,
+        "gid": null,
+        "kml_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/潍坊机场.kml",
+        "geojson_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/潍坊机场.geojson"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "name": "澜沧_景迈机场",
+        "type": "airport_xzm",
+        "type_label": "机场限制面",
+        "download_count": 0,
+        "gid": null,
+        "kml_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/澜沧_景迈机场.kml",
+        "geojson_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/澜沧_景迈机场.geojson"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "name": "布尔津_喀纳斯机场",
+        "type": "airport_xzm",
+        "type_label": "机场限制面",
+        "download_count": 0,
+        "gid": null,
+        "kml_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/布尔津_喀纳斯机场.kml",
+        "geojson_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/布尔津_喀纳斯机场.geojson"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "name": "琼海_博鳌机场",
+        "type": "airport_xzm",
+        "type_label": "机场限制面",
+        "download_count": 0,
+        "gid": null,
+        "kml_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/琼海_博鳌机场.kml",
+        "geojson_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/琼海_博鳌机场.geojson"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "name": "衢州机场",
+        "type": "airport_xzm",
+        "type_label": "机场限制面",
+        "download_count": 0,
+        "gid": null,
+        "kml_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/衢州机场.kml",
+        "geojson_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/衢州机场.geojson"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "name": "桂林_两江机场",
+        "type": "airport_xzm",
+        "type_label": "机场限制面",
+        "download_count": 0,
+        "gid": null,
+        "kml_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/桂林_两江机场.kml",
+        "geojson_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/桂林_两江机场.geojson"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "name": "台州_路桥机场",
+        "type": "airport_xzm",
+        "type_label": "机场限制面",
+        "download_count": 0,
+        "gid": null,
+        "kml_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/台州_路桥机场.kml",
+        "geojson_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/台州_路桥机场.geojson"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "name": "喀什机场",
+        "type": "airport_xzm",
+        "type_label": "机场限制面",
+        "download_count": 0,
+        "gid": null,
+        "kml_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/喀什机场.kml",
+        "geojson_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/喀什机场.geojson"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "name": "张掖_甘州机场",
+        "type": "airport_xzm",
+        "type_label": "机场限制面",
+        "download_count": 0,
+        "gid": null,
+        "kml_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/张掖_甘州机场.kml",
+        "geojson_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/张掖_甘州机场.geojson"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "name": "连云港_白塔埠机场",
+        "type": "airport_xzm",
+        "type_label": "机场限制面",
+        "download_count": 0,
+        "gid": null,
+        "kml_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/连云港_白塔埠机场.kml",
+        "geojson_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/连云港_白塔埠机场.geojson"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "name": "甘南_夏河机场",
+        "type": "airport_xzm",
+        "type_label": "机场限制面",
+        "download_count": 0,
+        "gid": null,
+        "kml_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/甘南_夏河机场.kml",
+        "geojson_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/甘南_夏河机场.geojson"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "name": "东营机场",
+        "type": "airport_xzm",
+        "type_label": "机场限制面",
+        "download_count": 0,
+        "gid": null,
+        "kml_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/东营机场.kml",
+        "geojson_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/东营机场.geojson"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "name": "衡阳_南岳机场",
+        "type": "airport_xzm",
+        "type_label": "机场限制面",
+        "download_count": 0,
+        "gid": null,
+        "kml_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/衡阳_南岳机场.kml",
+        "geojson_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/衡阳_南岳机场.geojson"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "name": "洛阳机场",
+        "type": "airport_xzm",
+        "type_label": "机场限制面",
+        "download_count": 0,
+        "gid": null,
+        "kml_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/洛阳机场.kml",
+        "geojson_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/洛阳机场.geojson"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "name": "二连浩特_赛乌素机场",
+        "type": "airport_xzm",
+        "type_label": "机场限制面",
+        "download_count": 0,
+        "gid": null,
+        "kml_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/二连浩特_赛乌素机场.kml",
+        "geojson_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/二连浩特_赛乌素机场.geojson"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "name": "阿尔山_伊尔施机场",
+        "type": "airport_xzm",
+        "type_label": "机场限制面",
+        "download_count": 0,
+        "gid": null,
+        "kml_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/阿尔山_伊尔施机场.kml",
+        "geojson_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/阿尔山_伊尔施机场.geojson"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "name": "乌兰浩特_依勒力特机场",
+        "type": "airport_xzm",
+        "type_label": "机场限制面",
+        "download_count": 0,
+        "gid": null,
+        "kml_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/乌兰浩特_依勒力特机场.kml",
+        "geojson_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/乌兰浩特_依勒力特机场.geojson"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "name": "锡林浩特机场",
+        "type": "airport_xzm",
+        "type_label": "机场限制面",
+        "download_count": 0,
+        "gid": null,
+        "kml_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/锡林浩特机场.kml",
+        "geojson_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/锡林浩特机场.geojson"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "name": "攀枝花_保安营机场",
+        "type": "airport_xzm",
+        "type_label": "机场限制面",
+        "download_count": 0,
+        "gid": null,
+        "kml_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/攀枝花_保安营机场.kml",
+        "geojson_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/攀枝花_保安营机场.geojson"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "name": "深圳_宝安机场",
+        "type": "airport_xzm",
+        "type_label": "机场限制面",
+        "download_count": 0,
+        "gid": null,
+        "kml_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/深圳_宝安机场.kml",
+        "geojson_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/深圳_宝安机场.geojson"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "name": "呼和浩特_白塔机场",
+        "type": "airport_xzm",
+        "type_label": "机场限制面",
+        "download_count": 0,
+        "gid": null,
+        "kml_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/呼和浩特_白塔机场.kml",
+        "geojson_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/呼和浩特_白塔机场.geojson"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "name": "丽江_三义机场",
+        "type": "airport_xzm",
+        "type_label": "机场限制面",
+        "download_count": 0,
+        "gid": null,
+        "kml_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/丽江_三义机场.kml",
+        "geojson_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/丽江_三义机场.geojson"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "name": "湛江机场",
+        "type": "airport_xzm",
+        "type_label": "机场限制面",
+        "download_count": 0,
+        "gid": null,
+        "kml_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/湛江机场.kml",
+        "geojson_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/湛江机场.geojson"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "name": "汉中_城固机场",
+        "type": "airport_xzm",
+        "type_label": "机场限制面",
+        "download_count": 0,
+        "gid": null,
+        "kml_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/汉中_城固机场.kml",
+        "geojson_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/汉中_城固机场.geojson"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "name": "普洱_思茅机场",
+        "type": "airport_xzm",
+        "type_label": "机场限制面",
+        "download_count": 0,
+        "gid": null,
+        "kml_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/普洱_思茅机场.kml",
+        "geojson_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/普洱_思茅机场.geojson"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "name": "海西_德令哈机场",
+        "type": "airport_xzm",
+        "type_label": "机场限制面",
+        "download_count": 0,
+        "gid": null,
+        "kml_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/海西_德令哈机场.kml",
+        "geojson_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/海西_德令哈机场.geojson"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "name": "达州_河市机场",
+        "type": "airport_xzm",
+        "type_label": "机场限制面",
+        "download_count": 0,
+        "gid": null,
+        "kml_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/达州_河市机场.kml",
+        "geojson_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/达州_河市机场.geojson"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "name": "烟台_蓬莱机场",
+        "type": "airport_xzm",
+        "type_label": "机场限制面",
+        "download_count": 0,
+        "gid": null,
+        "kml_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/烟台_蓬莱机场.kml",
+        "geojson_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/烟台_蓬莱机场.geojson"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "name": "抚远_东极机场",
+        "type": "airport_xzm",
+        "type_label": "机场限制面",
+        "download_count": 0,
+        "gid": null,
+        "kml_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/抚远_东极机场.kml",
+        "geojson_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/抚远_东极机场.geojson"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "name": "新源_那拉提机场",
+        "type": "airport_xzm",
+        "type_label": "机场限制面",
+        "download_count": 0,
+        "gid": null,
+        "kml_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/新源_那拉提机场.kml",
+        "geojson_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/新源_那拉提机场.geojson"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "name": "海西_花土沟机场",
+        "type": "airport_xzm",
+        "type_label": "机场限制面",
+        "download_count": 0,
+        "gid": null,
+        "kml_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/海西_花土沟机场.kml",
+        "geojson_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/海西_花土沟机场.geojson"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "name": "乌鲁木齐_地窝堡机场",
+        "type": "airport_xzm",
+        "type_label": "机场限制面",
+        "download_count": 0,
+        "gid": null,
+        "kml_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/乌鲁木齐_地窝堡机场.kml",
+        "geojson_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/乌鲁木齐_地窝堡机场.geojson"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "name": "百色_巴马机场",
+        "type": "airport_xzm",
+        "type_label": "机场限制面",
+        "download_count": 0,
+        "gid": null,
+        "kml_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/百色_巴马机场.kml",
+        "geojson_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/百色_巴马机场.geojson"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "name": "包头机场",
+        "type": "airport_xzm",
+        "type_label": "机场限制面",
+        "download_count": 0,
+        "gid": null,
+        "kml_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/包头机场.kml",
+        "geojson_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/包头机场.geojson"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "name": "三亚_凤凰机场",
+        "type": "airport_xzm",
+        "type_label": "机场限制面",
+        "download_count": 0,
+        "gid": null,
+        "kml_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/三亚_凤凰机场.kml",
+        "geojson_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/三亚_凤凰机场.geojson"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "name": "保山机场",
+        "type": "airport_xzm",
+        "type_label": "机场限制面",
+        "download_count": 0,
+        "gid": null,
+        "kml_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/保山机场.kml",
+        "geojson_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/保山机场.geojson"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "name": "广元_盘龙机场",
+        "type": "airport_xzm",
+        "type_label": "机场限制面",
+        "download_count": 0,
+        "gid": null,
+        "kml_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/广元_盘龙机场.kml",
+        "geojson_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/广元_盘龙机场.geojson"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "name": "大同_云冈机场",
+        "type": "airport_xzm",
+        "type_label": "机场限制面",
+        "download_count": 0,
+        "gid": null,
+        "kml_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/大同_云冈机场.kml",
+        "geojson_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/大同_云冈机场.geojson"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "name": "井冈山机场",
+        "type": "airport_xzm",
+        "type_label": "机场限制面",
+        "download_count": 0,
+        "gid": null,
+        "kml_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/井冈山机场.kml",
+        "geojson_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/井冈山机场.geojson"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "name": "嘉峪关机场",
+        "type": "airport_xzm",
+        "type_label": "机场限制面",
+        "download_count": 0,
+        "gid": null,
+        "kml_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/嘉峪关机场.kml",
+        "geojson_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/嘉峪关机场.geojson"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "name": "南通_兴东机场",
+        "type": "airport_xzm",
+        "type_label": "机场限制面",
+        "download_count": 0,
+        "gid": null,
+        "kml_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/南通_兴东机场.kml",
+        "geojson_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/南通_兴东机场.geojson"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "name": "北京_首都机场",
+        "type": "airport_xzm",
+        "type_label": "机场限制面",
+        "download_count": 0,
+        "gid": null,
+        "kml_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/北京_首都机场.kml",
+        "geojson_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/北京_首都机场.geojson"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "name": "南宁_吴圩机场",
+        "type": "airport_xzm",
+        "type_label": "机场限制面",
+        "download_count": 0,
+        "gid": null,
+        "kml_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/南宁_吴圩机场.kml",
+        "geojson_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/南宁_吴圩机场.geojson"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "name": "日照_山字河机场",
+        "type": "airport_xzm",
+        "type_label": "机场限制面",
+        "download_count": 0,
+        "gid": null,
+        "kml_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/日照_山字河机场.kml",
+        "geojson_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/日照_山字河机场.geojson"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "name": "富蕴_可可托海机场",
+        "type": "airport_xzm",
+        "type_label": "机场限制面",
+        "download_count": 0,
+        "gid": null,
+        "kml_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/富蕴_可可托海机场.kml",
+        "geojson_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/富蕴_可可托海机场.geojson"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "name": "万州_五桥机场",
+        "type": "airport_xzm",
+        "type_label": "机场限制面",
+        "download_count": 0,
+        "gid": null,
+        "kml_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/万州_五桥机场.kml",
+        "geojson_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/万州_五桥机场.geojson"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "name": "上饶_三清山机场",
+        "type": "airport_xzm",
+        "type_label": "机场限制面",
+        "download_count": 0,
+        "gid": null,
+        "kml_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/上饶_三清山机场.kml",
+        "geojson_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/上饶_三清山机场.geojson"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "name": "大庆_萨尔图机场",
+        "type": "airport_xzm",
+        "type_label": "机场限制面",
+        "download_count": 0,
+        "gid": null,
+        "kml_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/大庆_萨尔图机场.kml",
+        "geojson_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/大庆_萨尔图机场.geojson"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "name": "金昌_金川机场",
+        "type": "airport_xzm",
+        "type_label": "机场限制面",
+        "download_count": 0,
+        "gid": null,
+        "kml_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/金昌_金川机场.kml",
+        "geojson_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/金昌_金川机场.geojson"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "name": "兴义_万峰林机场",
+        "type": "airport_xzm",
+        "type_label": "机场限制面",
+        "download_count": 0,
+        "gid": null,
+        "kml_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/兴义_万峰林机场.kml",
+        "geojson_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/兴义_万峰林机场.geojson"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "name": "温州_龙湾机场",
+        "type": "airport_xzm",
+        "type_label": "机场限制面",
+        "download_count": 0,
+        "gid": null,
+        "kml_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/温州_龙湾机场.kml",
+        "geojson_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/温州_龙湾机场.geojson"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "name": "珠海_金湾机场",
+        "type": "airport_xzm",
+        "type_label": "机场限制面",
+        "download_count": 0,
+        "gid": null,
+        "kml_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/珠海_金湾机场.kml",
+        "geojson_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/珠海_金湾机场.geojson"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "name": "义乌机场",
+        "type": "airport_xzm",
+        "type_label": "机场限制面",
+        "download_count": 0,
+        "gid": null,
+        "kml_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/义乌机场.kml",
+        "geojson_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/义乌机场.geojson"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "name": "银川_河东机场",
+        "type": "airport_xzm",
+        "type_label": "机场限制面",
+        "download_count": 0,
+        "gid": null,
+        "kml_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/银川_河东机场.kml",
+        "geojson_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/银川_河东机场.geojson"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "name": "腾冲_驼峰机场",
+        "type": "airport_xzm",
+        "type_label": "机场限制面",
+        "download_count": 0,
+        "gid": null,
+        "kml_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/腾冲_驼峰机场.kml",
+        "geojson_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/腾冲_驼峰机场.geojson"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "name": "郑州_新郑机场",
+        "type": "airport_xzm",
+        "type_label": "机场限制面",
+        "download_count": 0,
+        "gid": null,
+        "kml_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/郑州_新郑机场.kml",
+        "geojson_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/郑州_新郑机场.geojson"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "name": "三明_沙县机场",
+        "type": "airport_xzm",
+        "type_label": "机场限制面",
+        "download_count": 0,
+        "gid": null,
+        "kml_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/三明_沙县机场.kml",
+        "geojson_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/三明_沙县机场.geojson"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "name": "成都_双流机场",
+        "type": "airport_xzm",
+        "type_label": "机场限制面",
+        "download_count": 0,
+        "gid": null,
+        "kml_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/成都_双流机场.kml",
+        "geojson_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/成都_双流机场.geojson"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "name": "大连_周水子机场",
+        "type": "airport_xzm",
+        "type_label": "机场限制面",
+        "download_count": 0,
+        "gid": null,
+        "kml_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/大连_周水子机场.kml",
+        "geojson_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/大连_周水子机场.geojson"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "name": "安庆机场",
+        "type": "airport_xzm",
+        "type_label": "机场限制面",
+        "download_count": 0,
+        "gid": null,
+        "kml_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/安庆机场.kml",
+        "geojson_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/安庆机场.geojson"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "name": "吐鲁番_交河机场",
+        "type": "airport_xzm",
+        "type_label": "机场限制面",
+        "download_count": 0,
+        "gid": null,
+        "kml_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/吐鲁番_交河机场.kml",
+        "geojson_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/吐鲁番_交河机场.geojson"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "name": "鞍山_腾鳌机场",
+        "type": "airport_xzm",
+        "type_label": "机场限制面",
+        "download_count": 0,
+        "gid": null,
+        "kml_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/鞍山_腾鳌机场.kml",
+        "geojson_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/鞍山_腾鳌机场.geojson"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "name": "梧州机场",
+        "type": "airport_xzm",
+        "type_label": "机场限制面",
+        "download_count": 0,
+        "gid": null,
+        "kml_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/梧州机场.kml",
+        "geojson_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/梧州机场.geojson"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "name": "青岛_流亭机场",
+        "type": "airport_xzm",
+        "type_label": "机场限制面",
+        "download_count": 0,
+        "gid": null,
+        "kml_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/青岛_流亭机场.kml",
+        "geojson_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/青岛_流亭机场.geojson"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "name": "武汉_天河机场",
+        "type": "airport_xzm",
+        "type_label": "机场限制面",
+        "download_count": 0,
+        "gid": null,
+        "kml_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/武汉_天河机场.kml",
+        "geojson_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/武汉_天河机场.geojson"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "name": "宜宾_菜坝机场",
+        "type": "airport_xzm",
+        "type_label": "机场限制面",
+        "download_count": 0,
+        "gid": null,
+        "kml_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/宜宾_菜坝机场.kml",
+        "geojson_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/宜宾_菜坝机场.geojson"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "name": "南阳_姜营机场",
+        "type": "airport_xzm",
+        "type_label": "机场限制面",
+        "download_count": 0,
+        "gid": null,
+        "kml_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/南阳_姜营机场.kml",
+        "geojson_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/南阳_姜营机场.geojson"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "name": "昆明_长水机场",
+        "type": "airport_xzm",
+        "type_label": "机场限制面",
+        "download_count": 0,
+        "gid": null,
+        "kml_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/昆明_长水机场.kml",
+        "geojson_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/昆明_长水机场.geojson"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "name": "秦皇岛_北戴河机场",
+        "type": "airport_xzm",
+        "type_label": "机场限制面",
+        "download_count": 0,
+        "gid": null,
+        "kml_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/秦皇岛_北戴河机场.kml",
+        "geojson_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/秦皇岛_北戴河机场.geojson"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "name": "西宁_曹家堡机场",
+        "type": "airport_xzm",
+        "type_label": "机场限制面",
+        "download_count": 0,
+        "gid": null,
+        "kml_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/西宁_曹家堡机场.kml",
+        "geojson_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/西宁_曹家堡机场.geojson"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "name": "淮安_涟水机场",
+        "type": "airport_xzm",
+        "type_label": "机场限制面",
+        "download_count": 0,
+        "gid": null,
+        "kml_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/淮安_涟水机场.kml",
+        "geojson_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/淮安_涟水机场.geojson"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "name": "呼伦贝尔_海拉尔机场",
+        "type": "airport_xzm",
+        "type_label": "机场限制面",
+        "download_count": 0,
+        "gid": null,
+        "kml_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/呼伦贝尔_海拉尔机场.kml",
+        "geojson_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/呼伦贝尔_海拉尔机场.geojson"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "name": "伊春_林都机场",
+        "type": "airport_xzm",
+        "type_label": "机场限制面",
+        "download_count": 0,
+        "gid": null,
+        "kml_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/伊春_林都机场.kml",
+        "geojson_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/伊春_林都机场.geojson"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "name": "锦州_锦州湾机场",
+        "type": "airport_xzm",
+        "type_label": "机场限制面",
+        "download_count": 0,
+        "gid": null,
+        "kml_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/锦州_锦州湾机场.kml",
+        "geojson_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/锦州_锦州湾机场.geojson"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "name": "太原_武宿机场",
+        "type": "airport_xzm",
+        "type_label": "机场限制面",
+        "download_count": 0,
+        "gid": null,
+        "kml_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/太原_武宿机场.kml",
+        "geojson_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/太原_武宿机场.geojson"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "name": "景德镇_罗家机场",
+        "type": "airport_xzm",
+        "type_label": "机场限制面",
+        "download_count": 0,
+        "gid": null,
+        "kml_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/景德镇_罗家机场.kml",
+        "geojson_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/景德镇_罗家机场.geojson"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "name": "阿勒泰机场",
+        "type": "airport_xzm",
+        "type_label": "机场限制面",
+        "download_count": 0,
+        "gid": null,
+        "kml_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/阿勒泰机场.kml",
+        "geojson_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/阿勒泰机场.geojson"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "name": "德宏_芒市机场",
+        "type": "airport_xzm",
+        "type_label": "机场限制面",
+        "download_count": 0,
+        "gid": null,
+        "kml_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/德宏_芒市机场.kml",
+        "geojson_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/德宏_芒市机场.geojson"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "name": "长春_龙嘉机场",
+        "type": "airport_xzm",
+        "type_label": "机场限制面",
+        "download_count": 0,
+        "gid": null,
+        "kml_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/长春_龙嘉机场.kml",
+        "geojson_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/长春_龙嘉机场.geojson"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "name": "西昌_青山机场",
+        "type": "airport_xzm",
+        "type_label": "机场限制面",
+        "download_count": 0,
+        "gid": null,
+        "kml_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/西昌_青山机场.kml",
+        "geojson_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/西昌_青山机场.geojson"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "name": "上海_浦东机场",
+        "type": "airport_xzm",
+        "type_label": "机场限制面",
+        "download_count": 0,
+        "gid": null,
+        "kml_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/上海_浦东机场.kml",
+        "geojson_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/上海_浦东机场.geojson"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "name": "佳木斯机场",
+        "type": "airport_xzm",
+        "type_label": "机场限制面",
+        "download_count": 0,
+        "gid": null,
+        "kml_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/佳木斯机场.kml",
+        "geojson_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/佳木斯机场.geojson"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "name": "塔城机场",
+        "type": "airport_xzm",
+        "type_label": "机场限制面",
+        "download_count": 0,
+        "gid": null,
+        "kml_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/塔城机场.kml",
+        "geojson_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/塔城机场.geojson"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "name": "康定机场",
+        "type": "airport_xzm",
+        "type_label": "机场限制面",
+        "download_count": 0,
+        "gid": null,
+        "kml_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/康定机场.kml",
+        "geojson_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/康定机场.geojson"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "name": "徐州_观音机场",
+        "type": "airport_xzm",
+        "type_label": "机场限制面",
+        "download_count": 0,
+        "gid": null,
+        "kml_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/徐州_观音机场.kml",
+        "geojson_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/徐州_观音机场.geojson"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "name": "稻城_亚丁机场",
+        "type": "airport_xzm",
+        "type_label": "机场限制面",
+        "download_count": 0,
+        "gid": null,
+        "kml_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/稻城_亚丁机场.kml",
+        "geojson_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/稻城_亚丁机场.geojson"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "name": "白山_长白山机场",
+        "type": "airport_xzm",
+        "type_label": "机场限制面",
+        "download_count": 0,
+        "gid": null,
+        "kml_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/白山_长白山机场.kml",
+        "geojson_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/白山_长白山机场.geojson"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "name": "恩施_许家坪机场",
+        "type": "airport_xzm",
+        "type_label": "机场限制面",
+        "download_count": 0,
+        "gid": null,
+        "kml_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/恩施_许家坪机场.kml",
+        "geojson_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/恩施_许家坪机场.geojson"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "name": "重庆_江北机场",
+        "type": "airport_xzm",
+        "type_label": "机场限制面",
+        "download_count": 0,
+        "gid": null,
+        "kml_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/重庆_江北机场.kml",
+        "geojson_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/重庆_江北机场.geojson"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "name": "常德_桃花源机场",
+        "type": "airport_xzm",
+        "type_label": "机场限制面",
+        "download_count": 0,
+        "gid": null,
+        "kml_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/常德_桃花源机场.kml",
+        "geojson_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/常德_桃花源机场.geojson"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "name": "加格达奇_嘎仙机场",
+        "type": "airport_xzm",
+        "type_label": "机场限制面",
+        "download_count": 0,
+        "gid": null,
+        "kml_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/加格达奇_嘎仙机场.kml",
+        "geojson_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/加格达奇_嘎仙机场.geojson"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "name": "福州_长乐机场",
+        "type": "airport_xzm",
+        "type_label": "机场限制面",
+        "download_count": 0,
+        "gid": null,
+        "kml_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/福州_长乐机场.kml",
+        "geojson_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/福州_长乐机场.geojson"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "name": "黑河_瑷珲机场",
+        "type": "airport_xzm",
+        "type_label": "机场限制面",
+        "download_count": 0,
+        "gid": null,
+        "kml_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/黑河_瑷珲机场.kml",
+        "geojson_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/黑河_瑷珲机场.geojson"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "name": "临沂_沭埠岭机场",
+        "type": "airport_xzm",
+        "type_label": "机场限制面",
+        "download_count": 0,
+        "gid": null,
+        "kml_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/临沂_沭埠岭机场.kml",
+        "geojson_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/临沂_沭埠岭机场.geojson"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "name": "鄂尔多斯_伊金霍洛机场",
+        "type": "airport_xzm",
+        "type_label": "机场限制面",
+        "download_count": 0,
+        "gid": null,
+        "kml_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/鄂尔多斯_伊金霍洛机场.kml",
+        "geojson_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/鄂尔多斯_伊金霍洛机场.geojson"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "name": "巴彦淖尔_天吉泰机场",
+        "type": "airport_xzm",
+        "type_label": "机场限制面",
+        "download_count": 0,
+        "gid": null,
+        "kml_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/巴彦淖尔_天吉泰机场.kml",
+        "geojson_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/巴彦淖尔_天吉泰机场.geojson"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "name": "济宁_曲阜机场",
+        "type": "airport_xzm",
+        "type_label": "机场限制面",
+        "download_count": 0,
+        "gid": null,
+        "kml_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/济宁_曲阜机场.kml",
+        "geojson_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/济宁_曲阜机场.geojson"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "name": "齐齐哈尔_三家子机场",
+        "type": "airport_xzm",
+        "type_label": "机场限制面",
+        "download_count": 0,
+        "gid": null,
+        "kml_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/齐齐哈尔_三家子机场.kml",
+        "geojson_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/齐齐哈尔_三家子机场.geojson"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "name": "忻州_五台山机场",
+        "type": "airport_xzm",
+        "type_label": "机场限制面",
+        "download_count": 0,
+        "gid": null,
+        "kml_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/忻州_五台山机场.kml",
+        "geojson_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/忻州_五台山机场.geojson"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "name": "池州_九华山机场",
+        "type": "airport_xzm",
+        "type_label": "机场限制面",
+        "download_count": 0,
+        "gid": null,
+        "kml_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/池州_九华山机场.kml",
+        "geojson_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/池州_九华山机场.geojson"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "name": "常州_奔牛机场",
+        "type": "airport_xzm",
+        "type_label": "机场限制面",
+        "download_count": 0,
+        "gid": null,
+        "kml_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/常州_奔牛机场.kml",
+        "geojson_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/常州_奔牛机场.geojson"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "name": "合肥_新桥机场",
+        "type": "airport_xzm",
+        "type_label": "机场限制面",
+        "download_count": 0,
+        "gid": null,
+        "kml_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/合肥_新桥机场.kml",
+        "geojson_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/合肥_新桥机场.geojson"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "name": "唐山_三女河机场",
+        "type": "airport_xzm",
+        "type_label": "机场限制面",
+        "download_count": 0,
+        "gid": null,
+        "kml_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/唐山_三女河机场.kml",
+        "geojson_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/唐山_三女河机场.geojson"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "name": "兰州_中川机场",
+        "type": "airport_xzm",
+        "type_label": "机场限制面",
+        "download_count": 0,
+        "gid": null,
+        "kml_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/兰州_中川机场.kml",
+        "geojson_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/兰州_中川机场.geojson"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "name": "扎兰屯_成吉思汗机场",
+        "type": "airport_xzm",
+        "type_label": "机场限制面",
+        "download_count": 0,
+        "gid": null,
+        "kml_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/扎兰屯_成吉思汗机场.kml",
+        "geojson_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/扎兰屯_成吉思汗机场.geojson"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "name": "鸡西_兴凯湖机场",
+        "type": "airport_xzm",
+        "type_label": "机场限制面",
+        "download_count": 0,
+        "gid": null,
+        "kml_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/鸡西_兴凯湖机场.kml",
+        "geojson_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/鸡西_兴凯湖机场.geojson"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "name": "天津_滨海机场",
+        "type": "airport_xzm",
+        "type_label": "机场限制面",
+        "download_count": 0,
+        "gid": null,
+        "kml_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/天津_滨海机场.kml",
+        "geojson_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/天津_滨海机场.geojson"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "name": "西安_咸阳机场",
+        "type": "airport_xzm",
+        "type_label": "机场限制面",
+        "download_count": 0,
+        "gid": null,
+        "kml_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/西安_咸阳机场.kml",
+        "geojson_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/西安_咸阳机场.geojson"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "name": "沈阳_桃仙机场",
+        "type": "airport_xzm",
+        "type_label": "机场限制面",
+        "download_count": 0,
+        "gid": null,
+        "kml_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/沈阳_桃仙机场.kml",
+        "geojson_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/沈阳_桃仙机场.geojson"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "name": "铜仁_凤凰机场",
+        "type": "airport_xzm",
+        "type_label": "机场限制面",
+        "download_count": 0,
+        "gid": null,
+        "kml_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/铜仁_凤凰机场.kml",
+        "geojson_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/铜仁_凤凰机场.geojson"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "name": "宜春_明月山机场",
+        "type": "airport_xzm",
+        "type_label": "机场限制面",
+        "download_count": 0,
+        "gid": null,
+        "kml_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/宜春_明月山机场.kml",
+        "geojson_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/宜春_明月山机场.geojson"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "name": "乌海机场",
+        "type": "airport_xzm",
+        "type_label": "机场限制面",
+        "download_count": 0,
+        "gid": null,
+        "kml_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/乌海机场.kml",
+        "geojson_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/乌海机场.geojson"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "name": "榆林_榆阳机场",
+        "type": "airport_xzm",
+        "type_label": "机场限制面",
+        "download_count": 0,
+        "gid": null,
+        "kml_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/榆林_榆阳机场.kml",
+        "geojson_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/榆林_榆阳机场.geojson"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "name": "延吉_朝阳川机场",
+        "type": "airport_xzm",
+        "type_label": "机场限制面",
+        "download_count": 0,
+        "gid": null,
+        "kml_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/延吉_朝阳川机场.kml",
+        "geojson_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/延吉_朝阳川机场.geojson"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "name": "南昌_昌北机场",
+        "type": "airport_xzm",
+        "type_label": "机场限制面",
+        "download_count": 0,
+        "gid": null,
+        "kml_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/南昌_昌北机场.kml",
+        "geojson_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/南昌_昌北机场.geojson"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "name": "阿克苏_温宿机场",
+        "type": "airport_xzm",
+        "type_label": "机场限制面",
+        "download_count": 0,
+        "gid": null,
+        "kml_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/阿克苏_温宿机场.kml",
+        "geojson_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/阿克苏_温宿机场.geojson"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "name": "宁波_栎社机场",
+        "type": "airport_xzm",
+        "type_label": "机场限制面",
+        "download_count": 0,
+        "gid": null,
+        "kml_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/宁波_栎社机场.kml",
+        "geojson_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/宁波_栎社机场.geojson"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "name": "黄山_屯溪机场",
+        "type": "airport_xzm",
+        "type_label": "机场限制面",
+        "download_count": 0,
+        "gid": null,
+        "kml_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/黄山_屯溪机场.kml",
+        "geojson_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/黄山_屯溪机场.geojson"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "name": "襄阳_刘集机场",
+        "type": "airport_xzm",
+        "type_label": "机场限制面",
+        "download_count": 0,
+        "gid": null,
+        "kml_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/襄阳_刘集机场.kml",
+        "geojson_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/襄阳_刘集机场.geojson"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "name": "敦煌机场",
+        "type": "airport_xzm",
+        "type_label": "机场限制面",
+        "download_count": 0,
+        "gid": null,
+        "kml_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/敦煌机场.kml",
+        "geojson_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/敦煌机场.geojson"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "name": "宁蒗_泸沽湖机场",
+        "type": "airport_xzm",
+        "type_label": "机场限制面",
+        "download_count": 0,
+        "gid": null,
+        "kml_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/宁蒗_泸沽湖机场.kml",
+        "geojson_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/宁蒗_泸沽湖机场.geojson"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "name": "十堰_武当山机场",
+        "type": "airport_xzm",
+        "type_label": "机场限制面",
+        "download_count": 0,
+        "gid": null,
+        "kml_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/十堰_武当山机场.kml",
+        "geojson_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/十堰_武当山机场.geojson"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "name": "海口_美兰机场",
+        "type": "airport_xzm",
+        "type_label": "机场限制面",
+        "download_count": 0,
+        "gid": null,
+        "kml_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/海口_美兰机场.kml",
+        "geojson_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/海口_美兰机场.geojson"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "name": "牡丹江_海浪机场",
+        "type": "airport_xzm",
+        "type_label": "机场限制面",
+        "download_count": 0,
+        "gid": null,
+        "kml_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/牡丹江_海浪机场.kml",
+        "geojson_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/牡丹江_海浪机场.geojson"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "name": "南京_禄口机场",
+        "type": "airport_xzm",
+        "type_label": "机场限制面",
+        "download_count": 0,
+        "gid": null,
+        "kml_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/南京_禄口机场.kml",
+        "geojson_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/南京_禄口机场.geojson"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "name": "赣州_黄金机场",
+        "type": "airport_xzm",
+        "type_label": "机场限制面",
+        "download_count": 0,
+        "gid": null,
+        "kml_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/赣州_黄金机场.kml",
+        "geojson_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/赣州_黄金机场.geojson"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "name": "丹东_浪头机场",
+        "type": "airport_xzm",
+        "type_label": "机场限制面",
+        "download_count": 0,
+        "gid": null,
+        "kml_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/丹东_浪头机场.kml",
+        "geojson_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/丹东_浪头机场.geojson"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "name": "揭阳_潮汕机场",
+        "type": "airport_xzm",
+        "type_label": "机场限制面",
+        "download_count": 0,
+        "gid": null,
+        "kml_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/揭阳_潮汕机场.kml",
+        "geojson_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/揭阳_潮汕机场.geojson"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "name": "玉树_巴塘机场",
+        "type": "airport_xzm",
+        "type_label": "机场限制面",
+        "download_count": 0,
+        "gid": null,
+        "kml_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/玉树_巴塘机场.kml",
+        "geojson_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/玉树_巴塘机场.geojson"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "name": "满洲里_西郊机场",
+        "type": "airport_xzm",
+        "type_label": "机场限制面",
+        "download_count": 0,
+        "gid": null,
+        "kml_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/满洲里_西郊机场.kml",
+        "geojson_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/满洲里_西郊机场.geojson"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "name": "石河子_花园机场",
+        "type": "airport_xzm",
+        "type_label": "机场限制面",
+        "download_count": 0,
+        "gid": null,
+        "kml_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/石河子_花园机场.kml",
+        "geojson_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/石河子_花园机场.geojson"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "name": "克拉玛依机场",
+        "type": "airport_xzm",
+        "type_label": "机场限制面",
+        "download_count": 0,
+        "gid": null,
+        "kml_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/克拉玛依机场.kml",
+        "geojson_url": "http://mapservices.u-care.net.cn/airresource/download/airport_xzm/克拉玛依机场.geojson"
+      }
+    }
+  ]
+}

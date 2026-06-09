@@ -1,0 +1,59 @@
+cities:
+  - 东营
+  - 济南
+
+keywords:
+  - 无人机
+  - 无人驾驶航空器
+  - 低慢小
+  - 临时管控
+  - 机场净空
+  - 净空保护区
+  - 管控区域
+
+time_range:
+  start: "2025-01-01"
+  end: "2026-12-31"
+  include_unknown_dates: true
+
+current_date: "2026-06-07"
+
+crawl:
+  polite_delay_seconds: 2.0
+  max_pages_per_source: 5
+  max_depth: 1
+  timeout_seconds: 12
+  respect_robots_txt: true
+  user_agent: "source-audit/0.1 (+public-source-risk-audit)"
+
+wechat:
+  follow_mp_links: true
+
+image_ocr:
+  enabled: false
+
+storage:
+  database_path: data/source_audit.sqlite
+
+output:
+  output_dir: outputs
+
+sources:
+  - name: 果壳无人机扰鸟文章参考文献
+    url: https://m.guokr.com/article/468285
+    priority: P3
+    city: 东营
+    max_pages: 5
+
+  - name: 高楼迷济南机场净空引用页
+    url: https://gaoloumi.cc/forum.php/ww.skyscrapercity.com/forum.php?mod=viewthread&tid=3300731
+    priority: P3
+    city: 济南
+    max_pages: 5
+
+  - name: 新浪东营临时管控图片转载页
+    url: https://finance.sina.com.cn/jjxw/2025-11-13/doc-infxhkcw3825575.shtml?froms=ggmp
+    priority: P2
+    city: 东营
+    max_pages: 1
+

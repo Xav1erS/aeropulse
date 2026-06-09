@@ -1,0 +1,1186 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>低空讯图 · 数据管理</title>
+<link rel="stylesheet" href="colors_and_type.css" />
+<style>
+  /* ================================================================
+     低空讯图 · 数据管理页 — 浅色主题（匹配地图页设计系统）
+     ================================================================ */
+  :root {
+    /* 主题色 */
+    --ui-ink: #0b132b;
+    --ui-ink-2: #26324d;
+    --ui-muted: #6d7890;
+    --ui-blue: #2f6bff;
+    --ui-blue-dark: #1f4fd6;
+    --ui-blue-soft: #edf3ff;
+    --ui-panel: rgba(255, 255, 255, 0.92);
+    --ui-panel-strong: rgba(255, 255, 255, 0.97);
+    --ui-border: rgba(20, 35, 60, 0.11);
+    --ui-border-strong: rgba(20, 35, 60, 0.18);
+    --ui-shadow: 0 14px 40px rgba(22, 35, 58, 0.12), 0 2px 8px rgba(22, 35, 58, 0.05);
+    --ui-shadow-soft: 0 8px 24px rgba(22, 35, 58, 0.09), 0 1px 3px rgba(22, 35, 58, 0.04);
+    --ui-radius: 18px;
+    --ui-radius-sm: 12px;
+    --ui-radius-xs: 9px;
+    /* 语义色 */
+    --danger: #e44b55;
+    --danger-soft: rgba(228, 75, 85, 0.10);
+    --danger-fg: #c43a44;
+    --warning: #c88314;
+    --warning-soft: rgba(200, 131, 20, 0.10);
+    --warning-fg: #b07410;
+    --success: #27c26c;
+    --success-soft: rgba(39, 194, 108, 0.10);
+    --success-fg: #168a4b;
+    --info: #2f6bff;
+    --info-soft: rgba(47, 107, 255, 0.10);
+    --info-fg: #1f4fd6;
+    /* 动效 */
+    --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    height: 100%;
+    font-family: var(--font-sans);
+    font-size: var(--fs-body);
+    line-height: 1.55;
+    color: var(--ui-ink-2);
+    background: #eef3f8;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  button, input, select, a { -webkit-tap-highlight-color: transparent; }
+  button:focus-visible, input:focus-visible, select:focus-visible {
+    outline: 3px solid rgba(47, 107, 255, 0.22);
+    outline-offset: 2px;
+  }
+
+  /* ================================================================
+     顶部栏 — 与地图页对齐：品牌区独立浮动面板 + Tab 独立浮动面板
+     ================================================================ */
+  #topbar {
+    position: fixed;
+    top: 18px;
+    left: 18px;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px;
+    background: var(--ui-panel);
+    backdrop-filter: blur(18px) saturate(1.25);
+    -webkit-backdrop-filter: blur(18px) saturate(1.25);
+    border: 1px solid var(--ui-border);
+    border-radius: var(--ui-radius-sm);
+    box-shadow: var(--ui-shadow-soft);
+  }
+
+  /* 品牌区样式已抽取到 colors_and_type.css 通用组件 */
+
+  /* 右上角页面导航（与地图页 #page-nav 一致） */
+  #page-nav {
+    position: fixed;
+    top: 18px;
+    right: 18px;
+    z-index: 100;
+    display: flex;
+    gap: 3px;
+    background: var(--ui-panel);
+    backdrop-filter: blur(18px) saturate(1.25);
+    -webkit-backdrop-filter: blur(18px) saturate(1.25);
+    border: 1px solid var(--ui-border);
+    border-radius: 11px;
+    padding: 3px;
+    box-shadow: var(--ui-shadow-soft);
+  }
+  #page-nav a {
+    color: var(--ui-muted);
+    text-decoration: none;
+    padding: 7px 14px;
+    border-radius: 8px;
+    font-size: 12.5px;
+    font-weight: 500;
+    transition: all 0.2s var(--ease-out);
+  }
+  #page-nav a:hover {
+    color: var(--ui-ink);
+    background: #f3f6fa;
+  }
+  #page-nav a.active {
+    color: var(--ui-ink);
+    background: #fff;
+    font-weight: 650;
+    box-shadow: 0 1px 4px rgba(20,35,60,.10);
+  }
+
+  /* ================================================================
+     主体布局
+     ================================================================ */
+  main {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 96px 20px 24px;
+  }
+
+  /* ================================================================
+     指标卡
+     ================================================================ */
+  #cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 12px;
+    margin-bottom: 24px;
+  }
+
+  .card-stat {
+    background: var(--ui-panel-strong);
+    border: 1px solid var(--ui-border);
+    border-radius: var(--ui-radius-sm);
+    padding: 20px 16px;
+    text-align: center;
+    transition: all 0.25s var(--ease-out);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .card-stat::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; height: 3px;
+    border-radius: 3px 3px 0 0;
+    background: linear-gradient(90deg, var(--ui-blue), #75a5ff);
+    opacity: 0;
+    transition: opacity 0.25s;
+  }
+
+  .card-stat:hover {
+    border-color: var(--ui-border-strong);
+    transform: translateY(-2px);
+    box-shadow: var(--ui-shadow-soft);
+  }
+
+  .card-stat:hover::before { opacity: 1; }
+
+  .card-stat .val {
+    font-family: var(--font-sans);
+    font-size: 28px;
+    font-weight: 750;
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -0.02em;
+    color: var(--ui-ink);
+  }
+
+  .card-stat .lbl {
+    font-family: var(--font-sans);
+    font-size: 11px;
+    color: var(--ui-muted);
+    margin-top: 7px;
+    letter-spacing: 0;
+  }
+
+  /* ================================================================
+     Tab 标签
+     ================================================================ */
+  #tabs {
+    display: flex;
+    gap: 0;
+    margin-bottom: 0;
+    padding: 4px 4px 0;
+  }
+
+  #tabs button {
+    padding: 13px 22px;
+    border: none;
+    background: transparent;
+    color: var(--ui-muted);
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 600;
+    font-family: inherit;
+    border-bottom: 2.5px solid transparent;
+    margin-bottom: -1px;
+    transition: all 0.2s var(--ease-out);
+  }
+
+  #tabs button:hover { color: var(--ui-ink); }
+
+  #tabs button.active {
+    color: var(--ui-ink);
+    border-bottom-color: var(--ui-blue);
+  }
+
+  /* ================================================================
+     表格
+     ================================================================ */
+  .table-wrap {
+    background: var(--ui-panel-strong);
+    border: 1px solid var(--ui-border);
+    border-radius: 0 0 var(--ui-radius-sm) var(--ui-radius-sm);
+    overflow-x: auto;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12.5px;
+  }
+
+  th, td {
+    padding: 12px 16px;
+    text-align: left;
+    border-bottom: 1px solid var(--ui-border);
+  }
+
+  th {
+    color: var(--ui-muted);
+    font-weight: 600;
+    font-size: 10.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    background: #f7f9fc;
+    white-space: nowrap;
+  }
+
+  tr { transition: background 0.15s var(--ease-out); }
+  tr:hover { background: #f8fafd; }
+  tr:last-child td { border-bottom: none; }
+
+  /* ================================================================
+     按钮
+     ================================================================ */
+  .btn {
+    padding: 7px 14px;
+    border: 1px solid var(--ui-border);
+    border-radius: 9px;
+    background: transparent;
+    color: var(--ui-ink-2);
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 550;
+    font-family: inherit;
+    transition: all 0.15s var(--ease-out);
+  }
+
+  .btn:hover {
+    border-color: var(--ui-border-strong);
+    color: var(--ui-ink);
+    background: #f5f7fa;
+  }
+
+  .btn-sm { padding: 5px 10px; font-size: 11px; border-radius: 7px; }
+
+  .btn-primary {
+    background: var(--ui-blue);
+    border-color: var(--ui-blue);
+    color: #fff;
+    font-weight: 650;
+  }
+
+  .btn-primary:hover {
+    background: var(--ui-blue-dark);
+    border-color: var(--ui-blue-dark);
+    color: #fff;
+  }
+
+  .btn-success {
+    background: var(--success-soft);
+    border-color: rgba(39, 194, 108, 0.25);
+    color: var(--success-fg);
+  }
+
+  .btn-success:hover {
+    background: rgba(39, 194, 108, 0.18);
+    color: #14945a;
+  }
+
+  .btn-danger {
+    border-color: rgba(228, 75, 85, 0.25);
+    color: var(--danger-fg);
+  }
+
+  .btn-danger:hover {
+    background: var(--danger-soft);
+    color: #b3303a;
+  }
+
+  /* ================================================================
+     Badge
+     ================================================================ */
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-family: var(--font-sans);
+    font-size: 10px;
+    padding: 4px 9px;
+    border-radius: 7px;
+    font-weight: 650;
+    letter-spacing: 0;
+    line-height: 1.3;
+    white-space: nowrap;
+  }
+
+  .badge-p0     { background: var(--danger-soft);   color: var(--danger-fg); }
+  .badge-p1     { background: var(--warning-soft);   color: var(--warning-fg); }
+  .badge-p2     { background: rgba(212, 160, 23, 0.10);  color: #9a7d12; }
+  .badge-p3     { background: rgba(109, 120, 144, 0.10);  color: var(--ui-muted); }
+  .badge-green  { background: var(--success-soft);  color: var(--success-fg); }
+  .badge-orange { background: var(--warning-soft);   color: var(--warning-fg); }
+  .badge-grey   { background: rgba(109, 120, 144, 0.10);  color: var(--ui-muted); }
+  .badge-red    { background: var(--danger-soft);    color: var(--danger-fg); }
+  .badge-blue   { background: var(--info-soft);      color: var(--info-fg); }
+
+  /* ================================================================
+     Drawer（右侧抽屉）
+     ================================================================ */
+  #drawer-overlay {
+    position: fixed; top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(9, 18, 34, 0.16);
+    backdrop-filter: blur(2px);
+    z-index: 100;
+  }
+
+  #drawer {
+    position: fixed; top: 0; right: 0;
+    width: 520px; max-width: 90vw; height: 100%;
+    background: var(--ui-panel-strong);
+    border-left: 1px solid var(--ui-border);
+    z-index: 101;
+    overflow-y: auto;
+    padding: 24px;
+    box-shadow: -14px 0 40px rgba(22, 35, 58, 0.10);
+  }
+
+  #drawer::-webkit-scrollbar { width: 4px; }
+  #drawer::-webkit-scrollbar-track { background: transparent; }
+  #drawer::-webkit-scrollbar-thumb { background: rgba(20,35,60,.12); border-radius: 4px; }
+
+  #drawer h2 {
+    font-family: var(--font-sans);
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--ui-ink);
+    margin-bottom: 20px;
+    padding-right: 30px;
+  }
+
+  #drawer .close {
+    position: absolute;
+    top: 18px; right: 18px;
+    width: 32px; height: 32px;
+    border-radius: 10px;
+    border: 1px solid var(--ui-border);
+    background: #f5f7fa;
+    color: var(--ui-muted);
+    font-size: 16px;
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    transition: all 0.15s var(--ease-out);
+  }
+
+  #drawer .close:hover {
+    background: #edf2f8;
+    color: var(--ui-ink);
+    border-color: var(--ui-border-strong);
+  }
+
+  #drawer .section { margin-bottom: 20px; }
+
+  #drawer .section h3 {
+    font-family: var(--font-sans);
+    font-size: 11px;
+    color: var(--ui-muted);
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-weight: 650;
+  }
+
+  #drawer .field {
+    display: flex;
+    gap: 10px;
+    margin: 6px 0;
+    font-size: 12.5px;
+    align-items: flex-start;
+  }
+
+  #drawer .field .fname {
+    color: var(--ui-muted);
+    min-width: 72px;
+    flex: none;
+    padding-top: 1px;
+    font-size: 12px;
+  }
+
+  #drawer .field .fval {
+    color: var(--ui-ink-2);
+    word-break: break-all;
+    flex: 1;
+  }
+
+  #drawer .actions {
+    display: flex;
+    gap: 8px;
+    margin-top: 24px;
+    padding-top: 16px;
+    border-top: 1px solid var(--ui-border);
+  }
+
+  /* ================================================================
+     Modal（居中弹窗）
+     ================================================================ */
+  #modal-overlay {
+    position: fixed; top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(9, 18, 34, 0.16);
+    backdrop-filter: blur(2px);
+    z-index: 200;
+  }
+
+  #modal {
+    position: fixed;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    background: var(--ui-panel-strong);
+    border: 1px solid var(--ui-border);
+    border-radius: var(--ui-radius);
+    padding: 28px;
+    z-index: 201;
+    width: 520px;
+    max-width: 90vw;
+    box-shadow: 0 28px 80px rgba(14,27,52,.20), 0 4px 14px rgba(14,27,52,.08);
+  }
+
+  #modal::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 28px;
+    right: 28px;
+    height: 3px;
+    border-radius: 0 0 3px 3px;
+    background: linear-gradient(90deg, var(--ui-blue), #75a5ff);
+  }
+
+  #modal h2 {
+    font-family: var(--font-sans);
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--ui-ink);
+    margin-bottom: 18px;
+  }
+
+  #modal textarea,
+  #modal input,
+  #modal select {
+    width: 100%;
+    padding: 11px 14px;
+    border-radius: 10px;
+    border: 1px solid var(--ui-border);
+    background: #f5f7fb;
+    color: var(--ui-ink);
+    font-size: 13px;
+    font-family: inherit;
+    margin-bottom: 12px;
+    resize: vertical;
+    outline: none;
+    transition: border-color 0.15s, box-shadow 0.15s;
+  }
+
+  #modal textarea:focus,
+  #modal input:focus,
+  #modal select:focus {
+    background: #fff;
+    border-color: var(--ui-blue);
+    box-shadow: 0 0 0 4px rgba(47,107,255,.10);
+  }
+
+  #modal textarea { min-height: 120px; }
+
+  #modal .actions {
+    display: flex;
+    gap: 8px;
+    justify-content: flex-end;
+    margin-top: 8px;
+  }
+
+  #modal label {
+    font-size: 12px;
+    color: var(--ui-ink-2);
+    margin-right: 14px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+  /* ================================================================
+     关键词面板
+     ================================================================ */
+  .keywords-panel {
+    background: var(--ui-panel-strong);
+    border: 1px solid var(--ui-border);
+    border-radius: 0 0 var(--ui-radius-sm) var(--ui-radius-sm);
+    padding: 24px;
+  }
+
+  .keywords-panel h3 {
+    font-family: var(--font-sans);
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--ui-ink);
+    margin-bottom: 12px;
+  }
+
+  .keywords-panel .tag-cloud {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 20px;
+  }
+
+  .keywords-panel table { margin-top: 0; }
+
+  /* ================================================================
+     辅助类
+     ================================================================ */
+  .text-truncate {
+    max-width: 220px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: inline-block;
+  }
+
+  .toolbar, .filter-row {
+    display: flex;
+    gap: 10px;
+    padding: 12px 16px;
+    background: var(--ui-panel-strong);
+    border: 1px solid var(--ui-border);
+    border-bottom: none;
+    align-items: center;
+  }
+
+  .toolbar {
+    border-radius: var(--ui-radius-sm) var(--ui-radius-sm) 0 0;
+  }
+
+  .toolbar .spacer, .filter-row .spacer { flex: 1; }
+
+  .toolbar .label-text {
+    font-size: 12.5px;
+    color: var(--ui-muted);
+    font-weight: 500;
+  }
+
+  .filter-row select {
+    padding: 7px 12px;
+    border-radius: 9px;
+    border: 1px solid var(--ui-border);
+    background: #f5f7fb;
+    color: var(--ui-ink-2);
+    font-size: 12px;
+    font-family: inherit;
+    outline: none;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+
+  .filter-row select:focus {
+    border-color: var(--ui-blue);
+    background: #fff;
+    box-shadow: 0 0 0 4px rgba(47,107,255,.10);
+  }
+
+  [v-cloak] { display: none; }
+
+  /* ================================================================
+     响应式
+     ================================================================ */
+  @media (max-width: 820px) {
+    main { padding: 80px 12px 16px; }
+    #cards { grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 8px; }
+    .card-stat { padding: 14px 10px; }
+    .card-stat .val { font-size: 22px; }
+  }
+
+  @media (max-width: 620px) {
+    #topbar { top: 10px; left: 10px; border-radius: 17px; }
+    #page-nav { top: 10px; right: 10px; }
+    #page-nav a { padding: 6px 10px; font-size: 11.5px; }
+    #cards { grid-template-columns: repeat(2, 1fr); }
+    #drawer { width: 100%; max-width: 100%; padding: 16px; }
+    #modal { width: 95vw; padding: 20px; }
+    main { padding-top: 76px; }
+  }
+
+  /* ================================================================
+     Toast 通知
+     ================================================================ */
+  #toast-container {
+    position: fixed; top: 18px; right: 18px;
+    z-index: 3000;
+    display: flex; flex-direction: column; gap: 8px;
+    pointer-events: none;
+  }
+  .toast {
+    background: var(--ui-panel-strong);
+    border: 1px solid var(--ui-border);
+    border-radius: 12px;
+    padding: 12px 18px;
+    font-size: 13px;
+    color: var(--ui-ink-2);
+    box-shadow: 0 8px 24px rgba(22,35,58,.12);
+    backdrop-filter: blur(14px);
+    animation: toast-in 0.3s ease-out;
+    max-width: 360px;
+    cursor: pointer;
+    pointer-events: auto;
+    line-height: 1.45;
+  }
+  .toast.error { border-left: 3px solid #e03e3e; color: #b3303a; }
+  .toast.success { border-left: 3px solid #2ea756; }
+  .toast.warning { border-left: 3px solid #d4a017; color: #8a6d14; }
+  @keyframes toast-in {
+    from { opacity: 0; transform: translateX(24px); }
+    to   { opacity: 1; transform: translateX(0); }
+  }
+
+  /* ================================================================
+     空态 & 骨架屏
+     ================================================================ */
+  .empty-state {
+    text-align: center; padding: 40px 20px;
+    color: var(--ui-muted); font-size: 13px;
+  }
+  .empty-state .empty-icon {
+    font-size: 36px; margin-bottom: 8px; opacity: 0.5;
+  }
+  .empty-state .empty-text {
+    margin-bottom: 4px; font-weight: 650;
+  }
+  .empty-state .empty-hint {
+    font-size: 11px; opacity: 0.65;
+  }
+  .skeleton-row td { padding: 14px 12px !important; }
+  .skeleton-bar {
+    height: 12px; border-radius: 6px;
+    background: linear-gradient(90deg, #eef1f6 25%, #f5f7fb 50%, #eef1f6 75%);
+    background-size: 200% 100%;
+    animation: skeleton-shimmer 1.5s ease-in-out infinite;
+    width: 70%;
+  }
+  @keyframes skeleton-shimmer {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+  }
+
+</style>
+</style>
+</head>
+<body>
+
+<div id="app" v-cloak>
+  <!-- Toast 通知容器 -->
+  <div id="toast-container">
+    <div v-for="t in toasts" :key="t.id" :class="['toast', t.type]" @click="dismissToast(t.id)">{{ t.message }}</div>
+  </div>
+  <div id="topbar">
+    <div class="brand-lockup" aria-label="低空讯图">
+      <a href="地图页.html" class="brand-mark" title="地图浏览">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <circle cx="12" cy="12" r="7.25" stroke="currentColor" stroke-width="1.5" opacity=".55"/>
+          <circle cx="12" cy="12" r="3.4" stroke="currentColor" stroke-width="1.5" opacity=".8"/>
+          <path d="M12 12L18.2 7.8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+          <circle cx="12" cy="12" r="1.25" fill="currentColor"/>
+        </svg>
+      </a>
+      <span class="brand-copy">
+        <span class="brand-name">低空讯图</span>
+        <span class="brand-sub">LOW-ALTITUDE INTEL MAP</span>
+      </span>
+    </div>
+  </div>
+  <div id="page-nav">
+    <a href="地图页.html">地图浏览</a>
+    <a href="admin.html" class="active">数据管理</a>
+  </div>
+
+  <main>
+    <div id="cards">
+      <div class="card-stat"><div class="val">{{ stats.enabled_sources }}</div><div class="lbl">启用数据源</div></div>
+      <div class="card-stat"><div class="val">{{ stats.candidate_tasks }}</div><div class="lbl">候选公告</div></div>
+      <div class="card-stat"><div class="val">{{ stats.valid_announcements }}</div><div class="lbl">有效公告</div></div>
+      <div class="card-stat"><div class="val">{{ stats.pending_review }}</div><div class="lbl">待核验</div></div>
+      <div class="card-stat"><div class="val">{{ stats.published_layers }}</div><div class="lbl">已发布图层</div></div>
+      <div class="card-stat"><div class="val">{{ fmtPct(stats.parse_success_rate) }}</div><div class="lbl">解析成功率</div></div>
+      <div class="card-stat"><div class="val">{{ stats.layers_without_evidence }}</div><div class="lbl">无证据图层</div></div>
+      <div class="card-stat"><div class="val">{{ stats.overreach_text_count }}</div><div class="lbl">越权文案次数</div></div>
+    </div>
+
+    <div id="tabs">
+      <button v-for="t in tabs" :key="t.id" :class="{ active: activeTab === t.id }" @click="switchTab(t.id)">
+        {{ t.label }}
+      </button>
+    </div>
+
+    <div v-show="activeTab === 'sources'">
+      <div class="toolbar">
+        <span class="label-text">公开数据源列表</span>
+        <span class="spacer"></span>
+        <button class="btn btn-primary" @click="openAddSource">+ 新增数据源</button>
+      </div>
+      <div class="table-wrap"><table>
+        <thead><tr>
+          <th>名称</th><th>类型</th><th>等级</th><th>覆盖区域</th><th>最近采集</th><th>有效公告</th><th>状态</th><th>操作</th>
+        </tr></thead>
+        <tbody>
+          <tr v-for="s in sources" :key="s.id">
+            <td>{{ s.source_name }}</td>
+            <td>{{ typeLabel(s.source_type) }}</td>
+            <td><span class="badge" :class="'badge-' + (s.source_level || 'p2').toLowerCase()">{{ s.source_level }}</span></td>
+            <td>{{ s.coverage_area || s.city || '-' }}</td>
+            <td style="font-size:11.5px">
+              {{ s.last_crawled_at ? s.last_crawled_at.slice(0,10) : '未采集' }}
+              <span class="badge badge-grey">{{ s.last_crawl_status || '-' }}</span>
+            </td>
+            <td>{{ s.valid_announcement_count }}</td>
+            <td>
+              <span v-if="s.enabled" class="badge badge-green">启用</span>
+              <span v-else class="badge badge-grey">暂停</span>
+            </td>
+            <td>
+              <button class="btn btn-sm" @click="toggleSource(s.id, !s.enabled)">{{ s.enabled ? '暂停' : '启用' }}</button>
+              <button class="btn btn-sm" @click="crawlSource(s.id)">采集</button>
+            </td>
+          </tr>
+          <tr v-if="sources.length === 0"><td colspan="8" class="empty-state"><div class="empty-icon">&#128237;</div><div class="empty-text">暂无数据源</div><div class="empty-hint">点击「+ 新增数据源」添加第一个数据源</div></td></tr>
+        </tbody>
+      </table></div>
+    </div>
+
+    <div v-show="activeTab === 'tasks'">
+      <div class="filter-row">
+        <span style="font-size:11.5px;color:var(--ui-muted)">筛选：</span>
+        <select v-model="taskFilter.status" @change="loadTasks">
+          <option value="">全部状态</option>
+          <option value="submitted">已提交</option>
+          <option value="parsed">已解析</option>
+          <option value="needs_review">需核验</option>
+          <option value="approved">已通过</option>
+          <option value="rejected">已驳回</option>
+        </select>
+        <select v-model="taskFilter.review" @change="loadTasks">
+          <option value="">全部审核</option>
+          <option value="pending_confirm">待确认</option>
+          <option value="auto_pass">自动通过</option>
+          <option value="approved">已确认</option>
+          <option value="rejected">已驳回</option>
+        </select>
+        <span class="spacer"></span>
+        <button class="btn btn-primary" @click="showModal = true">+ 手动提交公告</button>
+      </div>
+      <div class="table-wrap"><table>
+        <thead><tr>
+          <th>来源</th><th>预览</th><th>状态</th><th>相关性</th><th>置信度</th><th>审核</th><th>时间</th><th>操作</th>
+        </tr></thead>
+        <tbody>
+          <tr v-for="t in tasks" :key="t.id">
+            <td>{{ t.source_name }}</td>
+            <td><span class="text-truncate">{{ t.title_preview || '-' }}</span></td>
+            <td><span class="badge badge-grey">{{ taskStatusLabel(t.task_status) }}</span></td>
+            <td>
+              <span v-if="t.is_relevant" class="badge badge-green">相关</span>
+              <span v-else-if="t.is_relevant === false" class="badge badge-grey">无关</span>
+              <span v-else>-</span>
+            </td>
+            <td>{{ t.parse_confidence ? (t.parse_confidence * 100).toFixed(0) + '%' : '-' }}</td>
+            <td><span class="badge" :class="'badge-' + reviewBadge(t.review_status)">{{ reviewLabel(t.review_status) }}</span></td>
+            <td style="font-size:11.5px">{{ (t.created_at || '').slice(0, 10) }}</td>
+            <td>
+              <button class="btn btn-sm" @click="openTaskDetail(t.id)">查看审核</button>
+              <template v-if="t.review_status === 'pending_confirm'">
+                <button class="btn btn-sm btn-danger" @click="openRejectModal(t.id)">驳回</button>
+              </template>
+            </td>
+          </tr>
+          <tr v-if="tasks.length === 0"><td colspan="8" class="empty-state"><div class="empty-icon">&#128203;</div><div class="empty-text">暂无入库任务</div><div class="empty-hint">添加数据源并触发采集后，任务将在此显示</div></td></tr>
+        </tbody>
+      </table></div>
+    </div>
+
+    <div v-show="activeTab === 'keywords'">
+      <div class="keywords-panel">
+        <h3>内置搜索关键词</h3>
+        <div class="tag-cloud">
+          <span class="badge badge-grey">无人机</span><span class="badge badge-grey">低慢小</span><span class="badge badge-grey">飞行物</span>
+          <span class="badge badge-grey">空飘物</span><span class="badge badge-grey">机场净空</span><span class="badge badge-grey">临时管控</span>
+          <span class="badge badge-grey">适飞空域</span><span class="badge badge-grey">禁飞</span><span class="badge badge-grey">航空器</span>
+          <span class="badge badge-grey">赛事管控</span><span class="badge badge-grey">考试管控</span>
+        </div>
+        <h3>公告分类规则（A~E）</h3>
+        <table><thead><tr><th>等级</th><th>含义</th><th>示例</th></tr></thead>
+        <tbody>
+          <tr><td><span class="badge badge-p0">A</span></td><td>正式临时禁飞/管控公告</td><td>政府/公安发布的临时禁飞通告</td></tr>
+          <tr><td><span class="badge badge-p1">B</span></td><td>活动须知/景区提示中的限制</td><td>赛事观赛须知、景区无人机限制</td></tr>
+          <tr><td><span class="badge badge-p2">C</span></td><td>长期规则/备案提醒</td><td>机场净空区、适飞空域说明</td></tr>
+          <tr><td><span class="badge badge-p3">D</span></td><td>媒体报道线索</td><td>新闻转载的管控报道</td></tr>
+          <tr><td><span class="badge badge-grey">E</span></td><td>不可核验/弱相关</td><td>模糊提及、非正式来源</td></tr>
+        </tbody></table>
+        <h3 style="margin-top:20px">来源等级</h3>
+        <table><thead><tr><th>等级</th><th>来源类型</th></tr></thead>
+        <tbody>
+          <tr><td><span class="badge badge-p0">P0</span></td><td>政府/公安/民航/应急等正式权威来源</td></tr>
+          <tr><td><span class="badge badge-p1">P1</span></td><td>官方公众号/融媒体/活动主办方/景区</td></tr>
+          <tr><td><span class="badge badge-p2">P2</span></td><td>主流媒体/官方媒体/政务媒体转载</td></tr>
+          <tr><td><span class="badge badge-p3">P3</span></td><td>自媒体/论坛/其他公开网页</td></tr>
+        </tbody></table>
+      </div>
+    </div>
+  </main>
+
+  <div v-if="drawer.task" id="drawer-overlay" @click="closeDrawer"></div>
+  <div v-if="drawer.task" id="drawer">
+    <button class="close" @click="closeDrawer">&times;</button>
+    <h2>解析详情</h2>
+    <div class="section"><h3>任务信息</h3>
+      <div class="field"><span class="fname">任务ID</span><span class="fval">{{ drawer.task.id }}</span></div>
+      <div class="field"><span class="fname">状态</span><span class="fval"><span class="badge badge-grey">{{ taskStatusLabel(drawer.task.task_status) }}</span></span></div>
+      <div class="field"><span class="fname">相关性</span><span class="fval">
+        <span v-if="drawer.task.is_relevant" class="badge badge-green">相关</span>
+        <span v-else-if="drawer.task.is_relevant === false" class="badge badge-grey">无关</span>
+        <span v-else>-</span>
+        {{ drawer.task.classification_result || '' }}
+      </span></div>
+      <div class="field"><span class="fname">审核</span><span class="fval"><span class="badge" :class="'badge-' + reviewBadge(drawer.task.review_status)">{{ reviewLabel(drawer.task.review_status) }}</span></span></div>
+    </div>
+    <div class="section"><h3>抽取字段</h3>
+      <div v-if="drawerFields.length === 0" style="color:var(--ui-muted);font-size:12.5px;">暂无抽取结果</div>
+      <div v-for="f in drawerFields" :key="f.key" class="field">
+        <span class="fname">{{ f.name }}</span>
+        <span class="fval">{{ f.value }} <span v-if="f.confidence != null" class="badge badge-grey">{{ (f.confidence * 100).toFixed(0) }}%</span></span>
+        <div v-if="f.evidence" style="font-size:10.5px;color:var(--ui-muted);margin-top:2px;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" style="vertical-align:middle;margin-right:3px;"><path d="M22 12L11.5 22.5C9.33 24.67 5.83 24.67 3.66 22.5C1.49 20.33 1.49 16.83 3.66 14.66L15.33 3C16.83 1.5 19.17 1.5 20.67 3C22.17 4.5 22.17 6.83 20.67 8.33L10.35 18.65C9.48 19.52 8.02 19.52 7.15 18.65C6.28 17.78 6.28 16.32 7.15 15.45L15.5 7.1" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" fill="none"/></svg> {{ f.evidence }}</div>
+      </div>
+    </div>
+    <div class="section"><h3>时间解析</h3>
+      <div class="field"><span class="fname">时间状态</span><span class="fval">{{ drawer.temporal?.time_status || '-' }}</span></div>
+      <div class="field"><span class="fname">时间模式</span><span class="fval">{{ drawer.temporal?.time_mode || '-' }}</span></div>
+      <div class="field"><span class="fname">判断依据</span><span class="fval">{{ drawer.temporal?.validity_basis || '-' }}</span></div>
+    </div>
+    <div class="section"><h3>地理信息</h3>
+      <div class="field"><span class="fname">类型</span><span class="fval">{{ drawer.geo?.geo_type || '-' }}</span></div>
+      <div class="field"><span class="fname">中心POI</span><span class="fval">{{ drawer.geo?.center_poi || '-' }}</span></div>
+      <div class="field"><span class="fname">半径</span><span class="fval">{{ drawer.geo?.radius_meters ? drawer.geo.radius_meters + 'm' : '-' }}</span></div>
+      <div class="field"><span class="fname">地理置信度</span><span class="fval">{{ drawer.geo?.geo_confidence ? (drawer.geo.geo_confidence * 100).toFixed(0) + '%' : '-' }}</span></div>
+    </div>
+    <div class="section"><h3>原文证据</h3>
+      <div style="font-size:12.5px;line-height:1.65;padding:14px;background:#f5f7fa;border-radius:10px;color:var(--ui-ink-2);border:1px solid var(--ui-border);">{{ drawer.task.evidence_text || drawer.task.raw_text || '无' }}</div>
+    </div>
+    <div class="actions">
+      <button class="btn" @click="closeDrawer">关闭</button>
+      <template v-if="drawer.task.review_status === 'pending_confirm'">
+        <button class="btn btn-success" @click="approveTask(drawer.task.id); closeDrawer()">确认发布</button>
+        <button class="btn btn-danger" @click="rejectTask(drawer.task.id); closeDrawer()">驳回</button>
+      </template>
+    </div>
+  </div>
+
+  <div v-if="showModal" id="modal-overlay" @click="closeModal"></div>
+  <div v-if="showModal" id="modal">
+    <h2>{{ modalTitle }}</h2>
+
+    <!-- 手动提交公告（原有） -->
+    <template v-if="modalMode === 'manual'">
+      <div style="margin-bottom:12px;">
+        <label><input type="radio" v-model="submitType" value="text" /> 粘贴正文</label>
+        <label><input type="radio" v-model="submitType" value="url" /> 粘贴链接</label>
+      </div>
+      <textarea v-if="submitType === 'text'" v-model="manualText" placeholder="请粘贴公告正文全文..."></textarea>
+      <input v-if="submitType === 'url'" v-model="manualUrl" placeholder="请粘贴公告链接（URL）" />
+      <input v-model="manualSourceName" placeholder="来源名称（如：杭州市某区政府网站）" />
+      <input v-model="manualSourceUrl" placeholder="来源 URL（可选）" />
+      <select v-model="manualSourceLevel">
+        <option value="P0">P0 - 政府/公安/民航</option>
+        <option value="P1">P1 - 官方公众号/融媒体</option>
+        <option value="P2">P2 - 主流媒体</option>
+        <option value="P3">P3 - 自媒体/论坛</option>
+      </select>
+    </template>
+
+    <!-- 新增数据源 -->
+    <template v-if="modalMode === 'addSource'">
+      <input v-model="modalForm.name" placeholder="数据源名称" />
+      <input v-model="modalForm.url" placeholder="数据源 URL（https://...）" />
+      <select v-model="modalForm.level">
+        <option value="P0">P0 - 政府/公安/民航</option>
+        <option value="P1">P1 - 官方公众号/融媒体</option>
+        <option value="P2">P2 - 主流媒体</option>
+        <option value="P3">P3 - 自媒体/论坛</option>
+      </select>
+    </template>
+
+    <!-- 驳回原因 -->
+    <template v-if="modalMode === 'reject'">
+      <textarea v-model="modalForm.reason" placeholder="请输入驳回原因..."></textarea>
+    </template>
+
+    <div class="actions">
+      <button class="btn btn-ghost" @click="closeModal">取消</button>
+      <button class="btn btn-primary" @click="submitModal">确认</button>
+    </div>
+  </div>
+</div>
+
+<script src="libs/vue.global.prod.js"></script>
+<script type="module">
+const { createApp, ref, reactive, computed, onMounted } = Vue;
+const API = '/api/v1';
+
+const app = createApp({
+  setup() {
+    const stats = reactive({
+      enabled_sources: 0, candidate_tasks: 0, valid_announcements: 0,
+      pending_review: 0, published_layers: 0, parse_success_rate: 0,
+      layers_without_evidence: 0, overreach_text_count: 0,
+    });
+
+    const activeTab = ref('sources');
+    const tabs = [
+      { id: 'sources',  label: '数据源' },
+      { id: 'tasks',    label: '入库任务' },
+      { id: 'keywords', label: '关键词/规则' },
+    ];
+
+    function switchTab(tab) {
+      activeTab.value = tab;
+      if (tab === 'sources') loadSources();
+      if (tab === 'tasks')   loadTasks();
+    }
+
+    const sources = ref([]);
+    async function loadSources() {
+      const r = await fetch(`${API}/data-sources`).then(r => r.json());
+      sources.value = r.items;
+    }
+    async function toggleSource(id, enabled) {
+      await fetch(`${API}/data-sources/${id}`, {
+        method: 'PATCH', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ enabled }),
+      });
+      loadSources();
+    }
+    async function crawlSource(id) {
+      await fetch(`${API}/data-sources/${id}/crawl`, { method: 'POST' });
+      alert('已触发采集任务');
+      loadSources();
+    }
+    function openAddSource() {
+      modalForm.name = '';
+      modalForm.url = '';
+      modalForm.level = 'P1';
+      modalMode.value = 'addSource';
+      showModal.value = true;
+    }
+
+    const tasks = ref([]);
+    const taskFilter = reactive({ status: '', review: '' });
+    async function loadTasks() {
+      const params = new URLSearchParams();
+      if (taskFilter.status) params.set('task_status', taskFilter.status);
+      if (taskFilter.review) params.set('review_status', taskFilter.review);
+      const r = await fetch(`${API}/ingestion-tasks?${params}`).then(r => r.json());
+      tasks.value = r.items;
+    }
+
+    const drawer = reactive({ task: null, temporal: {}, geo: {} });
+    const drawerFields = ref([]);
+    async function openTaskDetail(taskId) {
+      const r = await fetch(`${API}/ingestion-tasks/${taskId}`).then(r => r.json());
+      drawer.task = r;
+      drawer.temporal = r.temporal_result || {};
+      drawer.geo = r.geo_parse_result || {};
+      const ef = r.extracted_fields || {};
+      drawerFields.value = Object.entries(ef)
+        .filter(([_, v]) => v && v.value != null)
+        .map(([k, v]) => ({
+          key: k,
+          name: fieldName(k),
+          value: String(v.value),
+          confidence: v.confidence,
+          evidence: v.evidence || '',
+        }));
+    }
+    function closeDrawer() { drawer.task = null; }
+
+    async function approveTask(taskId) {
+      await fetch(`${API}/ingestion-tasks/${taskId}/approve`, {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ publish_to_map: true }),
+      });
+      loadTasks(); loadStats();
+    }
+    function rejectTask(taskId) {
+      modalForm.reason = '';
+      modalTaskId.value = taskId;
+      modalMode.value = 'reject';
+      showModal.value = true;
+    }
+
+    const showModal = ref(false);
+    const modalMode = ref('manual');
+    const modalForm = reactive({ name: '', url: '', level: 'P1', reason: '' });
+    const toasts = ref([]);
+    let _toastId = 0;
+    const modalTaskId = ref(null);
+    const modalTitle = computed(() => {
+      if (modalMode.value === 'manual') return '手动提交公告';
+      if (modalMode.value === 'addSource') return '新增数据源';
+      if (modalMode.value === 'reject') return '驳回原因';
+      return '';
+    });
+    const submitType = ref('text');
+    const manualText = ref('');
+    const manualUrl = ref('');
+    const manualSourceName = ref('');
+    const manualSourceUrl = ref('');
+    const manualSourceLevel = ref('P1');
+
+    async function submitManual() {
+      const body = {
+        submission_type: submitType.value,
+        source_name: manualSourceName.value || '手动提交',
+        source_url: manualSourceUrl.value || null,
+        source_level_hint: manualSourceLevel.value,
+      };
+      if (submitType.value === 'text') {
+        body.manual_text = manualText.value;
+      } else {
+        body.manual_url = manualUrl.value;
+      }
+      if (!body.manual_text && !body.manual_url) { showToast('请输入公告内容'); return; }
+
+      const r = await fetch(`${API}/ingestion-tasks/manual-submit`, {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(body),
+      }).then(r => r.json());
+      showToast(r.message || '提交成功，任务已进入解析队列', 'success');
+      showModal.value = false;
+      manualText.value = ''; manualUrl.value = ''; manualSourceName.value = ''; manualSourceUrl.value = '';
+      loadTasks(); loadStats();
+      activeTab.value = 'tasks';
+    }
+
+    function openAddSourceModal() {
+      modalForm.name = '';
+      modalForm.url = '';
+      modalForm.level = 'P1';
+      modalMode.value = 'addSource';
+      showModal.value = true;
+    }
+
+    function openRejectModal(taskId) {
+      modalForm.reason = '';
+      modalTaskId.value = taskId;
+      modalMode.value = 'reject';
+      showModal.value = true;
+    }
+
+    async function submitModal() {
+      if (modalMode.value === 'addSource') {
+        if (!modalForm.name || !modalForm.url) { alert('请填写完整信息'); return; }
+        await fetch(`${API}/data-sources`, {
+          method: 'POST', headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ source_name: modalForm.name, source_url: modalForm.url, source_level: modalForm.level || 'P1' }),
+        });
+        showModal.value = false;
+        loadSources();
+      } else if (modalMode.value === 'reject') {
+        if (!modalForm.reason) { alert('请填写驳回原因'); return; }
+        await fetch(`${API}/ingestion-tasks/${modalTaskId.value}/reject`, {
+          method: 'POST', headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ reason: modalForm.reason }),
+        });
+        showModal.value = false;
+        modalTaskId.value = null;
+        loadTasks(); loadStats();
+      } else if (modalMode.value === 'manual') {
+        await submitManual();
+      }
+    }
+
+    function closeModal() {
+      showModal.value = false;
+      modalMode.value = 'manual';
+      modalForm.name = ''; modalForm.url = ''; modalForm.level = 'P1'; modalForm.reason = '';
+      modalTaskId.value = null;
+    }
+
+    function showToast(message, type = 'error') {
+      const id = ++_toastId;
+      toasts.value.push({ id, message, type });
+      setTimeout(() => {
+        toasts.value = toasts.value.filter(t => t.id !== id);
+      }, 3800);
+    }
+    function dismissToast(id) {
+      toasts.value = toasts.value.filter(t => t.id !== id);
+    }
+
+    async function loadStats() {
+      const r = await fetch(`${API}/stats/overview`).then(r => r.json());
+      Object.assign(stats, r);
+    }
+
+    function fmtPct(v) { return v != null ? Math.round(v * 100) + '%' : '-'; }
+    function typeLabel(t) {
+      const m = { government_website: '政府网站', police_website: '公安网站', official_media: '官方媒体', scenic_notice: '景区公告', event_website: '活动网站', social_media: '社交媒体' };
+      return m[t] || t;
+    }
+    function taskStatusLabel(s) {
+      const m = { submitted: '已提交', fetching: '采集中', classifying: '分类中', extracting: '抽取中', geo_parsing: '地理编码', time_normalizing: '时间归一化', parsed: '已解析', needs_review: '需核验', approved: '已通过', published: '已发布', rejected: '已驳回' };
+      return m[s] || s;
+    }
+    function reviewLabel(s) {
+      const m = { auto_pass: '自动通过', pending_confirm: '待确认', approved: '已确认', rejected: '已驳回' };
+      return m[s] || s;
+    }
+    function reviewBadge(s) {
+      const m = { auto_pass: 'green', pending_confirm: 'orange', approved: 'green', rejected: 'red' };
+      return m[s] || 'grey';
+    }
+    function fieldName(k) {
+      const m = { title: '标题', publish_unit: '发布单位', start_time: '开始时间', end_time: '结束时间', control_type: '管控类型', area_text: '管控区域' };
+      return m[k] || k;
+    }
+
+    onMounted(() => {
+      loadStats();
+      loadSources();
+    });
+
+    return {
+      stats, activeTab, tabs, switchTab,
+      sources, loadSources, toggleSource, crawlSource, openAddSource,
+      tasks, taskFilter, loadTasks,
+      drawer, drawerFields, openTaskDetail, closeDrawer,
+      approveTask, rejectTask,
+      showModal, modalMode, modalForm, modalTaskId, modalTitle, submitModal, closeModal, toasts, showToast, dismissToast,
+      submitType, manualText, manualUrl, manualSourceName, manualSourceUrl, manualSourceLevel, submitManual,
+      fmtPct, typeLabel, taskStatusLabel, reviewLabel, reviewBadge, fieldName,
+    };
+  },
+});
+
+app.mount('#app');
+</script>
+</body>
+</html>

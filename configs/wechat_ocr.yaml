@@ -1,0 +1,153 @@
+cities:
+  - 济南
+  - 青岛
+  - 淄博
+  - 枣庄
+  - 东营
+  - 烟台
+  - 潍坊
+  - 济宁
+  - 泰安
+  - 威海
+  - 日照
+  - 临沂
+  - 德州
+  - 聊城
+  - 滨州
+  - 菏泽
+
+keywords:
+  - 无人机
+  - 无人驾驶航空器
+  - 民用无人机
+  - 低慢小
+  - 飞行物
+  - 空飘物
+  - 机场净空
+  - 净空保护
+  - 临时管控
+  - 临时管制
+  - 禁飞
+  - 适飞空域
+  - 管制空域
+  - 实名登记
+  - 登记备案
+  - 高考
+  - 中考
+  - 马拉松
+  - 景区
+  - 升放气球
+
+time_range:
+  start: "2025-01-01"
+  end: "2026-12-31"
+  include_unknown_dates: true
+
+current_date: "2026-06-07"
+
+crawl:
+  polite_delay_seconds: 1.5
+  max_pages_per_source: 20
+  max_depth: 2
+  timeout_seconds: 15
+  respect_robots_txt: true
+  user_agent: "source-audit/0.1 (+public-source-risk-audit)"
+
+wechat:
+  follow_mp_links: true
+
+image_ocr:
+  enabled: true
+  max_images_per_page: 5
+  max_image_bytes: 4000000
+  min_text_chars: 6
+  mistral_api_key: ""
+  mistral_model: "mistral-ocr-latest"
+
+storage:
+  database_path: data/source_audit.sqlite
+
+output:
+  output_dir: outputs
+
+sources:
+  - name: 济南市人民政府公开入口
+    url: https://www.jinan.gov.cn/
+    priority: P0
+    city: 济南
+
+  - name: 青岛市人民政府公开入口
+    url: https://www.qingdao.gov.cn/
+    priority: P0
+    city: 青岛
+
+  - name: 淄博市人民政府公开入口
+    url: https://www.zibo.gov.cn/
+    priority: P0
+    city: 淄博
+
+  - name: 枣庄市人民政府公开入口
+    url: https://www.zaozhuang.gov.cn/
+    priority: P0
+    city: 枣庄
+
+  - name: 东营市人民政府公开入口
+    url: https://www.dongying.gov.cn/
+    priority: P0
+    city: 东营
+
+  - name: 烟台市人民政府公开入口
+    url: https://www.yantai.gov.cn/
+    priority: P0
+    city: 烟台
+
+  - name: 潍坊市人民政府公开入口
+    url: https://www.weifang.gov.cn/
+    priority: P0
+    city: 潍坊
+
+  - name: 济宁市人民政府公开入口
+    url: https://www.jining.gov.cn/
+    priority: P0
+    city: 济宁
+
+  - name: 泰安市人民政府公开入口
+    url: https://www.taian.gov.cn/
+    priority: P0
+    city: 泰安
+
+  - name: 威海市人民政府公开入口
+    url: https://www.weihai.gov.cn/
+    priority: P0
+    city: 威海
+
+  - name: 日照市人民政府公开入口
+    url: https://www.rizhao.gov.cn/
+    priority: P0
+    city: 日照
+
+  - name: 临沂市人民政府公开入口
+    url: https://www.linyi.gov.cn/
+    priority: P0
+    city: 临沂
+
+  - name: 德州市人民政府公开入口
+    url: https://www.dezhou.gov.cn/
+    priority: P0
+    city: 德州
+
+  - name: 聊城市人民政府公开入口
+    url: https://www.liaocheng.gov.cn/
+    priority: P0
+    city: 聊城
+
+  - name: 滨州市人民政府公开入口
+    url: https://www.binzhou.gov.cn/
+    priority: P0
+    city: 滨州
+
+  - name: 菏泽市人民政府公开入口
+    url: https://www.heze.gov.cn/
+    priority: P0
+    city: 菏泽
+

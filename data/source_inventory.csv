@@ -1,0 +1,21 @@
+city,source_level,source_name,base_url,notes
+济南,P0,济南市人民政府,https://www.jinan.gov.cn/,政府门户；已发现多条临时管制通告
+济南,P0,济南市气象局,https://www.jinan.gov.cn/col/col4128/,升放气球/空飘物通告来源
+青岛,P0,青岛市人民政府,https://www.qingdao.gov.cn/,政府门户；需继续定位公安/机场净空正式栏目
+青岛,P1,青岛机场,https://www.qdairport.com/,机场净空与低慢小提示潜在来源
+淄博,P0,淄博市人民政府,https://www.zibo.gov.cn/,政府门户
+淄博,P0,淄博市公安局,https://gaj.zibo.gov.cn/,公安通告来源
+枣庄,P0,枣庄市人民政府,https://www.zaozhuang.gov.cn/,政府门户；暂以媒体转载补线索
+东营,P0,东营市人民政府,https://www.dongying.gov.cn/,政府门户；待补精确公告栏目
+烟台,P0,烟台市人民政府,https://www.yantai.gov.cn/,政府门户；部分页面 robots.txt 禁止抓取
+潍坊,P0,潍坊市人民政府,https://www.weifang.gov.cn/,政府门户；暂以媒体转载补线索
+济宁,P0,济宁市人民政府,https://www.jining.gov.cn/,已发现无人驾驶航空器临时管制通告
+泰安,P0,泰安市人民政府,https://www.taian.gov.cn/,政府门户
+泰安,P0,泰安市公安局,https://gaj.taian.gov.cn/,公安公告来源
+威海,P0,威海市人民政府,https://www.weihai.gov.cn/,已发现高考低慢小临时管控通告
+日照,P0,日照市人民政府,https://www.rizhao.gov.cn/,政府门户；待补精确公告栏目
+临沂,P0,临沂市人民政府,https://www.linyi.gov.cn/,已发现飞机施药期间禁飞通告
+德州,P0,德州市人民政府,https://www.dezhou.gov.cn/,政府门户；暂以媒体转载补线索
+聊城,P0,聊城市人民政府,https://www.liaocheng.gov.cn/,政府门户；暂以媒体转载补线索
+滨州,P0,滨州市人民政府,https://www.binzhou.gov.cn/,政府门户；暂以媒体转载补线索
+菏泽,P0,菏泽市人民政府,https://www.heze.gov.cn/,政府门户；暂以媒体/公安罚单补线索

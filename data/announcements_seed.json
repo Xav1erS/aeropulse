@@ -1,0 +1,123 @@
+[
+  {
+    "id": "weihai_gaokao_2026",
+    "title": "关于高考期间对无人机等“低慢小”航空器实施临时管控的通告",
+    "publish_unit": "威海市公安局",
+    "source_name": "威海市人民政府网",
+    "source_url": "https://www.weihai.gov.cn/art/2026/6/4/art_51863_6399487.html",
+    "source_level": "P0",
+    "publish_time": "2026-06-03",
+    "city": "威海市",
+    "control_type": "临时管控",
+    "risk_class": "control",
+    "aircraft_types": ["无人机", "航空模型", "滑翔伞", "动力伞", "热气球", "飞艇", "空飘气球", "孔明灯"],
+    "time": {"mode": "single", "start": "2026-06-07T06:00:00", "end": "2026-06-10T18:00:00"},
+    "area_text": "全市各高考考点及周边500米范围内",
+    "geo": {
+      "geo_type": "poi_buffer_multi",
+      "city": "威海",
+      "poi_list": ["威海市第一中学", "威海市第二中学", "威海市实验高级中学"],
+      "radius_m": 500,
+      "roster_status": "candidate_needs_verification"
+    },
+    "evidence_text": "管控时段为2026年6月7日6时至6月10日18时，全市各高考考点及周边500米范围内严禁飞行无人机等“低慢小”航空器。",
+    "confidence_score": 0.9
+  },
+  {
+    "id": "jinan_quancheng_2025",
+    "title": "济南市人民政府关于在泉城广场及周边区域对无人驾驶航空器飞行活动实施临时管制的通告",
+    "publish_unit": "济南市人民政府",
+    "source_name": "济南市人民政府网",
+    "source_url": "https://www.jinan.gov.cn/col2612/art/2025/art_2612_5050273.html",
+    "source_level": "P0",
+    "publish_time": "2025-12-29",
+    "city": "济南市",
+    "control_type": "临时空域管制",
+    "risk_class": "no_fly",
+    "aircraft_types": ["微型无人机", "轻型无人机", "小型无人机", "中型无人机", "大型无人机"],
+    "time": {"mode": "single", "start": "2025-12-31T14:00:00", "end": "2026-01-01T02:00:00"},
+    "area_text": "泉城广场片区：东至南门大街-天地坛街，西至趵突泉南路-趵突泉北路，北至泉城路，南至泺源大街，外延500米区域上方对应的空域。",
+    "geo": {
+      "geo_type": "bbox_roads",
+      "city": "济南",
+      "roads": ["南门大街", "趵突泉南路", "泉城路", "泺源大街"],
+      "outer_buffer_m": 500
+    },
+    "evidence_text": "管制时段2025年12月31日14时至2026年1月1日凌晨2时；管制区域东至南门大街-天地坛街，西至趵突泉南路-趵突泉北路，北至泉城路，南至泺源大街，外延500米。",
+    "confidence_score": 0.88
+  },
+  {
+    "id": "dongying_delta_migratory",
+    "title": "关于对无人驾驶航空器飞行活动实施临时管控的通告（黄河三角洲自然保护区）",
+    "publish_unit": "山东黄河三角洲国家级自然保护区",
+    "source_name": "东营新闻网",
+    "source_url": "https://news.dongyingnews.cn/system/2025/11/12/010879691.shtml",
+    "source_level": "P1",
+    "publish_time": "2025-11-12",
+    "city": "东营市",
+    "control_type": "临时管控",
+    "risk_class": "control",
+    "aircraft_types": ["无人驾驶航空器"],
+    "time": {
+      "mode": "recurring_seasonal",
+      "windows": [{"start": "10-10", "end": "12-31"}, {"start": "02-20", "end": "04-30"}]
+    },
+    "area_text": "山东黄河三角洲国家级自然保护区全域及周边3公里鸟类觅食栖息区域。",
+    "geo": {
+      "geo_type": "area_no_boundary",
+      "city": "东营",
+      "poi": "山东黄河三角洲国家级自然保护区",
+      "note": "保护区全域+周边3公里，无标准行政区边界数据源，几何待人工勾画/接保护区 GIS。"
+    },
+    "evidence_text": "管控时段：秋季迁徙期每年10月10日至12月31日；春季迁徙期每年2月20日至4月30日。管控区域：保护区全域及周边3公里。",
+    "confidence_score": 0.86
+  },
+  {
+    "id": "qingdao_beer_2024",
+    "title": "第34届青岛国际啤酒节（西海岸会场）金沙滩啤酒城禁飞通告",
+    "publish_unit": "第34届青岛国际啤酒节（西海岸会场）组委会",
+    "source_name": "青岛新闻网",
+    "source_url": "https://www.qingdaonews.com/app/content/2024-07/18/content_23589766.htm",
+    "source_level": "P2",
+    "publish_time": "2024-07-18",
+    "city": "青岛市",
+    "control_type": "临时禁飞",
+    "risk_class": "no_fly",
+    "aircraft_types": ["无人机", "航空模型", "热气球", "孔明灯", "大型风筝"],
+    "time": {"mode": "single", "start": "2024-07-19T00:00:00", "end": "2024-08-12T00:00:00"},
+    "area_text": "青岛西海岸新区金沙滩啤酒城区域。",
+    "geo": {
+      "geo_type": "poi_buffer",
+      "city": "青岛",
+      "poi": "金沙滩啤酒城",
+      "radius_m": null,
+      "radius_estimated": 800
+    },
+    "evidence_text": "自2024年7月19日0时起至8月11日24时止，禁止在金沙滩啤酒城区域升降无人机等“低慢小”航空器。",
+    "confidence_score": 0.74
+  },
+  {
+    "id": "jinan_qianfoshan_2026",
+    "title": "济南市人民政府关于在千佛山景区对无人驾驶航空器飞行活动实施临时管制的通告",
+    "publish_unit": "济南市人民政府",
+    "source_name": "济南市人民政府网",
+    "source_url": "https://www.jinan.gov.cn/col/col44545/art/2026/art_07906f2a9d5844d8af8ad26250cc321c.html",
+    "source_level": "P0",
+    "publish_time": "2026-02-14",
+    "city": "济南市",
+    "control_type": "临时空域管制",
+    "risk_class": "no_fly",
+    "aircraft_types": ["无人驾驶航空器"],
+    "time": {"mode": "single", "start": "2026-02-16T18:00:00", "end": "2026-03-03T22:30:00"},
+    "area_text": "千佛山景区上方对应的空域（春节、元宵节游园会期间）。",
+    "geo": {
+      "geo_type": "poi_buffer",
+      "city": "济南",
+      "poi": "千佛山风景名胜区",
+      "radius_m": null,
+      "radius_estimated": 1000
+    },
+    "evidence_text": "管制时段2026年2月16日至3月3日游园会期间；管制区域千佛山景区上方对应空域。",
+    "confidence_score": 0.85
+  }
+]

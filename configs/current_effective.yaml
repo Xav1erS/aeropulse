@@ -1,0 +1,171 @@
+cities:
+  - 济南
+  - 青岛
+  - 淄博
+  - 枣庄
+  - 东营
+  - 烟台
+  - 潍坊
+  - 济宁
+  - 泰安
+  - 威海
+  - 日照
+  - 临沂
+  - 德州
+  - 聊城
+  - 滨州
+  - 菏泽
+
+keywords:
+  - 无人机
+  - 无人驾驶航空器
+  - 民用无人机
+  - 登记备案
+  - 实名登记
+  - 安全管理
+  - 适飞空域
+  - 管制空域
+  - 飞行活动申请
+  - 机场净空
+  - 低慢小
+  - 空飘物
+
+time_range:
+  start: "2026-01-01"
+  end: "2026-12-31"
+  include_unknown_dates: true
+
+current_date: "2026-06-07"
+
+crawl:
+  polite_delay_seconds: 2.0
+  max_pages_per_source: 1
+  max_depth: 0
+  timeout_seconds: 12
+  respect_robots_txt: true
+  user_agent: "source-audit/0.1 (+public-source-risk-audit)"
+
+storage:
+  database_path: data/source_audit.sqlite
+
+output:
+  output_dir: outputs
+
+sources:
+  - name: 山东交通运输厅优化后适飞空域通告
+    url: https://jtt.shandong.gov.cn/art/2026/5/14/art_15843_10329329.html
+    priority: P0
+    max_pages: 1
+
+  - name: 山东交通运输厅适飞空域通告
+    url: https://jtt.shandong.gov.cn/art/2026/2/9/art_15843_10328036.html
+    priority: P0
+    max_pages: 1
+
+  - name: 济南公安无人机登记备案新浪财经线索
+    url: https://finance.sina.com.cn/roll/2026-01-28/doc-inhivmkz9046198.shtml
+    priority: P2
+    city: 济南
+    max_pages: 1
+
+  - name: 青岛公安无人机登记备案媒体线索
+    url: https://news.qtv.com.cn/system/2026/01/28/016144208.shtml
+    priority: P2
+    city: 青岛
+    max_pages: 1
+
+  - name: 青岛无人机登记备案媒体转载
+    url: https://m.thepaper.cn/newsDetail_forward_32481535
+    priority: P2
+    city: 青岛
+    max_pages: 1
+
+  - name: 淄博公安无人机登记备案通告
+    url: https://gaj.zibo.gov.cn/QWFB/Article.aspx?id=708302&type=2
+    priority: P0
+    city: 淄博
+    max_pages: 1
+
+  - name: 枣庄无人机登记备案峄览线索
+    url: https://iapp.yilan-app.com/share/YS0yMDktNDI0MTE2Njc.html
+    priority: P2
+    city: 枣庄
+    max_pages: 1
+
+  - name: 东营无人机登记备案闪电新闻线索
+    url: https://dongying.iqilu.com/dyminsheng/2026/0128/5887603.shtml
+    priority: P2
+    city: 东营
+    max_pages: 1
+
+  - name: 烟台公安无人机登记备案齐鲁晚报线索
+    url: https://kandian.sina.cn/article_2011075080_77de920802001m0ru.html
+    priority: P2
+    city: 烟台
+    max_pages: 1
+
+  - name: 潍坊无人机登记备案搜狐线索
+    url: https://www.sohu.com/a/981085065_121106991
+    priority: P2
+    city: 潍坊
+    max_pages: 1
+
+  - name: 济宁无人机登记备案新浪线索
+    url: https://sd.sina.cn/jining/2026-01-28/detail-inhivmme5071946.d.html
+    priority: P2
+    city: 济宁
+    max_pages: 1
+
+  - name: 泰安公安无人机登记备案媒体线索
+    url: https://taian.iqilu.com/taianyaowen/2026/0127/5887395.shtml
+    priority: P2
+    city: 泰安
+    max_pages: 1
+
+  - name: 威海公安无人机登记备案搜狐线索
+    url: https://m.sohu.com/a/980628504_121106991
+    priority: P2
+    city: 威海
+    max_pages: 1
+
+  - name: 威海公安无人机登记备案鲁网线索
+    url: https://m.sohu.com/a/981015405_115510
+    priority: P2
+    city: 威海
+    max_pages: 1
+
+  - name: 威海无人机适飞空域媒体线索
+    url: https://www.whnews.cn/news/node/2026-05/26/content_7387326.htm
+    priority: P2
+    city: 威海
+    max_pages: 1
+
+  - name: 日照公安无人机登记备案半岛网线索
+    url: https://rizhao.bandao.cn/a/1769503192202330.html
+    priority: P2
+    city: 日照
+    max_pages: 1
+
+  - name: 德州公安无人机登记备案媒体线索
+    url: https://finance.sina.com.cn/jjxw/2026-01-27/doc-inhitntv7574614.shtml
+    priority: P2
+    city: 德州
+    max_pages: 1
+
+  - name: 聊城公安无人机管理航拍网线索
+    url: https://www.chinahpsy.com/detail-201755.html
+    priority: P2
+    city: 聊城
+    max_pages: 1
+
+  - name: 滨州公安无人机登记备案媒体线索
+    url: https://kandian.sina.cn/article_3235606600_c0db704802701qdzw.html
+    priority: P2
+    city: 滨州
+    max_pages: 1
+
+  - name: 菏泽公安无人机登记备案齐鲁晚报线索
+    url: https://kandian.sina.cn/article_2265859925_870e475502701ir7k.html
+    priority: P2
+    city: 菏泽
+    max_pages: 1
