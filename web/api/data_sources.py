@@ -39,6 +39,7 @@ def trigger_crawl(source_id: str):
         raise HTTPException(404, "数据源不存在")
     # PoC 阶段：标记为采集已触发（实际采集由 source_audit 执行）
     store.update_data_source(source_id, {
+        "last_crawled_at": store._now(),
         "last_crawl_status": "running",
     })
     return {

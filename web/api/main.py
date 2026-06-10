@@ -19,7 +19,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import RedirectResponse
 from fastapi.staticfiles import StaticFiles
 
-from . import data_sources, ingestion, map_layers, stats
+from . import data_sources, ingestion, map_layers, stats, announcements, layers
 
 app = FastAPI(
     title="AeroPulse API",
@@ -44,6 +44,8 @@ app.include_router(data_sources.router, prefix="/api/v1")
 app.include_router(ingestion.router, prefix="/api/v1")
 app.include_router(map_layers.router, prefix="/api/v1")
 app.include_router(stats.router, prefix="/api/v1")
+app.include_router(announcements.router, prefix="/api/v1")
+app.include_router(layers.router, prefix="/api/v1")
 
 
 @app.get("/", include_in_schema=False)

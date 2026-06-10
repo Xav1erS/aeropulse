@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import json
 import logging
+import math
 from datetime import datetime, timezone, timedelta
 
 from fastapi import APIRouter, HTTPException, Query
@@ -44,7 +45,7 @@ def get_layers(
         except ValueError:
             raise HTTPException(400, "selected_time 格式无效，需 ISO 8601")
 
-        # 获取已发布的公告
+        # 获取已发布的公告（旧系统兼容）
         filters = {"map_layer_status": "published"}
         if city:
             filters["city"] = city
@@ -55,10 +56,69 @@ def get_layers(
 
         announcements = store.list_announcements(**filters)
 
-        summary = {"active_count": 0, "not_started_count": 0, "expired_count": 0, "long_term_count": 0, "unknown_count": 0}
         features = []
 
+        # 从 map_layers 表读取（新系统）
+        published_layers = store.get_published_layers_geojson()
+        for layer in published_layers:
+            geo_json = layer.get("geo_json")
+            if isinstance(geo_json, str):
+                try:
+                    geo_json = json.loads(geo_json)
+                except json.JSONDecodeError:
+                    geo_json = None
+
+            if not geo_json:
+                city_coords = _city_default_coord(layer.get("city", "") or layer.get("ann_city", ""))
+                if city_coords:
+                    geo_json = {"type": "Point", "coordinates": city_coords}
+                else:
+                    continue
+
+            start = layer.get("validity_start") or layer.get("start_time")
+            end = layer.get("validity_end") or layer.get("end_time")
+            ts = "active"
+            if end and end < selected_time:
+                ts = "expired"
+            elif start and start > selected_time:
+                ts = "not_started"
+            if ts == "expired" and not include_expired:
+                continue
+
+            control_t = layer.get("control_type") or layer.get("ann_control_type", "临时管控")
+            style_hint = _style_hint(control_t, ts, layer.get("geo_grade", "E"), False)
+
+            features.append({
+                "type": "Feature",
+                "announcement_id": layer["announcement_id"],
+                "title": layer.get("title") or layer.get("ann_title", ""),
+                "control_type": control_t,
+                "time_status": ts,
+                "source_level": layer.get("source_level", "P2"),
+                "geo_confidence": layer.get("geo_confidence", 0),
+                "geo_grade": layer.get("geo_grade", "E"),
+                "extraction_method": "manual",
+                "geometry": geo_json,
+                "properties": {
+                    "announcement_id": layer["announcement_id"],
+                    "title": layer.get("title") or layer.get("ann_title", ""),
+                    "control_type": control_t,
+                    "time_status": ts,
+                    "source_name": layer.get("ann_source_name", ""),
+                    "source_level": layer.get("source_level", "P2"),
+                    "geo_confidence": layer.get("geo_confidence", 0),
+                    "style_hint": style_hint,
+                    "radius_meters": layer.get("radius_meters"),
+                    "center_poi": layer.get("center_poi"),
+                },
+            })
+
+        # 从 announcements 表读取（旧系统兼容，已有 geo_json 的公告）
         for ann in announcements:
+            # 跳过已经在 map_layers 中处理过的公告
+            existing_ids = {f["announcement_id"] for f in features}
+            if ann["id"] in existing_ids:
+                continue
             # 时间状态判断
             ts = _evaluate_time_status(ann, sel_time)
 
@@ -67,8 +127,6 @@ def get_layers(
                 continue
             if ts == "not_started" and not include_review and ann.get("needs_review"):
                 continue
-
-            summary[f"{ts}_count"] = summary.get(f"{ts}_count", 0) + 1
 
             # 解析 GeoJSON
             geometry = ann.get("geo_json")
@@ -101,6 +159,13 @@ def get_layers(
                 "extraction_method": ann.get("extraction_method", "manual"),
                 "geometry": geometry,
                 "properties": {
+                    "announcement_id": ann["id"],
+                    "title": ann["title"],
+                    "control_type": ann["control_type"],
+                    "time_status": ts,
+                    "source_name": ann.get("source_name", ""),
+                    "source_level": ann.get("source_level", "P2"),
+                    "geo_confidence": ann.get("geo_confidence", 0),
                     "style_hint": style_hint,
                     "radius_meters": ann.get("radius_meters"),
                     "center_poi": ann.get("center_poi"),
@@ -110,6 +175,8 @@ def get_layers(
         # 视野过滤（简易 BBox）
         if bounds:
             features = _filter_by_bounds(features, bounds)
+
+        summary = _build_layer_summary(features)
 
         return {
             "selected_time": selected_time,
@@ -123,30 +190,96 @@ def get_layers(
         raise HTTPException(500, f"内部错误: {e}")
 
 
+@router.get("/announcements/nearby")
+def nearby_announcements(
+    lng: float = Query(..., description="经度 GCJ-02"),
+    lat: float = Query(..., description="纬度 GCJ-02"),
+    radius: float = Query(5000, ge=100, le=50000, description="搜索半径，米"),
+    time: str | None = Query(None, description="所选时间 ISO 8601"),
+):
+    when = _parse_iso_datetime(time) if time else datetime.now(CST)
+    features = []
+    for ann in store.list_announcements(map_layer_status="published", limit=500):
+        geometry = ann.get("geo_json")
+        if isinstance(geometry, str):
+            try:
+                geometry = json.loads(geometry)
+            except json.JSONDecodeError:
+                geometry = None
+        if not geometry:
+            coord = _city_default_coord(ann.get("city", ""))
+            geometry = {"type": "Point", "coordinates": coord} if coord else None
+        if not geometry:
+            continue
+        distance = _distance_to_geometry(lng, lat, geometry)
+        if distance is None or distance > radius:
+            continue
+        ts = _evaluate_time_status(ann, when)
+        features.append({
+            "type": "Feature",
+            "announcement_id": ann["id"],
+            "title": ann["title"],
+            "control_type": ann["control_type"],
+            "time_status": ts,
+            "distance_meters": round(distance),
+            "geometry": geometry,
+            "properties": {
+                "announcement_id": ann["id"],
+                "title": ann["title"],
+                "control_type": ann["control_type"],
+                "time_status": ts,
+                "source_name": ann.get("source_name", ""),
+                "source_level": ann.get("source_level", "P2"),
+            },
+        })
+    features.sort(key=lambda f: f["distance_meters"])
+    return {"features": features[:20], "total": len(features), "selected_time": time}
+
+
 @router.get("/announcements/{announcement_id}")
-def get_announcement_detail(announcement_id: str):
+def get_announcement_detail(
+    announcement_id: str,
+    selected_time: str | None = Query(None, description="详情卡所选时间 ISO 8601"),
+):
     """获取公告详情（图层点击）。对齐 SPEC §5.3 GET /api/v1/announcements/{id}。"""
     ann = store.get_announcement(announcement_id)
     if not ann:
         raise HTTPException(404, "公告不存在")
+    time_status = ann.get("time_status", "unknown")
+    if selected_time:
+        try:
+            time_status = _evaluate_time_status(ann, _parse_iso_datetime(selected_time))
+        except ValueError:
+            raise HTTPException(400, "selected_time 格式无效，需 ISO 8601")
 
     return {
         "id": ann["id"],
+        "announcement_id": ann["id"],
         "title": ann.get("title", ""),
         "control_type": ann.get("control_type", ""),
-        "time_status": ann.get("time_status", "unknown"),
+        "time_status": time_status,
+        "selected_time": selected_time,
         "start_time": ann.get("start_time"),
         "end_time": ann.get("end_time"),
         "area_text": ann.get("area_text", ""),
         "source_name": ann.get("source_name", ""),
         "source_url": ann.get("source_url", ""),
         "source_level": ann.get("source_level", ""),
+        "source_trust_score": ann.get("source_trust_score"),
         "confidence_score": ann.get("confidence_score", 0),
         "geo_confidence": ann.get("geo_confidence", 0),
+        "geo_grade": ann.get("geo_grade", ""),
+        "geo_note": ann.get("geo_note", ""),
         "evidence_text": ann.get("evidence_text", ""),
+        "evidence_time": ann.get("evidence_time"),
+        "evidence_area": ann.get("evidence_area"),
+        "evidence_control_type": ann.get("evidence_control_type"),
         "aircraft_types": ann.get("aircraft_types") or [],
         "publish_unit": ann.get("publish_unit", ""),
         "publish_time": ann.get("publish_time"),
+        "last_checked_at": ann.get("last_checked_at"),
+        "review_status": ann.get("review_status"),
+        "review_reason": ann.get("review_reason"),
         "disclaimer": DISCLAIMER,
     }
 
@@ -326,6 +459,38 @@ def _control_key(control_type: str) -> str:
     return mapping.get(control_type, "orange")
 
 
+def _build_layer_summary(features: list[dict]) -> dict:
+    status_counts = {"active": 0, "not_started": 0, "expired": 0, "long_term": 0, "unknown": 0}
+    type_counts = {"temp_no_fly": 0, "temp_control": 0, "notice": 0, "long_term": 0}
+    for feature in features:
+        status = feature.get("time_status") or (feature.get("properties") or {}).get("time_status") or "unknown"
+        status_counts[status] = status_counts.get(status, 0) + 1
+        bucket = _control_type_bucket(feature.get("control_type") or (feature.get("properties") or {}).get("control_type"))
+        type_counts[bucket] = type_counts.get(bucket, 0) + 1
+    return {
+        "active_count": status_counts.get("active", 0),
+        "not_started_count": status_counts.get("not_started", 0),
+        "expired_count": status_counts.get("expired", 0),
+        "long_term_count": status_counts.get("long_term", 0),
+        "unknown_count": status_counts.get("unknown", 0),
+        "total": len(features),
+        "status_counts": status_counts,
+        "type_counts": type_counts,
+    }
+
+
+def _control_type_bucket(control_type: str | None) -> str:
+    if control_type in ("临时禁飞", "临时空域管制"):
+        return "temp_no_fly"
+    if control_type == "临时管控":
+        return "temp_control"
+    if control_type in ("备案通知", "安全提醒"):
+        return "notice"
+    if control_type == "长期规则":
+        return "long_term"
+    return "notice"
+
+
 def _filter_by_bounds(features: list, bounds_str: str) -> list:
     """简易视野 BBox 过滤。"""
     try:
@@ -368,6 +533,23 @@ def _extract_coords(geometry: dict) -> list:
             for ring in poly:
                 points.extend(ring)
     return points
+
+
+def _distance_to_geometry(lng: float, lat: float, geometry: dict) -> float | None:
+    coords = _extract_coords(geometry)
+    if not coords:
+        return None
+    return min(_haversine_m(lng, lat, p[0], p[1]) for p in coords if len(p) >= 2)
+
+
+def _haversine_m(lng1: float, lat1: float, lng2: float, lat2: float) -> float:
+    r = 6371000.0
+    p1 = math.radians(lat1)
+    p2 = math.radians(lat2)
+    dp = math.radians(lat2 - lat1)
+    dl = math.radians(lng2 - lng1)
+    a = math.sin(dp / 2) ** 2 + math.cos(p1) * math.cos(p2) * math.sin(dl / 2) ** 2
+    return 2 * r * math.atan2(math.sqrt(a), math.sqrt(1 - a))
 
 
 @router.get("/map/timeline-summary")

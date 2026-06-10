@@ -34,6 +34,7 @@ def list_tasks(
     for item in items:
         raw = item.get("raw_text", "")
         item["title_preview"] = raw[:50].replace("\n", " ") + ("..." if len(raw) > 50 else "")
+        _enrich_task_quality(item)
     return {"items": items, "total": total}
 
 
@@ -100,8 +101,13 @@ def get_task_detail(task_id: str):
         except json.JSONDecodeError:
             extracted = {}
 
-    return {
+    response = {
+        "id": task["id"],
         "task_id": task["id"],
+        "source_name": task.get("source_name", ""),
+        "source_url": task.get("source_url", ""),
+        "created_at": task.get("created_at"),
+        "updated_at": task.get("updated_at"),
         "task_status": task["task_status"],
         "raw_text": task["raw_text"],
         "is_relevant": task.get("is_relevant"),
@@ -117,6 +123,10 @@ def get_task_detail(task_id: str):
         "geo_confidence": task.get("geo_confidence"),
         "map_preview_status": task.get("map_preview_status"),
     }
+    _enrich_task_quality(response, task=task, extracted=extracted)
+    response["publication_gate"] = _publication_gate(task, extracted)
+    response["evidence_items"] = _evidence_items(extracted)
+    return response
 
 
 @router.post("/ingestion-tasks/{task_id}/approve")
@@ -135,6 +145,10 @@ def approve_task(task_id: str, body: dict | None = None):
             extracted = json.loads(extracted)
         except json.JSONDecodeError:
             extracted = {}
+
+    gate = _publication_gate(task, extracted)
+    if publish and not gate["can_publish"]:
+        raise HTTPException(422, {"message": "无法发布地图图层", "blockers": gate["blockers"]})
 
     # 更新任务状态
     store.update_ingestion_task(task_id, {
@@ -156,14 +170,30 @@ def approve_task(task_id: str, body: dict | None = None):
         "source_url": task.get("source_url", ""),
         "source_level": body.get("source_level") or "P2",
         "source_trust_score": 0.7,
+        "publish_time": extracted.get("publish_time"),
+        "province": extracted.get("province"),
+        "city": extracted.get("city"),
+        "district": extracted.get("district"),
         "control_type": extracted.get("control_type", "临时管控"),
         "risk_class": extracted.get("risk_class", "control"),
         "time_status": "unknown",
+        "start_time": (extracted.get("time") or {}).get("start"),
+        "end_time": (extracted.get("time") or {}).get("end"),
+        "time_mode": (extracted.get("time") or {}).get("mode", "single"),
+        "time_windows": (extracted.get("time") or {}).get("windows"),
+        "validity_basis": (extracted.get("time") or {}).get("note"),
         "area_text": extracted.get("area_text", ""),
         "geo_type": (extracted.get("geo") or {}).get("geo_type", "fuzzy"),
+        "center_poi": (extracted.get("geo") or {}).get("poi"),
+        "poi_list": (extracted.get("geo") or {}).get("poi_list"),
+        "radius_meters": (extracted.get("geo") or {}).get("radius_m") or (extracted.get("geo") or {}).get("radius_estimated"),
+        "geo_json": task.get("geo_json"),
         "geo_confidence": task.get("geo_confidence") or 0.0,
         "geo_grade": "E",
         "evidence_text": extracted.get("evidence_text", ""),
+        "evidence_time": (extracted.get("evidence") or {}).get("time_evidence"),
+        "evidence_area": (extracted.get("evidence") or {}).get("area_evidence"),
+        "evidence_control_type": (extracted.get("evidence") or {}).get("control_type_evidence"),
         "confidence_score": task.get("parse_confidence") or 0.0,
         "needs_review": False,
         "review_status": "approved",
@@ -236,4 +266,109 @@ def _build_geo(extracted: dict) -> dict:
         "geo_confidence": extracted.get("parse_confidence", 0),
         "geo_grade": "C",
         "roster_status": g.get("roster_status"),
+    }
+
+
+def _enrich_task_quality(item: dict, task: dict | None = None, extracted: dict | None = None) -> None:
+    src = task or item
+    extracted = extracted if extracted is not None else src.get("extracted_json") or {}
+    if isinstance(extracted, str):
+        import json
+        try:
+            extracted = json.loads(extracted)
+        except json.JSONDecodeError:
+            extracted = {}
+
+    evidence = _evidence_counts(extracted)
+    ann = store.get_announcement_by_task(src["id"]) if src.get("id") else None
+
+    item["time_parse_status"] = src.get("time_parse_status") or _time_parse_status(extracted)
+    item["geo_parse_status"] = _geo_parse_status(src, extracted)
+    item["evidence_status"] = evidence["status"]
+    item["evidence_bound_count"] = evidence["bound"]
+    item["evidence_required_count"] = evidence["required"]
+    item["map_layer_status"] = ann.get("map_layer_status") if ann else _map_layer_status(src)
+    item["review_reason"] = src.get("review_reason")
+
+
+def _evidence_counts(extracted: dict) -> dict:
+    ev = extracted.get("evidence") or {}
+    required_keys = ("title_evidence", "time_evidence", "area_evidence", "control_type_evidence")
+    bound = sum(1 for k in required_keys if ev.get(k))
+    if extracted.get("evidence_text") and bound == 0:
+        bound = 1
+    if bound >= len(required_keys):
+        status = "complete"
+    elif bound > 0:
+        status = "partial"
+    else:
+        status = "missing"
+    return {"status": status, "bound": bound, "required": len(required_keys)}
+
+
+def _evidence_items(extracted: dict) -> list[dict]:
+    ev = extracted.get("evidence") or {}
+    return [
+        {"label": "标题", "text": ev.get("title_evidence") or ""},
+        {"label": "发布时间/单位", "text": ev.get("publish_unit_evidence") or ""},
+        {"label": "时间", "text": ev.get("time_evidence") or ""},
+        {"label": "区域", "text": ev.get("area_evidence") or ""},
+        {"label": "管控类型", "text": ev.get("control_type_evidence") or ""},
+    ]
+
+
+def _time_parse_status(extracted: dict) -> str:
+    t = extracted.get("time") or {}
+    mode = t.get("mode")
+    if mode in ("long_term", "recurring_seasonal"):
+        return "success"
+    if t.get("start") and t.get("end"):
+        return "success"
+    if t.get("start") or t.get("end"):
+        return "conflict"
+    return "missing"
+
+
+def _geo_parse_status(task: dict, extracted: dict) -> str:
+    if task.get("geo_json"):
+        return "success"
+    geo = extracted.get("geo") or {}
+    if geo.get("geo_type") in ("area_no_boundary", "bbox_roads") or task.get("review_reason"):
+        return "needs_review"
+    if task.get("geo_confidence") is not None and float(task.get("geo_confidence") or 0) > 0:
+        return "preview"
+    return "missing"
+
+
+def _map_layer_status(task: dict) -> str:
+    preview = task.get("map_preview_status")
+    if preview == "generated":
+        return "unpublished"
+    if preview == "generating":
+        return "previewing"
+    return "not_generated"
+
+
+def _publication_gate(task: dict, extracted: dict) -> dict:
+    blockers: list[str] = []
+    evidence = _evidence_counts(extracted)
+
+    if not task.get("source_name") or not task.get("source_url"):
+        blockers.append("来源缺少名称或可回溯链接")
+    if evidence["status"] != "complete":
+        missing = evidence["required"] - evidence["bound"]
+        blockers.append(f"关键字段证据未完整绑定，缺失 {missing} 项")
+    if _time_parse_status(extracted) != "success":
+        blockers.append("时间解析未成功")
+    if not task.get("geo_json") and task.get("map_preview_status") != "generated":
+        blockers.append("地理结果尚不可预览")
+    if task.get("is_relevant") is False:
+        blockers.append("AI 相关性判断为无关")
+    if task.get("review_status") == "rejected" or task.get("task_status") == "rejected":
+        blockers.append("任务已驳回")
+
+    return {
+        "can_publish": len(blockers) == 0,
+        "blockers": blockers,
+        "summary": "满足发布条件" if not blockers else "无法发布：" + "；".join(blockers),
     }

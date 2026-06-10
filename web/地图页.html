@@ -66,8 +66,8 @@
     font-family: var(--font-sans);
     font-size: var(--fs-body);
     line-height: 1.55;
-    color: var(--fg-2);
-    background: var(--bg-base);
+    color: var(--ui-ink-2);
+    background: #eef3f8;
     overflow: hidden;
     -webkit-font-smoothing: antialiased;
   }
@@ -205,6 +205,17 @@
     font-size: 11px;
     color: var(--ui-muted);
     font-family: var(--font-mono);
+  }
+  #status-panel .status-stack {
+    display: grid;
+    gap: 2px;
+  }
+  #status-panel .status-primary {
+    color: var(--ui-ink-2);
+    font-weight: 650;
+  }
+  #status-panel .status-secondary {
+    color: var(--ui-muted);
   }
   #status-panel .dot {
     width: 7px;
@@ -438,6 +449,37 @@
     min-width: 32px;
     text-align: right;
   }
+  .detail-card .dc-section-title {
+    padding: var(--sp-4) var(--sp-5) 0;
+    font-family: var(--font-mono);
+    font-size: var(--fs-label-sm);
+    color: var(--fg-3);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-weight: 600;
+  }
+  .detail-card .evidence-list {
+    display: grid;
+    gap: 8px;
+  }
+  .detail-card .evidence-item {
+    border: 1px solid var(--border-1);
+    border-radius: var(--radius-sm);
+    padding: var(--sp-3);
+    background: var(--bg-surface);
+  }
+  .detail-card .evidence-item .ev-label {
+    display: block;
+    margin-bottom: 4px;
+    color: var(--fg-3);
+    font-family: var(--font-mono);
+    font-size: var(--fs-label-sm);
+  }
+  .detail-card .evidence-item .ev-text {
+    color: var(--fg-2);
+    font-size: var(--fs-body-sm);
+    line-height: 1.6;
+  }
 
   .detail-card .dc-footer {
     padding: var(--sp-4) var(--sp-5);
@@ -625,27 +667,58 @@
   }
 
   /* ================================================================
-     脉冲动画
+     脉冲动画（GPS 定位标记）
      ================================================================ */
   @keyframes pulse-ring {
-    0% { transform: scale(0.5); opacity: 0.8; }
-    100% { transform: scale(2.5); opacity: 0; }
+    0%   { transform: translate(-50%, -50%) scale(0.5); opacity: 0.8; }
+    100% { transform: translate(-50%, -50%) scale(2.5); opacity: 0; }
   }
 
   .pulse-marker {
-    position: relative;
+    position: absolute;
+    width: 0; height: 0;
   }
 
-  .pulse-marker::after {
+  /* GPS 定位标记：中心蓝点 */
+  .pulse-marker-gps .gps-dot {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 16px; height: 16px;
+    box-sizing: border-box;
+    border-radius: 50%;
+    background: #2f6bff;
+    border: 3px solid #fff;
+    box-shadow: 0 0 0 2px rgba(47, 107, 255, 0.4);
+  }
+
+  /* GPS 定位标记：外圈脉冲环 */
+  .pulse-marker-gps::after {
     content: '';
     position: absolute;
-    left: 50%; top: 50%;
-    width: 20px; height: 20px;
-    margin: -10px 0 0 -10px;
+    top: 50%; left: 50%;
+    width: 16px; height: 16px;
+    box-sizing: border-box;
+    margin: 0;
     border-radius: 50%;
     border: 2px solid var(--info);
+    transform: translate(-50%, -50%) scale(0.5);
+    transform-origin: center center;
     animation: pulse-ring 1.5s ease-out infinite;
     pointer-events: none;
+  }
+
+  /* 搜索标记（无脉冲动画） */
+  .pulse-marker-search .search-dot {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 12px; height: 12px;
+    box-sizing: border-box;
+    border-radius: 50%;
+    background: #2f6bff;
+    border: 2px solid #fff;
+    box-shadow: 0 0 0 2px rgba(47, 107, 255, 0.4);
   }
 
   /* ================================================================
@@ -686,12 +759,8 @@
 
   /* ================================================================
      低空讯图 · UI REFRESH 2026
-     目标：地图优先、信息层级清晰、专业但不“后台化”
+     目标：地图优先、信息层级清晰、专业但不"后台化"
      ================================================================ */
-  html, body {
-    color: var(--ui-ink-2);
-    background: #eef3f8;
-  }
 
   button, input, a { -webkit-tap-highlight-color: transparent; }
   button:focus-visible, input:focus-visible, a:focus-visible {
@@ -1284,6 +1353,7 @@
   .toast.error { border-left: 3px solid #e03e3e; color: #b3303a; }
   .toast.success { border-left: 3px solid #2ea756; }
   .toast.warning { border-left: 3px solid #d4a017; color: #8a6d14; }
+  .toast.info { border-left: 3px solid #2f6bff; color: #2445b5; }
 
   @keyframes toast-in {
     from { opacity: 0; transform: translateX(24px); }
@@ -1395,7 +1465,9 @@
   <!-- 右上角数据口径说明 -->
   <div id="status-panel">
     <span class="dot"></span>
-    <span class="op-label">公开公告库</span>
+    <span class="status-stack">
+      <span class="status-primary">数据更新于 {{ lastDataRefreshLabel }} · 当前展示 {{ summary.total }} 条公开公告</span>
+    </span>
   </div>
 
   <!-- 地图（全屏） -->
@@ -1407,10 +1479,10 @@
     <div v-if="detailCard" class="detail-card">
       <button class="close-btn" @click="detailCard = null">&times;</button>
       <div class="dc-header">
-        <div class="id-tag">管控详情 · {{ detailCard.announcement_id || 'ANN_006' }}</div>
+        <div class="id-tag">管控详情 · {{ detailCard.announcement_id || '未知编号' }}</div>
         <div class="badge-row">
           <span class="badge" :class="badgeClass(detailCard.control_type)">{{ detailCard.control_type }}</span>
-          <span class="badge badge-green"><span class="dot green"></span>{{ statusLabel(detailCard.time_status) }}</span>
+          <span class="badge badge-green"><span class="dot green"></span>在所选时间下：{{ statusLabel(detailCard.time_status) }}</span>
         </div>
         <div class="title">{{ detailCard.title }}</div>
       </div>
@@ -1432,13 +1504,42 @@
           <span class="val">{{ detailCard.control_type || '-' }}</span>
         </div>
         <div class="dc-cell" style="grid-column:1/-1">
-          <span class="key">发布来源</span>
+          <span class="key">管控区域</span>
+          <span class="val">{{ detailCard.area_text || '-' }}</span>
+        </div>
+      </div>
+      <div class="dc-section-title">来源可信度</div>
+      <div class="dc-grid">
+        <div class="dc-cell">
+          <span class="key">发布单位</span>
+          <span class="val">{{ detailCard.publish_unit || '-' }}</span>
+        </div>
+        <div class="dc-cell">
+          <span class="key">来源等级</span>
+          <span class="val">{{ detailCard.source_level || '-' }}</span>
+        </div>
+        <div class="dc-cell">
+          <span class="key">发布时间</span>
+          <span class="val">{{ detailCard.publish_time || '-' }}</span>
+        </div>
+        <div class="dc-cell">
+          <span class="key">最近核验</span>
+          <span class="val">{{ detailCard.last_checked_at ? fmtDateFull(new Date(detailCard.last_checked_at)) : '-' }}</span>
+        </div>
+        <div class="dc-cell" style="grid-column:1/-1">
+          <span class="key">来源</span>
           <span class="val">[{{ detailCard.source_level }}] {{ detailCard.source_name }} · {{ detailCard.publish_unit }}</span>
         </div>
       </div>
       <div v-if="detailCard.evidence_text" class="dc-evidence">
         <div class="sec-label">原文证据</div>
-        <div class="ev-box">{{ detailCard.evidence_text }}</div>
+        <div v-if="detailEvidenceItems.length" class="evidence-list">
+          <div v-for="item in detailEvidenceItems" :key="item.label" class="evidence-item">
+            <span class="ev-label">{{ item.label }}</span>
+            <span class="ev-text">{{ item.text }}</span>
+          </div>
+        </div>
+        <div v-else class="ev-box">{{ detailCard.evidence_text }}</div>
       </div>
       <div class="dc-confidence">
         <div class="sec-label">可信度评估</div>
@@ -1471,6 +1572,9 @@
       </div>
       <div class="detail-disclaimer">
         <strong>核验提示：</strong>本系统基于公开公告展示低空管控风险，不构成飞行许可。实际飞行前请通过 UOM、空管、公安或公告发布单位进一步核验。
+        <div v-if="detailCard.geo_grade || detailCard.geo_note || detailCard.review_reason" style="margin-top:8px;color:var(--fg-3);font-size:12px;">
+          地理等级：{{ detailCard.geo_grade || '未评估' }}<span v-if="detailCard.geo_note"> · {{ detailCard.geo_note }}</span><span v-if="detailCard.review_reason"> · {{ detailCard.review_reason }}</span>
+        </div>
       </div>
       <div class="dc-footer">
         <a v-if="detailCard.source_url" class="btn btn-primary" :href="detailCard.source_url" target="_blank" rel="noopener noreferrer">查看官方原文</a>
@@ -1646,6 +1750,8 @@ const CITY_COORDS = {
 const app = createApp({
   setup() {
     const currentTime = ref(new Date());
+    const nowTime = ref(new Date());
+    const lastDataRefresh = ref(null);
     const searchQuery = ref('');
     const loading = ref(false);
     const gpsLocating = ref(false);
@@ -1683,7 +1789,8 @@ const app = createApp({
       { key: 'TEMP_NO_FLY', label: '临时禁飞', checked: true, dotClass: 'red', count: 0 },
       { key: 'TEMP_CONTROL', label: '临时管控', checked: true, dotClass: 'orange', count: 0 },
       { key: 'REGISTRATION_NOTICE', label: '备案提醒', checked: true, dotClass: 'yellow', count: 0 },
-      { key: 'NEEDS_REVIEW', label: '长期管制', checked: true, dotClass: 'purple', count: 0 },
+      { key: 'LONG_TERM', label: '长期规则', checked: true, dotClass: 'purple', count: 0 },
+      { key: 'NEEDS_REVIEW', label: '待核验', checked: true, dotClass: 'grey', count: 0 },
       { key: 'EXPIRED', label: '已过期', checked: false, dotClass: 'grey', count: 0 },
     ]);
 
@@ -1701,6 +1808,17 @@ const app = createApp({
       if (currentCity.value === '全国') return '全国';
       if (currentCity.value === currentProvince.value) return currentProvince.value;
       return currentProvince.value + currentCity.value;
+    });
+    const selectedTimeLabel = computed(() => fmtDateFull(currentTime.value));
+    const nowTimeLabel = computed(() => fmtDateFull(nowTime.value));
+    const lastDataRefreshLabel = computed(() => lastDataRefresh.value ? fmtDateFull(lastDataRefresh.value) : '加载中');
+    const detailEvidenceItems = computed(() => {
+      if (!detailCard.value) return [];
+      return [
+        { label: '时间证据', text: detailCard.value.evidence_time },
+        { label: '区域证据', text: detailCard.value.evidence_area },
+        { label: '类型证据', text: detailCard.value.evidence_control_type },
+      ].filter(item => item.text);
     });
 
     function fmtDateFull(d) {
@@ -1758,7 +1876,8 @@ const app = createApp({
       // 取消上一次未完成的请求
       if (layerAbortController) { layerAbortController.abort(); }
       layerAbortController = new AbortController();
-      currentTime.value = new Date();
+      nowTime.value = new Date();
+      currentTime.value = new Date(nowTime.value);
       loading.value = true;
       const params = new URLSearchParams({
         selected_time: currentTime.value.toISOString(),
@@ -1766,7 +1885,7 @@ const app = createApp({
         include_review: filterTypes.find(f => f.key === 'NEEDS_REVIEW').checked ? 'true' : 'false',
       });
       if (currentProvince.value !== '全国') {
-        params.set('province', currentProvince.value);
+        params.set('province', provinceApiName(currentProvince.value));
         if (currentCity.value !== '全国' && currentCity.value !== currentProvince.value) {
           const cityName = currentCity.value.endsWith('市') ? currentCity.value : currentCity.value + '市';
           params.set('city', cityName);
@@ -1784,6 +1903,7 @@ const app = createApp({
         renderLayers(data);
         Object.assign(summary, data.summary);
         updateFilterCounts(data);
+        lastDataRefresh.value = new Date();
       } catch (e) {
         if (e.name === 'AbortError') return; // 主动取消，不报错
         console.error('加载图层失败:', e);
@@ -1794,6 +1914,7 @@ const app = createApp({
 
     function updateFilterCounts(data) {
       const feats = data.features || [];
+      const checkedKeys = new Set(filterTypes.filter(f => f.checked).map(f => f.key));
       const counts = {};
       feats.forEach(f => {
         const st = f.properties?.style_hint;
@@ -1803,9 +1924,22 @@ const app = createApp({
         else if (ct === '临时禁飞' || ct === '临时空域管制') counts.TEMP_NO_FLY = (counts.TEMP_NO_FLY || 0) + 1;
         else if (ct === '临时管控') counts.TEMP_CONTROL = (counts.TEMP_CONTROL || 0) + 1;
         else if (ct === '备案通知' || ct === '安全提醒') counts.REGISTRATION_NOTICE = (counts.REGISTRATION_NOTICE || 0) + 1;
+        else if (ct === '长期规则') counts.LONG_TERM = (counts.LONG_TERM || 0) + 1;
       });
       filterTypes.forEach(f => { f.count = counts[f.key] || 0; });
-      summary.total = feats.length;
+      summary.total = feats.filter(f => isFeatureVisible(f, checkedKeys)).length;
+    }
+
+    function provinceApiName(province) {
+      if (province === '全国') return province;
+      if (['北京', '天津', '上海', '重庆'].includes(province)) return province + '市';
+      if (['内蒙古', '西藏'].includes(province)) return province + '自治区';
+      if (province === '广西') return '广西壮族自治区';
+      if (province === '宁夏') return '宁夏回族自治区';
+      if (province === '新疆') return '新疆维吾尔自治区';
+      if (['香港', '澳门'].includes(province)) return province + '特别行政区';
+      if (province === '台湾') return '台湾省';
+      return province.endsWith('省') ? province : province + '省';
     }
 
     // ── 地图初始化 ──
@@ -1887,7 +2021,8 @@ const app = createApp({
           }
         }
       } catch (e) {
-        showToast('视野同步失败');
+        console.error('视野同步失败:', e);
+        showToast('视野同步失败，请稍后重试');
       } finally {
         syncingRegion.value = false;
       }
@@ -1922,11 +2057,23 @@ const app = createApp({
 
       // 视野变化时重新加载（防抖）+ 自动同步地区选择器
       let moveTimer = null;
+      let syncing = false;
       map.on('moveend', () => {
         clearTimeout(moveTimer);
-        moveTimer = setTimeout(() => {
-          loadLayers();
-          syncRegionFromMap();
+        moveTimer = setTimeout(async () => {
+          if (syncing) return;
+          syncing = true;
+          try {
+            const prevCity = currentCity.value;
+            const prevProvince = currentProvince.value;
+            await syncRegionFromMap();
+            // syncRegionFromMap 未触发 loadLayers 时手动刷新
+            if (prevCity === currentCity.value && prevProvince === currentProvince.value) {
+              loadLayers();
+            }
+          } finally {
+            syncing = false;
+          }
         }, 400);
       });
     }
@@ -1944,17 +2091,9 @@ const app = createApp({
       const checkedKeys = new Set(filterTypes.filter(f => f.checked).map(f => f.key));
       const geoJson = {
         type: 'FeatureCollection',
-        features: data.features.filter(f => {
-          const st = f.properties?.style_hint;
-          if (st === 'grey_expired' && !checkedKeys.has('EXPIRED')) return false;
-          if (st === 'grey_review' && !checkedKeys.has('NEEDS_REVIEW')) return false;
-          const ct = f.control_type;
-          if (ct === '临时禁飞' || ct === '临时空域管制') return checkedKeys.has('TEMP_NO_FLY');
-          if (ct === '临时管控') return checkedKeys.has('TEMP_CONTROL');
-          if (ct === '备案通知' || ct === '安全提醒') return checkedKeys.has('REGISTRATION_NOTICE');
-          return true;
-        }),
+        features: data.features.filter(f => isFeatureVisible(f, checkedKeys)),
       };
+      summary.total = geoJson.features.length;
 
       L.geoJSON(geoJson, {
         style: f => {
@@ -1987,11 +2126,23 @@ const app = createApp({
       }).addTo(layerGroup);
     }
 
+    function isFeatureVisible(f, checkedKeys) {
+      const st = f.properties?.style_hint;
+      if (st === 'grey_expired' && !checkedKeys.has('EXPIRED')) return false;
+      if (st === 'grey_review' && !checkedKeys.has('NEEDS_REVIEW')) return false;
+      const ct = f.control_type;
+      if (ct === '临时禁飞' || ct === '临时空域管制') return checkedKeys.has('TEMP_NO_FLY');
+      if (ct === '临时管控') return checkedKeys.has('TEMP_CONTROL');
+      if (ct === '备案通知' || ct === '安全提醒') return checkedKeys.has('REGISTRATION_NOTICE');
+      if (ct === '长期规则') return checkedKeys.has('LONG_TERM');
+      return true;
+    }
+
     function popupHtml(f) {
       const p = f.properties || {};
       const badge = badgeClass(p.control_type || f.control_type);
       return `<span class="t">${esc(p.title || f.title)}</span>
-        <span class="badge ${badge}">${esc(p.control_type || f.control_type)}</span> · 置信度 ${(p.geo_confidence || 0).toFixed(2)}<br/>
+        <span class="badge ${badge}">${esc(p.control_type || f.control_type)}</span> · 地理置信度 ${p.geo_confidence != null ? Number(p.geo_confidence).toFixed(2) : '未评估'}<br/>
         <span class="meta">时间状态: <b>${statusLabel(p.time_status || f.time_status)}</b><br/>
         来源: [${esc(p.source_level || f.source_level)}] ${esc(p.source_name || '')}<br/>
         <small style="color:var(--txt-muted)">点击查看详情 →</small></span>`;
@@ -1999,14 +2150,15 @@ const app = createApp({
 
     async function showDetail(annId) {
       try {
-        const resp = await fetch(`${API}/announcements/${annId}`);
+        const params = new URLSearchParams({ selected_time: currentTime.value.toISOString() });
+        const resp = await fetch(`${API}/announcements/${annId}?${params}`);
         detailCard.value = await resp.json();
       } catch (e) { showToast('加载详情失败'); }
     }
 
     function badgeClass(controlType) {
-      const map = { '临时禁飞': 'badge-red', '临时空域管制': 'badge-red', '临时管控': 'badge-orange', '备案通知': 'badge-yellow', '安全提醒': 'badge-yellow', '长期规则': 'badge-purple' };
-      return map[controlType] || 'badge-grey';
+      const BADGE_MAP = { '临时禁飞': 'badge-red', '临时空域管制': 'badge-red', '临时管控': 'badge-orange', '备案通知': 'badge-yellow', '安全提醒': 'badge-yellow', '长期规则': 'badge-purple' };
+      return BADGE_MAP[controlType] || 'badge-grey';
     }
 
     function statusLabel(s) {
@@ -2047,7 +2199,7 @@ const app = createApp({
     function locateGps(options = {}) {
       const silent = options.silent === true;
       if (!navigator.geolocation) {
-        if (!silent) alert('浏览器不支持定位');
+        if (!silent) showToast('浏览器不支持定位', 'warning');
         return;
       }
       gpsLocating.value = true;
@@ -2061,10 +2213,10 @@ const app = createApp({
           map.setView([latitude, longitude], 15);
           if (gpsMarker) map.removeLayer(gpsMarker);
           const icon = L.divIcon({
-            className: 'pulse-marker',
+            className: 'pulse-marker pulse-marker-gps',
             iconSize: [16, 16],
             iconAnchor: [8, 8],
-            html: '<div style="width:16px;height:16px;border-radius:50%;background:#2f6bff;border:3px solid #fff;box-shadow:0 0 0 2px rgba(47,107,255,.4);"></div>'
+            html: '<div class="gps-dot"></div>'
           });
           gpsMarker = L.marker([latitude, longitude], { icon }).addTo(map).bindPopup('我的位置').openPopup();
           gpsLocating.value = false;
@@ -2072,7 +2224,7 @@ const app = createApp({
           loadLayers();
         },
         err => {
-          if (!silent) alert('定位失败: ' + err.message);
+          if (!silent) showToast('定位失败: ' + err.message, 'warning');
           gpsLocating.value = false;
         },
         { enableHighAccuracy: true, timeout: 10000, maximumAge: 30000 }
@@ -2119,7 +2271,7 @@ const app = createApp({
           const [lng, lat] = p.location.split(',').map(Number);
           if (!data.district) map.setView([lat, lng], 14);
           if (searchMarker) map.removeLayer(searchMarker);
-          const icon = L.divIcon({ className: 'pulse-marker', iconSize: [12, 12], iconAnchor: [6, 6] });
+          const icon = L.divIcon({ className: 'pulse-marker pulse-marker-search', iconSize: [12, 12], iconAnchor: [6, 6], html: '<div class="search-dot"></div>' });
           searchMarker = L.marker([lat, lng], { icon }).addTo(map).bindPopup(p.name).openPopup();
         }
       } catch (e) { showToast('地点跳转失败'); }
@@ -2138,7 +2290,7 @@ const app = createApp({
         const [lng, lat] = r.location.split(',').map(Number);
         map.setView([lat, lng], 14);
         if (searchMarker) map.removeLayer(searchMarker);
-        const icon = L.divIcon({ className: 'pulse-marker', iconSize: [12, 12], iconAnchor: [6, 6] });
+        const icon = L.divIcon({ className: 'pulse-marker pulse-marker-search', iconSize: [12, 12], iconAnchor: [6, 6], html: '<div class="search-dot"></div>' });
         searchMarker = L.marker([lat, lng], { icon }).addTo(map).bindPopup(r.name).openPopup();
       }
     }
@@ -2173,9 +2325,14 @@ const app = createApp({
     function esc(s) { return String(s || '').replace(/[&<>]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' }[c])); }
 
     // ── 全局点击关闭下拉 ──
-    function onGlobalClick() {
-      cityDropdownOpen.value = false;
-      searchFocused.value = false;
+    function onGlobalClick(e) {
+      // 不关闭搜索框自身的焦点状态
+      if (!e.target.closest('.search-box')) {
+        searchFocused.value = false;
+      }
+      if (!e.target.closest('.loc-dropdown, .loc-picker')) {
+        cityDropdownOpen.value = false;
+      }
       contextMenu.show = false;
     }
 
@@ -2196,6 +2353,7 @@ const app = createApp({
       provinceCityMap, currentProvince, provinceMode, selectProvince,
       regionDisplayLabel, regionScopeLabel, syncingRegion,
       searchFocused, searchResults, contextMenu,
+      selectedTimeLabel, nowTimeLabel, lastDataRefreshLabel, detailEvidenceItems,
       loadLayers, showDetail, searchPlace, onSearchInput,
       selectSearchResult, toggleFilter, switchCity, locateGps,
       mapZoomIn, mapZoomOut, zoomToHere, showNearbyAnnouncements,

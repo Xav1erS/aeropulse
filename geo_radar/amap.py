@@ -67,12 +67,38 @@ class AmapClient:
         return self.search_poi(keywords, city) or self.geocode(keywords, city)
 
     def district_rings(self, keywords: str) -> tuple[list[list[list[float]]], GeoPoint] | None:
-        """返回行政区边界多环（每环一个独立多边形）+ 中心点。"""
+        """返回行政区边界多环（每环一个独立多边形）+ 中心点。
+        
+        高德 config/district 按层级返回 [全国, 省, 市, ...]，需要精确匹配
+        目标行政区（按 adcode≠100000 且 name 匹配优先），避免误取全国边界。
+        """
         data = self._get("config/district", {"keywords": keywords, "subdistrict": "0", "extensions": "all"})
         items = data.get("districts") or []
-        if not items or not items[0].get("polyline"):
+        if not items:
             return None
-        d = items[0]
+
+        # 匹配策略：排除全国(adcode=100000)，优先 name 完全匹配或包含匹配
+        target = None
+        for d in items:
+            name = d.get("name", "")
+            adcode = d.get("adcode", "")
+            if adcode == "100000":
+                continue
+            if name == keywords or keywords in name or name in keywords:
+                target = d
+                break
+
+        # 回退：取第一个非全国的结果
+        if target is None:
+            for d in items:
+                if d.get("adcode") != "100000":
+                    target = d
+                    break
+
+        if target is None or not target.get("polyline"):
+            return None
+
+        d = target
         rings = parse_amap_polyline(d["polyline"])
         clng, clat = (d.get("center") or "0,0").split(",")
         return rings, GeoPoint(float(clng), float(clat), d.get("name", keywords), "district")

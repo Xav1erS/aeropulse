@@ -133,7 +133,7 @@
      ================================================================ */
   #cards {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    grid-template-columns: repeat(4, 1fr);
     gap: 12px;
     margin-bottom: 24px;
   }
@@ -143,7 +143,7 @@
     border: 1px solid var(--ui-border);
     border-radius: var(--ui-radius-sm);
     padding: 20px 16px;
-    text-align: center;
+    text-align: left;
     transition: all 0.25s var(--ease-out);
     position: relative;
     overflow: hidden;
@@ -184,6 +184,16 @@
     margin-top: 7px;
     letter-spacing: 0;
   }
+
+  .card-stat .meta {
+    margin-top: 4px;
+    font-size: 10.5px;
+    color: var(--ui-muted);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .card-stat.warning { border-left: 3px solid var(--warning); }
+  .card-stat.danger { border-left: 3px solid var(--danger); }
 
   /* ================================================================
      Tab 标签
@@ -310,6 +320,17 @@
     color: #b3303a;
   }
 
+  .btn-warning {
+    background: var(--warning-soft);
+    border-color: rgba(200, 131, 20, 0.25);
+    color: var(--warning-fg);
+  }
+
+  .btn-warning:hover {
+    background: rgba(200, 131, 20, 0.18);
+    color: #9a6410;
+  }
+
   /* ================================================================
      Badge
      ================================================================ */
@@ -350,7 +371,7 @@
 
   #drawer {
     position: fixed; top: 0; right: 0;
-    width: 520px; max-width: 90vw; height: 100%;
+    width: min(960px, 92vw); max-width: 92vw; height: 100%;
     background: var(--ui-panel-strong);
     border-left: 1px solid var(--ui-border);
     z-index: 101;
@@ -432,6 +453,117 @@
     margin-top: 24px;
     padding-top: 16px;
     border-top: 1px solid var(--ui-border);
+  }
+
+  .drawer-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+    gap: 16px;
+  }
+
+  .review-panel {
+    border: 1px solid var(--ui-border);
+    background: #fff;
+    border-radius: var(--ui-radius-sm);
+    padding: 14px;
+  }
+
+  .review-panel h3 {
+    font-family: var(--font-sans);
+    font-size: 12px;
+    color: var(--ui-muted);
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-weight: 700;
+  }
+
+  .raw-evidence {
+    max-height: 360px;
+    overflow: auto;
+    font-size: 12.5px;
+    line-height: 1.72;
+    padding: 12px;
+    border-radius: 10px;
+    background: #f5f7fa;
+    color: var(--ui-ink-2);
+    border: 1px solid var(--ui-border);
+    white-space: pre-wrap;
+  }
+
+  .evidence-list {
+    display: grid;
+    gap: 8px;
+    margin-top: 10px;
+  }
+
+  .evidence-item {
+    padding: 10px;
+    border-radius: 9px;
+    border: 1px solid var(--ui-border);
+    background: #f8fafd;
+  }
+
+  .evidence-item .ev-label {
+    display: block;
+    font-size: 10.5px;
+    color: var(--ui-muted);
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+
+  .evidence-item .ev-text {
+    font-size: 12px;
+    color: var(--ui-ink-2);
+    line-height: 1.55;
+  }
+
+  .field-card {
+    display: grid;
+    grid-template-columns: 92px minmax(0, 1fr) auto;
+    gap: 8px;
+    align-items: center;
+    padding: 9px 0;
+    border-bottom: 1px solid var(--ui-border);
+    font-size: 12.5px;
+  }
+  .field-card:last-child { border-bottom: none; }
+  .field-card .fname { color: var(--ui-muted); }
+  .field-card .fval { color: var(--ui-ink-2); word-break: break-word; }
+
+  .map-preview {
+    min-height: 150px;
+    border: 1px dashed var(--ui-border-strong);
+    border-radius: 10px;
+    background: linear-gradient(135deg, #f5f7fb, #edf3ff);
+    display: grid;
+    place-items: center;
+    color: var(--ui-muted);
+    font-size: 12.5px;
+    text-align: center;
+    padding: 16px;
+  }
+
+  .gate-box {
+    margin-top: 12px;
+    padding: 12px;
+    border-radius: 10px;
+    background: var(--warning-soft);
+    border: 1px solid rgba(200,131,20,.18);
+    color: var(--warning-fg);
+    font-size: 12.5px;
+    line-height: 1.55;
+  }
+  .gate-box.ok {
+    background: var(--success-soft);
+    border-color: rgba(39,194,108,.20);
+    color: var(--success-fg);
+  }
+
+  .btn[disabled] {
+    opacity: .52;
+    cursor: not-allowed;
+    pointer-events: none;
   }
 
   /* ================================================================
@@ -608,16 +740,16 @@
      ================================================================ */
   @media (max-width: 820px) {
     main { padding: 80px 12px 16px; }
-    #cards { grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 8px; }
+    #cards { grid-template-columns: repeat(2, 1fr); gap: 8px; }
     .card-stat { padding: 14px 10px; }
     .card-stat .val { font-size: 22px; }
+    .drawer-grid { grid-template-columns: 1fr; }
   }
 
   @media (max-width: 620px) {
     #topbar { top: 10px; left: 10px; border-radius: 17px; }
     #page-nav { top: 10px; right: 10px; }
     #page-nav a { padding: 6px 10px; font-size: 11.5px; }
-    #cards { grid-template-columns: repeat(2, 1fr); }
     #drawer { width: 100%; max-width: 100%; padding: 16px; }
     #modal { width: 95vw; padding: 20px; }
     main { padding-top: 76px; }
@@ -684,7 +816,70 @@
     100% { background-position: -200% 0; }
   }
 
-</style>
+  /* ================================================================
+     漏斗指标 & 质量指标 & 待办栏
+     ================================================================ */
+  .funnel-wrap { display: flex; gap: 0; align-items: stretch; margin: 0 0 16px 0; }
+  .funnel-step { flex: 1; background: var(--ui-panel); border: 1px solid var(--ui-border); border-radius: var(--ui-radius-sm); padding: 16px 14px; cursor: pointer; position: relative; transition: box-shadow 0.2s var(--ease-out); }
+  .funnel-step:hover { box-shadow: var(--ui-shadow-soft); border-color: var(--ui-border-strong); }
+  .funnel-step + .funnel-step { margin-left: 12px; }
+  .funnel-val { font-size: 28px; font-weight: 700; color: var(--ui-ink); line-height: 1.15; }
+  .funnel-lbl { font-size: 12px; color: var(--ui-muted); margin-top: 2px; font-weight: 500; }
+  .funnel-meta { font-size: 10.5px; color: var(--ui-muted); margin-top: 1px; opacity: 0.7; }
+  .funnel-arrow { position: absolute; right: -8px; top: 50%; transform: translateY(-50%); font-size: 18px; color: var(--ui-muted); z-index: 1; }
+
+  .quality-wrap { display: flex; gap: 10px; margin: 0 0 12px 0; }
+  .quality-item { flex: 1; background: var(--ui-panel); border: 1px solid var(--ui-border); border-radius: var(--ui-radius-xs); padding: 10px 14px; display: flex; justify-content: space-between; align-items: center; }
+  .quality-val { font-size: 18px; font-weight: 650; color: var(--ui-ink); }
+  .quality-lbl { font-size: 11px; color: var(--ui-muted); }
+  .quality-item.warning { border-left: 3px solid var(--warning); }
+  .quality-item.danger { border-left: 3px solid var(--danger); }
+
+  .pending-wrap { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 16px 0; }
+  .pending-item { display: flex; align-items: center; gap: 6px; padding: 6px 14px; background: var(--warning-soft); border: 1px solid rgba(200,131,20,0.18); border-radius: 20px; cursor: pointer; font-size: 12px; transition: background 0.15s; }
+  .pending-item:hover { background: rgba(200,131,20,0.18); }
+  .pending-count { font-weight: 700; color: var(--warning-fg); min-width: 20px; text-align: center; }
+
+  /* 全局筛选栏 */
+  .global-filter-bar { display: flex; gap: 10px; align-items: center; margin: 0 0 14px 0; padding: 10px 14px; background: var(--ui-panel); border: 1px solid var(--ui-border); border-radius: var(--ui-radius-xs); }
+  .global-filter-bar input, .global-filter-bar select { font-size: 12px; padding: 5px 10px; border: 1px solid var(--ui-border); border-radius: 6px; background: #fff; color: var(--ui-ink); }
+  .global-filter-bar label { font-size: 11.5px; color: var(--ui-muted); white-space: nowrap; }
+  .global-filter-bar .spacer { flex: 1; }
+
+  /* 公告/图层状态 badge */
+  .badge-pending { background: var(--warning-soft); color: var(--warning-fg); }
+  .badge-confirmed { background: var(--success-soft); color: var(--success-fg); }
+  .badge-conflict { background: var(--danger-soft); color: var(--danger-fg); }
+  .badge-invalid { background: rgba(109,120,144,0.1); color: var(--ui-muted); }
+  .badge-draft { background: var(--info-soft); color: var(--info-fg); }
+  .badge-published { background: var(--success-soft); color: var(--success-fg); }
+  .badge-paused { background: var(--warning-soft); color: var(--warning-fg); }
+  .badge-archived { background: rgba(109,120,144,0.1); color: var(--ui-muted); }
+
+  /* 证据核验抽屉（双栏） */
+  .evidence-drawer { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .evidence-left { border-right: 1px solid var(--ui-border); padding-right: 16px; }
+  .evidence-right { padding-left: 4px; }
+  .evidence-section-title { font-size: 12px; font-weight: 650; color: var(--ui-ink-2); margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.5px; }
+  .evidence-raw { font-size: 12.5px; line-height: 1.65; color: var(--ui-ink-2); background: var(--ui-blue-soft); padding: 12px; border-radius: var(--ui-radius-xs); max-height: 240px; overflow-y: auto; white-space: pre-wrap; }
+  .evidence-item { padding: 8px 0; border-bottom: 1px solid var(--ui-border); font-size: 12px; }
+  .evidence-item .ev-key { font-weight: 600; color: var(--ui-ink); }
+  .evidence-item .ev-value { color: var(--ui-ink-2); margin-left: 6px; }
+  .evidence-item .ev-confidence { font-size: 11px; color: var(--ui-muted); margin-left: 8px; }
+
+  /* 溯源条 */
+  .traceability-bar { display: flex; gap: 4px; align-items: center; margin: 12px 0; padding: 10px 0; border-top: 1px solid var(--ui-border); border-bottom: 1px solid var(--ui-border); font-size: 11px; }
+  .trace-step { padding: 4px 10px; border-radius: 14px; background: rgba(109,120,144,0.08); color: var(--ui-muted); white-space: nowrap; }
+  .trace-step.active { background: var(--ui-blue-soft); color: var(--ui-blue); font-weight: 600; }
+  .trace-arrow { color: var(--ui-muted); flex-shrink: 0; }
+
+  /* 图层预览区 */
+  .layer-map-preview { width: 100%; height: 200px; background: var(--ui-blue-soft); border-radius: var(--ui-radius-xs); display: flex; align-items: center; justify-content: center; font-size: 12px; color: var(--ui-muted); margin: 8px 0; }
+
+  /* 搜索输入框 */
+  .search-input { padding: 6px 12px; border: 1px solid var(--ui-border); border-radius: 6px; font-size: 12px; width: 200px; background: #fff; color: var(--ui-ink); }
+  .search-input::placeholder { color: var(--ui-muted); }
+
 </style>
 </head>
 <body>
@@ -716,15 +911,36 @@
   </div>
 
   <main>
-    <div id="cards">
-      <div class="card-stat"><div class="val">{{ stats.enabled_sources }}</div><div class="lbl">启用数据源</div></div>
-      <div class="card-stat"><div class="val">{{ stats.candidate_tasks }}</div><div class="lbl">候选公告</div></div>
-      <div class="card-stat"><div class="val">{{ stats.valid_announcements }}</div><div class="lbl">有效公告</div></div>
-      <div class="card-stat"><div class="val">{{ stats.pending_review }}</div><div class="lbl">待核验</div></div>
-      <div class="card-stat"><div class="val">{{ stats.published_layers }}</div><div class="lbl">已发布图层</div></div>
-      <div class="card-stat"><div class="val">{{ fmtPct(stats.parse_success_rate) }}</div><div class="lbl">解析成功率</div></div>
-      <div class="card-stat"><div class="val">{{ stats.layers_without_evidence }}</div><div class="lbl">无证据图层</div></div>
-      <div class="card-stat"><div class="val">{{ stats.overreach_text_count }}</div><div class="lbl">越权文案次数</div></div>
+    <!-- 业务漏斗指标 --><div id="funnel-metrics" class="funnel-wrap"><div class="funnel-step" @click="switchTab('collection')"><div class="funnel-val">{{ (stats.enabled_sources || 0) + (stats.candidate_tasks || 0) }}</div><div class="funnel-lbl">发现候选</div><div class="funnel-meta">源 {{ stats.enabled_sources || 0 }} + 任务 {{ stats.candidate_tasks || 0 }}</div><div class="funnel-arrow">→</div></div><div class="funnel-step" @click="switchTab('announcements')"><div class="funnel-val">{{ stats.valid_announcements || 0 }}</div><div class="funnel-lbl">有效公告</div><div class="funnel-meta">已确认 {{ stats.valid_announcements || 0 }} 条</div><div class="funnel-arrow">→</div></div><div class="funnel-step" @click="switchTab('announcements')"><div class="funnel-val">{{ stats.pending_announcements || 0 }}</div><div class="funnel-lbl">待审核公告</div><div class="funnel-meta">待审核 {{ stats.pending_announcements || 0 }} 条</div><div class="funnel-arrow">→</div></div><div class="funnel-step" @click="switchTab('layers')"><div class="funnel-val">{{ stats.published_layers || 0 }}</div><div class="funnel-lbl">已发布图层</div><div class="funnel-meta">已发布 {{ stats.published_layers || 0 }} 个</div></div></div>
+    <!-- 质量指标 --><div id="quality-metrics" class="quality-wrap"><div class="quality-item" :class="{ warning: (stats.parse_success_rate || 1) < 0.8 }"><span class="quality-val">{{ fmtPct(stats.parse_success_rate) }}</span><span class="quality-lbl">解析成功率</span></div><div class="quality-item" :class="{ warning: (stats.pending_announcements || 0) > 0 }"><span class="quality-val">{{ stats.pending_announcements || 0 }}</span><span class="quality-lbl">待审核公告</span></div><div class="quality-item" :class="{ danger: (stats.overreach_text_count || 0) > 0 }"><span class="quality-val">{{ stats.overreach_text_count || 0 }}</span><span class="quality-lbl">越权文案</span></div><div class="quality-item" :class="{ warning: (stats.layers_without_evidence || 0) > 0 }"><span class="quality-val">{{ stats.layers_without_evidence || 0 }}</span><span class="quality-lbl">无证据图层</span></div></div>
+    <!-- 待办提醒 --><div id="pending-tasks" class="pending-wrap" v-if="pendingItems.length > 0"><div class="pending-item" v-for="item in pendingItems" :key="item.id" @click="handlePendingClick(item)"><span class="pending-icon">{{ item.icon }}</span><span class="pending-text">{{ item.text }}</span><span class="pending-count">{{ item.count }}</span></div></div>
+
+    <!-- 全局筛选栏 -->
+    <div class="global-filter-bar">
+      <label>区域</label>
+      <select v-model="globalFilter.province"><option value="">全省</option></select>
+      <select v-model="globalFilter.city"><option value="">全市</option></select>
+      <label>时间范围</label>
+      <input type="date" v-model="globalFilter.start_date" />
+      <span style="color:var(--ui-muted);font-size:11px">—</span>
+      <input type="date" v-model="globalFilter.end_date" />
+      <label>来源等级</label>
+      <select v-model="globalFilter.source_level">
+        <option value="">全部</option>
+        <option value="P0">P0</option>
+        <option value="P1">P1</option>
+        <option value="P2">P2</option>
+        <option value="P3">P3</option>
+      </select>
+      <label>管控类型</label>
+      <select v-model="globalFilter.control_type">
+        <option value="">全部</option>
+        <option value="禁飞">禁飞</option>
+        <option value="限飞">限飞</option>
+        <option value="临时管控">临时管控</option>
+      </select>
+      <span class="spacer"></span>
+      <button class="btn btn-sm" @click="loadStats(); switchTab(activeTab)">应用筛选</button>
     </div>
 
     <div id="tabs">
@@ -733,7 +949,7 @@
       </button>
     </div>
 
-    <div v-show="activeTab === 'sources'">
+    <div v-show="activeTab === 'collection'">
       <div class="toolbar">
         <span class="label-text">公开数据源列表</span>
         <span class="spacer"></span>
@@ -741,29 +957,28 @@
       </div>
       <div class="table-wrap"><table>
         <thead><tr>
-          <th>名称</th><th>类型</th><th>等级</th><th>覆盖区域</th><th>最近采集</th><th>有效公告</th><th>状态</th><th>操作</th>
+          <th>名称</th><th>等级</th><th>覆盖区域</th><th>待审核</th><th>异常</th><th>信任分</th><th>关键词命中</th><th>最近有效公告</th><th>操作</th>
         </tr></thead>
         <tbody>
           <tr v-for="s in sources" :key="s.id">
             <td>{{ s.source_name }}</td>
-            <td>{{ typeLabel(s.source_type) }}</td>
             <td><span class="badge" :class="'badge-' + (s.source_level || 'p2').toLowerCase()">{{ s.source_level }}</span></td>
             <td>{{ s.coverage_area || s.city || '-' }}</td>
+            <td>{{ s.pending_review_count || 0 }}</td>
+            <td><span class="badge" :class="(s.anomaly_count || 0) > 0 ? 'badge-orange' : 'badge-grey'">{{ s.anomaly_count || 0 }}</span></td>
+            <td>{{ s.source_trust_score != null ? (s.source_trust_score * 100).toFixed(0) + '%' : '-' }}</td>
+            <td>{{ Array.isArray(s.keywords) ? s.keywords.slice(0, 2).join(' / ') : '-' }}</td>
             <td style="font-size:11.5px">
               {{ s.last_crawled_at ? s.last_crawled_at.slice(0,10) : '未采集' }}
               <span class="badge badge-grey">{{ s.last_crawl_status || '-' }}</span>
             </td>
-            <td>{{ s.valid_announcement_count }}</td>
             <td>
-              <span v-if="s.enabled" class="badge badge-green">启用</span>
-              <span v-else class="badge badge-grey">暂停</span>
-            </td>
-            <td>
+              <button class="btn btn-sm" @click="showToast('数据源详情将在 P2 做成独立面板', 'info')">查看详情</button>
+              <button class="btn btn-sm" @click="crawlSource(s.id)">立即采集</button>
               <button class="btn btn-sm" @click="toggleSource(s.id, !s.enabled)">{{ s.enabled ? '暂停' : '启用' }}</button>
-              <button class="btn btn-sm" @click="crawlSource(s.id)">采集</button>
             </td>
           </tr>
-          <tr v-if="sources.length === 0"><td colspan="8" class="empty-state"><div class="empty-icon">&#128237;</div><div class="empty-text">暂无数据源</div><div class="empty-hint">点击「+ 新增数据源」添加第一个数据源</div></td></tr>
+          <tr v-if="sources.length === 0"><td colspan="9" class="empty-state"><div class="empty-icon">&#128237;</div><div class="empty-text">暂无数据源</div><div class="empty-hint">点击「+ 新增数据源」添加第一个数据源</div></td></tr>
         </tbody>
       </table></div>
     </div>
@@ -787,25 +1002,24 @@
           <option value="rejected">已驳回</option>
         </select>
         <span class="spacer"></span>
-        <button class="btn btn-primary" @click="showModal = true">+ 手动提交公告</button>
+        <button class="btn btn-primary" @click="openManualModal">+ 手动提交公告</button>
       </div>
       <div class="table-wrap"><table>
         <thead><tr>
-          <th>来源</th><th>预览</th><th>状态</th><th>相关性</th><th>置信度</th><th>审核</th><th>时间</th><th>操作</th>
+          <th>任务</th><th>AI 解析</th><th>时间</th><th>地理</th><th>证据</th><th>审核</th><th>地图</th><th>操作</th>
         </tr></thead>
         <tbody>
           <tr v-for="t in tasks" :key="t.id">
-            <td>{{ t.source_name }}</td>
-            <td><span class="text-truncate">{{ t.title_preview || '-' }}</span></td>
-            <td><span class="badge badge-grey">{{ taskStatusLabel(t.task_status) }}</span></td>
             <td>
-              <span v-if="t.is_relevant" class="badge badge-green">相关</span>
-              <span v-else-if="t.is_relevant === false" class="badge badge-grey">无关</span>
-              <span v-else>-</span>
+              <div>{{ t.source_name }}</div>
+              <span class="text-truncate" style="font-size:11px;color:var(--ui-muted)">{{ t.title_preview || '-' }}</span>
             </td>
-            <td>{{ t.parse_confidence ? (t.parse_confidence * 100).toFixed(0) + '%' : '-' }}</td>
+            <td><span class="badge badge-grey">{{ taskStatusLabel(t.task_status) }}</span> {{ t.parse_confidence ? (t.parse_confidence * 100).toFixed(0) + '%' : '' }}</td>
+            <td><span class="badge" :class="'badge-' + timeParseBadge(t.time_parse_status)">{{ timeParseLabel(t.time_parse_status) }}</span></td>
+            <td><span class="badge" :class="'badge-' + geoParseBadge(t.geo_parse_status)">{{ geoParseLabel(t.geo_parse_status) }}</span></td>
+            <td><span class="badge" :class="'badge-' + evidenceBadge(t.evidence_status)">{{ t.evidence_bound_count }}/{{ t.evidence_required_count }} 已绑定</span></td>
             <td><span class="badge" :class="'badge-' + reviewBadge(t.review_status)">{{ reviewLabel(t.review_status) }}</span></td>
-            <td style="font-size:11.5px">{{ (t.created_at || '').slice(0, 10) }}</td>
+            <td><span class="badge" :class="'badge-' + mapLayerBadge(t.map_layer_status)">{{ mapLayerLabel(t.map_layer_status) }}</span></td>
             <td>
               <button class="btn btn-sm" @click="openTaskDetail(t.id)">查看审核</button>
               <template v-if="t.review_status === 'pending_confirm'">
@@ -818,7 +1032,91 @@
       </table></div>
     </div>
 
-    <div v-show="activeTab === 'keywords'">
+    <!-- 公告库 Tab -->
+    <div v-show="activeTab === 'announcements'">
+      <div class="toolbar">
+        <input v-model="annSearch" placeholder="搜索公告..." class="search-input" />
+        <select v-model="annFilter.ann_status">
+          <option value="">全部状态</option>
+          <option value="pending">待审核</option>
+          <option value="confirmed">已确认</option>
+          <option value="rejected">已驳回</option>
+        </select>
+        <select v-model="annFilter.control_type">
+          <option value="">全部类型</option>
+          <option value="禁飞">禁飞</option>
+          <option value="限飞">限飞</option>
+          <option value="临时管控">临时管控</option>
+        </select>
+        <span class="spacer"></span>
+        <button class="btn btn-primary" @click="loadAnnouncements">刷新</button>
+      </div>
+      <div class="table-wrap"><table>
+        <thead><tr>
+          <th>标题</th><th>来源</th><th>管控类型</th><th>开始时间</th><th>状态</th><th>操作</th>
+        </tr></thead>
+        <tbody>
+          <tr v-for="ann in announcements" :key="ann.id">
+            <td>{{ ann.title }}</td>
+            <td>{{ ann.source_name }}</td>
+            <td>{{ ann.control_type }}</td>
+            <td>{{ ann.start_time }}</td>
+            <td><span class="badge" :class="'badge-' + ann.ann_status">{{ ann.ann_status }}</span></td>
+            <td>
+              <button class="btn btn-sm" @click="openAnnouncementDetail(ann.id)">查看详情</button>
+              <button class="btn btn-sm btn-success" v-if="ann.ann_status === 'pending'" @click="confirmAnnouncement(ann.id)">确认</button>
+              <button class="btn btn-sm btn-danger" v-if="ann.ann_status === 'pending'" @click="rejectAnnouncement(ann.id)">驳回</button>
+              <button class="btn btn-sm" v-if="ann.ann_status === 'confirmed'" @click="generateLayers(ann.id)">生成图层</button>
+            </td>
+          </tr>
+          <tr v-if="announcements.length === 0"><td colspan="6" class="empty-state"><div class="empty-icon">&#128203;</div><div class="empty-text">暂无公告</div></td></tr>
+        </tbody>
+      </table></div>
+    </div>
+
+    <!-- 图层管理 Tab -->
+    <div v-show="activeTab === 'layers'">
+      <div class="toolbar">
+        <input v-model="layerSearch" placeholder="搜索图层..." class="search-input" />
+        <select v-model="layerFilter.layer_status">
+          <option value="">全部状态</option>
+          <option value="draft">草稿</option>
+          <option value="published">已发布</option>
+          <option value="paused">已暂停</option>
+          <option value="archived">已归档</option>
+        </select>
+        <select v-model="layerFilter.control_type">
+          <option value="">全部类型</option>
+          <option value="禁飞">禁飞</option>
+          <option value="限飞">限飞</option>
+          <option value="临时管控">临时管控</option>
+        </select>
+        <span class="spacer"></span>
+        <button class="btn btn-primary" @click="loadLayers">刷新</button>
+      </div>
+      <div class="table-wrap"><table>
+        <thead><tr>
+          <th>图层名称</th><th>关联公告</th><th>发布状态</th><th>有效期</th><th>操作</th>
+        </tr></thead>
+        <tbody>
+          <tr v-for="layer in layers" :key="layer.id">
+            <td>{{ layer.layer_name }}</td>
+            <td>{{ layer.announcement_id }}</td>
+            <td><span class="badge" :class="'badge-' + layer.layer_status">{{ layer.layer_status }}</span></td>
+            <td>{{ layer.validity_start }} ~ {{ layer.validity_end }}</td>
+            <td>
+              <button class="btn btn-sm" @click="openLayerDetail(layer.id)">预览</button>
+              <button class="btn btn-sm btn-success" v-if="layer.layer_status === 'draft'" @click="publishLayer(layer.id)">发布</button>
+              <button class="btn btn-sm btn-warning" v-if="layer.layer_status === 'published'" @click="pauseLayer(layer.id)">暂停</button>
+              <button class="btn btn-sm btn-danger" v-if="layer.layer_status !== 'archived'" @click="archiveLayer(layer.id)">归档</button>
+            </td>
+          </tr>
+          <tr v-if="layers.length === 0"><td colspan="5" class="empty-state"><div class="empty-icon">&#128506;</div><div class="empty-text">暂无图层</div></td></tr>
+        </tbody>
+      </table></div>
+    </div>
+
+    <div v-show="activeTab === 'rules'">
       <div class="keywords-panel">
         <h3>内置搜索关键词</h3>
         <div class="tag-cloud">
@@ -851,46 +1149,149 @@
   <div v-if="drawer.task" id="drawer-overlay" @click="closeDrawer"></div>
   <div v-if="drawer.task" id="drawer">
     <button class="close" @click="closeDrawer">&times;</button>
-    <h2>解析详情</h2>
-    <div class="section"><h3>任务信息</h3>
-      <div class="field"><span class="fname">任务ID</span><span class="fval">{{ drawer.task.id }}</span></div>
-      <div class="field"><span class="fname">状态</span><span class="fval"><span class="badge badge-grey">{{ taskStatusLabel(drawer.task.task_status) }}</span></span></div>
-      <div class="field"><span class="fname">相关性</span><span class="fval">
-        <span v-if="drawer.task.is_relevant" class="badge badge-green">相关</span>
-        <span v-else-if="drawer.task.is_relevant === false" class="badge badge-grey">无关</span>
-        <span v-else>-</span>
-        {{ drawer.task.classification_result || '' }}
-      </span></div>
-      <div class="field"><span class="fname">审核</span><span class="fval"><span class="badge" :class="'badge-' + reviewBadge(drawer.task.review_status)">{{ reviewLabel(drawer.task.review_status) }}</span></span></div>
-    </div>
-    <div class="section"><h3>抽取字段</h3>
-      <div v-if="drawerFields.length === 0" style="color:var(--ui-muted);font-size:12.5px;">暂无抽取结果</div>
-      <div v-for="f in drawerFields" :key="f.key" class="field">
-        <span class="fname">{{ f.name }}</span>
-        <span class="fval">{{ f.value }} <span v-if="f.confidence != null" class="badge badge-grey">{{ (f.confidence * 100).toFixed(0) }}%</span></span>
-        <div v-if="f.evidence" style="font-size:10.5px;color:var(--ui-muted);margin-top:2px;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" style="vertical-align:middle;margin-right:3px;"><path d="M22 12L11.5 22.5C9.33 24.67 5.83 24.67 3.66 22.5C1.49 20.33 1.49 16.83 3.66 14.66L15.33 3C16.83 1.5 19.17 1.5 20.67 3C22.17 4.5 22.17 6.83 20.67 8.33L10.35 18.65C9.48 19.52 8.02 19.52 7.15 18.65C6.28 17.78 6.28 16.32 7.15 15.45L15.5 7.1" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" fill="none"/></svg> {{ f.evidence }}</div>
+    <h2>解析审核：{{ drawerFields.find(f => f.key === 'title')?.value || drawer.task.source_name || drawer.task.id }}</h2>
+    <div class="drawer-grid">
+      <div class="review-panel">
+        <h3>原文与证据</h3>
+        <div class="raw-evidence">{{ drawer.task.raw_text || '无原文' }}</div>
+        <div class="evidence-list">
+          <div v-for="ev in drawer.task.evidence_items || []" :key="ev.label" class="evidence-item">
+            <span class="ev-label">{{ ev.label }}</span>
+            <span class="ev-text">{{ ev.text || '未绑定原文证据' }}</span>
+          </div>
+        </div>
       </div>
-    </div>
-    <div class="section"><h3>时间解析</h3>
-      <div class="field"><span class="fname">时间状态</span><span class="fval">{{ drawer.temporal?.time_status || '-' }}</span></div>
-      <div class="field"><span class="fname">时间模式</span><span class="fval">{{ drawer.temporal?.time_mode || '-' }}</span></div>
-      <div class="field"><span class="fname">判断依据</span><span class="fval">{{ drawer.temporal?.validity_basis || '-' }}</span></div>
-    </div>
-    <div class="section"><h3>地理信息</h3>
-      <div class="field"><span class="fname">类型</span><span class="fval">{{ drawer.geo?.geo_type || '-' }}</span></div>
-      <div class="field"><span class="fname">中心POI</span><span class="fval">{{ drawer.geo?.center_poi || '-' }}</span></div>
-      <div class="field"><span class="fname">半径</span><span class="fval">{{ drawer.geo?.radius_meters ? drawer.geo.radius_meters + 'm' : '-' }}</span></div>
-      <div class="field"><span class="fname">地理置信度</span><span class="fval">{{ drawer.geo?.geo_confidence ? (drawer.geo.geo_confidence * 100).toFixed(0) + '%' : '-' }}</span></div>
-    </div>
-    <div class="section"><h3>原文证据</h3>
-      <div style="font-size:12.5px;line-height:1.65;padding:14px;background:#f5f7fa;border-radius:10px;color:var(--ui-ink-2);border:1px solid var(--ui-border);">{{ drawer.task.evidence_text || drawer.task.raw_text || '无' }}</div>
+
+      <div class="review-panel">
+        <h3>结构化结果</h3>
+        <div v-if="drawerFields.length === 0" style="color:var(--ui-muted);font-size:12.5px;">暂无抽取结果</div>
+        <div v-for="f in drawerFields" :key="f.key" class="field-card">
+          <span class="fname">{{ f.name }}</span>
+          <span class="fval">{{ f.value }}</span>
+          <span v-if="f.confidence != null" class="badge badge-grey">{{ (f.confidence * 100).toFixed(0) }}%</span>
+        </div>
+        <div class="gate-box" :class="{ ok: drawer.task.publication_gate?.can_publish }">
+          {{ drawer.task.publication_gate?.summary || '等待发布条件评估' }}
+        </div>
+      </div>
+
+      <div class="review-panel">
+        <h3>来源与版本</h3>
+        <div class="field"><span class="fname">任务ID</span><span class="fval">{{ drawer.task.id }}</span></div>
+        <div class="field"><span class="fname">来源</span><span class="fval">{{ drawer.task.source_name || '-' }}</span></div>
+        <div class="field"><span class="fname">链接</span><span class="fval">{{ drawer.task.source_url || '-' }}</span></div>
+        <div class="field"><span class="fname">相关性</span><span class="fval">
+          <span v-if="drawer.task.is_relevant" class="badge badge-green">相关</span>
+          <span v-else-if="drawer.task.is_relevant === false" class="badge badge-grey">无关</span>
+          <span v-else class="badge badge-grey">未判断</span>
+          {{ drawer.task.classification_result || '' }}
+        </span></div>
+        <div class="field"><span class="fname">审核</span><span class="fval"><span class="badge" :class="'badge-' + reviewBadge(drawer.task.review_status)">{{ reviewLabel(drawer.task.review_status) }}</span></span></div>
+        <div class="field"><span class="fname">原因</span><span class="fval">{{ drawer.task.review_reason || '-' }}</span></div>
+      </div>
+
+      <div class="review-panel">
+        <h3>地图预览与时间轴</h3>
+        <div class="map-preview">
+          <div>
+            <div>地图预览：{{ mapLayerLabel(drawer.task.map_layer_status) }}</div>
+            <div style="margin-top:6px;">地理：{{ geoParseLabel(drawer.task.geo_parse_status) }} · 时间：{{ timeParseLabel(drawer.task.time_parse_status) }}</div>
+          </div>
+        </div>
+        <div class="field" style="margin-top:12px;"><span class="fname">时间模式</span><span class="fval">{{ drawer.temporal?.time_mode || '-' }}</span></div>
+        <div class="field"><span class="fname">判断依据</span><span class="fval">{{ drawer.temporal?.validity_basis || '-' }}</span></div>
+        <div class="field"><span class="fname">地理类型</span><span class="fval">{{ drawer.geo?.geo_type || '-' }}</span></div>
+        <div class="field"><span class="fname">中心POI</span><span class="fval">{{ drawer.geo?.center_poi || '-' }}</span></div>
+        <div class="field"><span class="fname">半径</span><span class="fval">{{ drawer.geo?.radius_meters ? drawer.geo.radius_meters + 'm' : '-' }}</span></div>
+      </div>
     </div>
     <div class="actions">
       <button class="btn" @click="closeDrawer">关闭</button>
       <template v-if="drawer.task.review_status === 'pending_confirm'">
-        <button class="btn btn-success" @click="approveTask(drawer.task.id); closeDrawer()">确认发布</button>
-        <button class="btn btn-danger" @click="rejectTask(drawer.task.id); closeDrawer()">驳回</button>
+        <button class="btn" @click="showToast('当前 PoC 暂不支持字段编辑保存', 'info')">保存修改</button>
+        <button class="btn btn-success" :disabled="!drawer.task.publication_gate?.can_publish" @click="confirmAndPublish(drawer.task.id)">确认并发布地图</button>
+        <button class="btn btn-danger" @click="openRejectModal(drawer.task.id); closeDrawer()">驳回</button>
       </template>
+    </div>
+  </div>
+
+  <!-- 公告详情抽屉（证据核验工作台） -->
+  <div v-if="annDrawer.open" id="drawer-overlay" @click="closeAnnDrawer"></div>
+  <div v-if="annDrawer.open" id="drawer">
+    <h2>{{ annDrawer.announcement?.title || '公告详情' }}</h2>
+    <div class="evidence-drawer">
+      <div class="evidence-left">
+        <div class="evidence-section-title">公告原文</div>
+        <div class="evidence-raw">{{ annDrawer.announcement?.original_text || annDrawer.announcement?.body || '暂无原文' }}</div>
+        <div class="evidence-section-title" style="margin-top:14px">证据列表</div>
+        <div v-if="annDrawer.announcement?.extracted_fields">
+          <div class="evidence-item" v-for="(v, k) in annDrawer.announcement.extracted_fields" :key="k">
+            <span class="ev-key">{{ k }}</span>
+            <span class="ev-value">{{ v?.value || '-' }}</span>
+            <span class="ev-confidence" v-if="v?.confidence != null">{{ (v.confidence * 100).toFixed(0) }}%</span>
+          </div>
+        </div>
+        <div v-else class="evidence-item" style="color:var(--ui-muted)">暂无结构化证据</div>
+
+        <!-- 溯源条 -->
+        <div class="traceability-bar">
+          <span class="trace-step" :class="{ active: annDrawer.task }">采集来源</span>
+          <span class="trace-arrow">→</span>
+          <span class="trace-step" :class="{ active: annDrawer.task }">入库任务</span>
+          <span class="trace-arrow">→</span>
+          <span class="trace-step active">结构化公告</span>
+          <span class="trace-arrow">→</span>
+          <span class="trace-step" :class="{ active: annDrawer.layers?.length > 0 }">地图图层</span>
+        </div>
+      </div>
+      <div class="evidence-right">
+        <div class="evidence-section-title">AI 解析结果</div>
+        <div class="field"><span class="fname">管控类型</span><span class="fval">{{ annDrawer.announcement?.control_type || '-' }}</span></div>
+        <div class="field"><span class="fname">开始时间</span><span class="fval">{{ annDrawer.announcement?.start_time || '-' }}</span></div>
+        <div class="field"><span class="fname">结束时间</span><span class="fval">{{ annDrawer.announcement?.end_time || '-' }}</span></div>
+        <div class="field"><span class="fname">管控区域</span><span class="fval">{{ annDrawer.announcement?.area_text || '-' }}</span></div>
+        <div class="field"><span class="fname">发布单位</span><span class="fval">{{ annDrawer.announcement?.publish_unit || '-' }}</span></div>
+        <div class="field"><span class="fname">公告状态</span><span class="fval"><span class="badge" :class="'badge-' + (annDrawer.announcement?.ann_status || 'pending')">{{ annDrawer.announcement?.ann_status || 'pending' }}</span></span></div>
+        <div v-if="annDrawer.layers?.length > 0" style="margin-top:10px">
+          <div class="evidence-section-title">关联图层（{{ annDrawer.layers.length }}）</div>
+          <div v-for="l in annDrawer.layers" :key="l.id" style="font-size:12px;color:var(--ui-ink-2);padding:4px 0">{{ l.layer_name }} <span class="badge" :class="'badge-' + l.layer_status">{{ l.layer_status }}</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="actions">
+      <button class="btn" @click="closeAnnDrawer">关闭</button>
+      <button class="btn btn-success" v-if="annDrawer.announcement?.ann_status === 'pending'" @click="confirmAnnouncement(annDrawer.announcement.id); closeAnnDrawer()">确认公告</button>
+      <button class="btn btn-danger" v-if="annDrawer.announcement?.ann_status === 'pending'" @click="rejectAnnouncement(annDrawer.announcement.id); closeAnnDrawer()">驳回</button>
+      <button class="btn btn-primary" v-if="annDrawer.announcement?.ann_status === 'confirmed'" @click="generateLayers(annDrawer.announcement.id); closeAnnDrawer()">生成图层</button>
+    </div>
+  </div>
+
+  <!-- 图层详情抽屉 -->
+  <div v-if="layerDrawer.open" id="drawer-overlay" @click="closeLayerDrawer"></div>
+  <div v-if="layerDrawer.open" id="drawer">
+    <h2>{{ layerDrawer.layer?.layer_name || '图层详情' }}</h2>
+    <div class="field"><span class="fname">图层 ID</span><span class="fval">{{ layerDrawer.layer?.id || '-' }}</span></div>
+    <div class="field"><span class="fname">发布状态</span><span class="fval"><span class="badge" :class="'badge-' + layerDrawer.layer?.layer_status">{{ layerDrawer.layer?.layer_status || '-' }}</span></span></div>
+    <div class="field"><span class="fname">有效期</span><span class="fval">{{ layerDrawer.layer?.validity_start || '-' }} ~ {{ layerDrawer.layer?.validity_end || '-' }}</span></div>
+    <div class="field"><span class="fname">关联公告</span><span class="fval">{{ layerDrawer.announcement?.title || layerDrawer.layer?.announcement_id || '-' }}</span></div>
+
+    <div class="layer-map-preview" v-if="layerDrawer.mode === 'preview'">
+      <span v-if="layerDrawer.geo_json">📍 地图预览区域（GeoJSON 数据已加载）</span>
+      <span v-else>加载中...</span>
+    </div>
+
+    <div v-if="layerDrawer.announcement" style="margin-top:10px">
+      <div class="evidence-section-title">关联公告信息</div>
+      <div class="field"><span class="fname">管控类型</span><span class="fval">{{ layerDrawer.announcement.control_type || '-' }}</span></div>
+      <div class="field"><span class="fname">管控区域</span><span class="fval">{{ layerDrawer.announcement.area_text || '-' }}</span></div>
+    </div>
+
+    <div class="actions">
+      <button class="btn" @click="closeLayerDrawer">关闭</button>
+      <button class="btn" v-if="!layerDrawer.mode || layerDrawer.mode === 'detail'" @click="previewLayer(layerDrawer.layer.id)">预览</button>
+      <button class="btn btn-success" v-if="layerDrawer.layer?.layer_status === 'draft'" @click="publishLayer(layerDrawer.layer.id); closeLayerDrawer()">发布到地图</button>
+      <button class="btn btn-warning" v-if="layerDrawer.layer?.layer_status === 'published'" @click="pauseLayer(layerDrawer.layer.id); closeLayerDrawer()">暂停</button>
+      <button class="btn btn-danger" v-if="layerDrawer.layer?.layer_status !== 'archived'" @click="archiveLayer(layerDrawer.layer.id); closeLayerDrawer()">归档</button>
     </div>
   </div>
 
@@ -935,7 +1336,7 @@
 
     <div class="actions">
       <button class="btn btn-ghost" @click="closeModal">取消</button>
-      <button class="btn btn-primary" @click="submitModal">确认</button>
+      <button class="btn btn-primary" @click="submitModal">{{ modalMode === 'manual' ? '提交并进入 AI 解析' : '确认' }}</button>
     </div>
   </div>
 </div>
@@ -949,21 +1350,30 @@ const app = createApp({
   setup() {
     const stats = reactive({
       enabled_sources: 0, candidate_tasks: 0, valid_announcements: 0,
-      pending_review: 0, published_layers: 0, parse_success_rate: 0,
+      pending_review: 0, published_layers: 0, active_layers: 0, expired_layers: 0, not_started_layers: 0,
+      parse_success_rate: 0,
+      parse_success_count: 0, parse_success_total: 0,
       layers_without_evidence: 0, overreach_text_count: 0,
+      bulk_imported: 0, ann_geo_grade_e: 0,
+      ann_pending_review: 0, ingestion_pending: 0, ingestion_total: 0,
     });
 
-    const activeTab = ref('sources');
+    const activeTab = ref('collection');
     const tabs = [
-      { id: 'sources',  label: '数据源' },
-      { id: 'tasks',    label: '入库任务' },
-      { id: 'keywords', label: '关键词/规则' },
+      { id: 'collection', label: '采集管理' },
+      { id: 'tasks',      label: '入库任务' },
+      { id: 'announcements', label: '公告库' },
+      { id: 'layers',     label: '图层管理' },
+      { id: 'rules',      label: '规则配置' },
     ];
 
     function switchTab(tab) {
       activeTab.value = tab;
-      if (tab === 'sources') loadSources();
-      if (tab === 'tasks')   loadTasks();
+      if (tab === 'collection') loadSources();
+      if (tab === 'tasks')      loadTasks();
+      if (tab === 'announcements') loadAnnouncements();
+      if (tab === 'layers')     loadLayers();
+      if (tab === 'rules')     loadRules();
     }
 
     const sources = ref([]);
@@ -979,8 +1389,8 @@ const app = createApp({
       loadSources();
     }
     async function crawlSource(id) {
-      await fetch(`${API}/data-sources/${id}/crawl`, { method: 'POST' });
-      alert('已触发采集任务');
+      const r = await fetch(`${API}/data-sources/${id}/crawl`, { method: 'POST' }).then(r => r.json());
+      showToast(r.message || '已触发采集任务', 'success');
       loadSources();
     }
     function openAddSource() {
@@ -1003,6 +1413,104 @@ const app = createApp({
 
     const drawer = reactive({ task: null, temporal: {}, geo: {} });
     const drawerFields = ref([]);
+
+    // 公告库
+    const announcements = ref([]);
+    const annFilter = reactive({ ann_status: '', control_type: '', province: '', city: '' });
+    async function loadAnnouncements() {
+      const params = new URLSearchParams();
+      if (annFilter.ann_status) params.set('ann_status', annFilter.ann_status);
+      if (annFilter.control_type) params.set('control_type', annFilter.control_type);
+      if (annFilter.province) params.set('province', annFilter.province);
+      if (annFilter.city) params.set('city', annFilter.city);
+      const r = await fetch(`${API}/announcements?${params}`).then(r => r.json());
+      announcements.value = r.items;
+    }
+
+    // 公告操作
+    async function confirmAnnouncement(annId) {
+      const r = await fetch(`${API}/announcements/${annId}/confirm`, { method: 'POST' }).then(r => r.json());
+      showToast(r.message || '公告已确认', 'success');
+      loadAnnouncements(); loadStats();
+    }
+    async function rejectAnnouncement(annId) {
+      const reason = prompt('驳回原因（可选）：');
+      const r = await fetch(`${API}/announcements/${annId}/reject`, {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ reason: reason || '人工驳回' }),
+      }).then(r => r.json());
+      showToast(r.message || '公告已驳回', 'success');
+      loadAnnouncements(); loadStats();
+    }
+    async function generateLayers(annId) {
+      const r = await fetch(`${API}/announcements/${annId}/generate-layers`, { method: 'POST' }).then(r => r.json());
+      showToast(r.message || '图层已生成', 'success');
+      loadAnnouncements(); loadLayers(); loadStats();
+    }
+    async function openAnnouncementDetail(annId) {
+      const r = await fetch(`${API}/announcements/${annId}/detail`).then(r => r.json());
+      annDrawer.announcement = r.announcement;
+      annDrawer.layers = r.layers || [];
+      annDrawer.task = r.source_task;
+      annDrawer.open = true;
+    }
+
+    // 公告详情抽屉
+    const annDrawer = reactive({ open: false, announcement: null, layers: [], task: null });
+
+    // 图层管理
+    const layers = ref([]);
+    const layerFilter = reactive({ layer_status: '', control_type: '', geo_grade: '', province: '', city: '' });
+    async function loadLayers() {
+      const params = new URLSearchParams();
+      if (layerFilter.layer_status) params.set('layer_status', layerFilter.layer_status);
+      if (layerFilter.control_type) params.set('control_type', layerFilter.control_type);
+      if (layerFilter.geo_grade) params.set('geo_grade', layerFilter.geo_grade);
+      if (layerFilter.province) params.set('province', layerFilter.province);
+      if (layerFilter.city) params.set('city', layerFilter.city);
+      const r = await fetch(`${API}/layers?${params}`).then(r => r.json());
+      layers.value = r.items;
+    }
+
+    // 图层操作
+    async function openLayerDetail(layerId) {
+      const r = await fetch(`${API}/layers/${layerId}`).then(r => r.json());
+      layerDrawer.layer = r.layer;
+      layerDrawer.announcement = r.announcement;
+      layerDrawer.open = true;
+    }
+    async function previewLayer(layerId) {
+      const r = await fetch(`${API}/layers/${layerId}/preview`).then(r => r.json());
+      layerDrawer.layer = r.layer;
+      layerDrawer.announcement = r.announcement;
+      layerDrawer.geo_json = r.geo_json;
+      layerDrawer.open = true;
+      layerDrawer.mode = 'preview';
+    }
+    async function publishLayer(layerId) {
+      const r = await fetch(`${API}/layers/${layerId}/publish`, { method: 'POST' }).then(r => r.json());
+      showToast(r.message || '图层已发布', 'success');
+      loadLayers(); loadStats();
+    }
+    async function pauseLayer(layerId) {
+      const r = await fetch(`${API}/layers/${layerId}/pause`, { method: 'POST' }).then(r => r.json());
+      showToast(r.message || '图层已暂停', 'success');
+      loadLayers(); loadStats();
+    }
+    async function archiveLayer(layerId) {
+      if (!confirm('确认归档此图层？归档后将不再显示。')) return;
+      const r = await fetch(`${API}/layers/${layerId}/archive`, { method: 'POST' }).then(r => r.json());
+      showToast(r.message || '图层已归档', 'success');
+      loadLayers(); loadStats();
+    }
+    const layerDrawer = reactive({ open: false, mode: 'detail', layer: null, announcement: null, geo_json: null });
+
+    // 规则配置
+    const rules = ref([]);
+    async function loadRules() {
+      // TODO: 实现规则配置的数据加载
+      rules.value = [];
+    }
     async function openTaskDetail(taskId) {
       const r = await fetch(`${API}/ingestion-tasks/${taskId}`).then(r => r.json());
       drawer.task = r;
@@ -1022,11 +1530,24 @@ const app = createApp({
     function closeDrawer() { drawer.task = null; }
 
     async function approveTask(taskId) {
-      await fetch(`${API}/ingestion-tasks/${taskId}/approve`, {
+      const resp = await fetch(`${API}/ingestion-tasks/${taskId}/approve`, {
         method: 'POST', headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ publish_to_map: true }),
       });
+      if (!resp.ok) {
+        const data = await resp.json().catch(() => ({}));
+        const detail = data.detail || data;
+        const blockers = Array.isArray(detail.blockers) ? detail.blockers.join('；') : (detail.message || '发布失败');
+        showToast(blockers, 'warning');
+        return false;
+      }
+      showToast('公告已确认并发布到地图', 'success');
       loadTasks(); loadStats();
+      return true;
+    }
+    async function confirmAndPublish(taskId) {
+      const ok = await approveTask(taskId);
+      if (ok) closeDrawer();
     }
     function rejectTask(taskId) {
       modalForm.reason = '';
@@ -1053,6 +1574,11 @@ const app = createApp({
     const manualSourceName = ref('');
     const manualSourceUrl = ref('');
     const manualSourceLevel = ref('P1');
+
+    function openManualModal() {
+      modalMode.value = 'manual';
+      showModal.value = true;
+    }
 
     async function submitManual() {
       const body = {
@@ -1096,21 +1622,23 @@ const app = createApp({
 
     async function submitModal() {
       if (modalMode.value === 'addSource') {
-        if (!modalForm.name || !modalForm.url) { alert('请填写完整信息'); return; }
+        if (!modalForm.name || !modalForm.url) { showToast('请填写完整信息'); return; }
         await fetch(`${API}/data-sources`, {
           method: 'POST', headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ source_name: modalForm.name, source_url: modalForm.url, source_level: modalForm.level || 'P1' }),
         });
         showModal.value = false;
+        showToast('数据源已新增', 'success');
         loadSources();
       } else if (modalMode.value === 'reject') {
-        if (!modalForm.reason) { alert('请填写驳回原因'); return; }
+        if (!modalForm.reason) { showToast('请填写驳回原因'); return; }
         await fetch(`${API}/ingestion-tasks/${modalTaskId.value}/reject`, {
           method: 'POST', headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ reason: modalForm.reason }),
         });
         showModal.value = false;
         modalTaskId.value = null;
+        showToast('任务已驳回', 'success');
         loadTasks(); loadStats();
       } else if (modalMode.value === 'manual') {
         await submitManual();
@@ -1157,10 +1685,64 @@ const app = createApp({
       const m = { auto_pass: 'green', pending_confirm: 'orange', approved: 'green', rejected: 'red' };
       return m[s] || 'grey';
     }
+    function timeParseLabel(s) {
+      const m = { success: '已归一化', missing: '缺失', conflict: '冲突', unknown: '未知' };
+      return m[s] || s || '未知';
+    }
+    function timeParseBadge(s) {
+      const m = { success: 'green', missing: 'red', conflict: 'orange', unknown: 'grey' };
+      return m[s] || 'grey';
+    }
+    function geoParseLabel(s) {
+      const m = { success: '已落图', preview: '可预览', needs_review: '边界模糊', missing: '未解析' };
+      return m[s] || s || '未解析';
+    }
+    function geoParseBadge(s) {
+      const m = { success: 'green', preview: 'blue', needs_review: 'orange', missing: 'red' };
+      return m[s] || 'grey';
+    }
+    function evidenceBadge(s) {
+      const m = { complete: 'green', partial: 'orange', missing: 'red' };
+      return m[s] || 'grey';
+    }
+    function mapLayerLabel(s) {
+      const m = { published: '已发布', unpublished: '未发布', previewing: '预览中', not_generated: '未生成', preview: '预览中' };
+      return m[s] || s || '未生成';
+    }
+    function mapLayerBadge(s) {
+      const m = { published: 'green', unpublished: 'orange', previewing: 'blue', not_generated: 'grey', preview: 'blue' };
+      return m[s] || 'grey';
+    }
     function fieldName(k) {
       const m = { title: '标题', publish_unit: '发布单位', start_time: '开始时间', end_time: '结束时间', control_type: '管控类型', area_text: '管控区域' };
       return m[k] || k;
     }
+
+    // 搜索和全局筛选
+    const annSearch = ref('');
+    const layerSearch = ref('');
+    const globalFilter = reactive({ province: '', city: '', source_level: '', control_type: '', start_date: '', end_date: '' });
+
+    // 待办提醒
+    const pendingItems = computed(() => {
+      const items = [];
+      if (stats.pending_announcements > 0) items.push({ id: 'pending_ann', icon: '📋', text: '公告等待人工核验', count: stats.pending_announcements });
+      if (stats.draft_layers > 0) items.push({ id: 'draft_layers', icon: '🗺️', text: '图层待发布', count: stats.draft_layers });
+      if (stats.conflict_announcements > 0) items.push({ id: 'conflict', icon: '⚠️', text: '时间冲突公告', count: stats.conflict_announcements });
+      if (stats.upcoming_active_layers > 0) items.push({ id: 'upcoming', icon: '⏰', text: '即将生效图层', count: stats.upcoming_active_layers });
+      if (stats.expired_layers > 0) items.push({ id: 'expired', icon: '📅', text: '已过期图层', count: stats.expired_layers });
+      return items;
+    });
+    function handlePendingClick(item) {
+      if (item.id === 'pending_ann') { activeTab.value = 'announcements'; annFilter.ann_status = 'pending'; loadAnnouncements(); }
+      else if (item.id === 'draft_layers') { activeTab.value = 'layers'; layerFilter.layer_status = 'draft'; loadLayers(); }
+      else if (item.id === 'conflict') { activeTab.value = 'announcements'; annFilter.ann_status = 'conflict'; loadAnnouncements(); }
+      else if (item.id === 'expired' || item.id === 'upcoming') { activeTab.value = 'layers'; loadLayers(); }
+    }
+
+    // 关闭公告/图层抽屉
+    function closeAnnDrawer() { annDrawer.open = false; annDrawer.announcement = null; annDrawer.layers = []; annDrawer.task = null; }
+    function closeLayerDrawer() { layerDrawer.open = false; layerDrawer.layer = null; layerDrawer.announcement = null; layerDrawer.geo_json = null; layerDrawer.mode = 'detail'; }
 
     onMounted(() => {
       loadStats();
@@ -1168,14 +1750,19 @@ const app = createApp({
     });
 
     return {
-      stats, activeTab, tabs, switchTab,
+      stats, loadStats, activeTab, tabs, switchTab,
       sources, loadSources, toggleSource, crawlSource, openAddSource,
       tasks, taskFilter, loadTasks,
       drawer, drawerFields, openTaskDetail, closeDrawer,
-      approveTask, rejectTask,
+      approveTask, rejectTask, confirmAndPublish,
       showModal, modalMode, modalForm, modalTaskId, modalTitle, submitModal, closeModal, toasts, showToast, dismissToast,
-      submitType, manualText, manualUrl, manualSourceName, manualSourceUrl, manualSourceLevel, submitManual,
-      fmtPct, typeLabel, taskStatusLabel, reviewLabel, reviewBadge, fieldName,
+      submitType, manualText, manualUrl, manualSourceName, manualSourceUrl, manualSourceLevel, submitManual, openManualModal,
+      fmtPct, typeLabel, taskStatusLabel, reviewLabel, reviewBadge,
+      timeParseLabel, timeParseBadge, geoParseLabel, geoParseBadge, evidenceBadge, mapLayerLabel, mapLayerBadge, fieldName,
+      // 新增
+      announcements, annFilter, annSearch, loadAnnouncements, confirmAnnouncement, rejectAnnouncement, generateLayers, openAnnouncementDetail, annDrawer, closeAnnDrawer,
+      layers, layerFilter, layerSearch, loadLayers, openLayerDetail, previewLayer, publishLayer, pauseLayer, archiveLayer, layerDrawer, closeLayerDrawer,
+      pendingItems, handlePendingClick, globalFilter,
     };
   },
 });
